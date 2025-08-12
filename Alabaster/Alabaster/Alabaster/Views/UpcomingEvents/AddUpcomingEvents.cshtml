@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "Add Upcoming Event";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <style>
+        .event-form-container {
+            max-width: 700px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #fff;
+            border-radius: .5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+            .event-form-container h2 {
+                text-align: center;
+                margin-bottom: 1.5rem;
+                font-weight: 600;
+                color: #0f2f36;
+            }
+
+        .event-form .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+            .event-form .form-group label {
+                display: block;
+                font-weight: 500;
+                margin-bottom: .5rem;
+                color: #0f2f36;
+            }
+
+            .event-form .form-group input[type="text"],
+            .event-form .form-group input[type="date"],
+            .event-form .form-group input[type="time"],
+            .event-form .form-group textarea,
+            .event-form .form-group input[type="file"] {
+                width: 100%;
+                padding: .75rem 1rem;
+                font-size: 1rem;
+                border: 1px solid #ccc;
+                border-radius: .375rem;
+                outline: none;
+            }
+
+            .event-form .form-group textarea {
+                resize: vertical;
+                min-height: 120px;
+            }
+
+        .event-form .btn-submit,
+        .event-form .btn-volunteer {
+            display: inline-block;
+            padding: .75rem 1.5rem;
+            margin-top: 1rem;
+            margin-right: .5rem;
+            border: none;
+            border-radius: .375rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .event-form .btn-submit {
+            background-color: #007bff;
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+            .event-form .btn-submit:hover {
+                background-color: #0069d9;
+            }
+
+        .event-form .btn-volunteer {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+            .event-form .btn-volunteer:hover {
+                background-color: #218838;
+            }
+    </style>
+}
+
+<div class="event-form-container">
+    <h2>Add Upcoming Event</h2>
+
+    <form class="event-form"
+          action="/Events/Create"
+          method="post"
+          enctype="multipart/form-data">
+
+        <div class="form-group">
+            <label for="EventName">Event Name</label>
+            <input id="EventName" name="EventName" type="text" placeholder="Enter event name" />
+        </div>
+
+        <div class="form-group">
+            <label for="Description">Description</label>
+            <textarea id="Description" name="Description" placeholder="Describe the event"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="EventDate">Date</label>
+            <input id="EventDate" name="EventDate" type="date" />
+        </div>
+
+        <div class="form-group">
+            <label for="EventTime">Time</label>
+            <input id="EventTime" name="EventTime" type="time" />
+        </div>
+
+        <div class="form-group">
+            <label for="ImageUpload">Upload Image</label>
+            <input id="ImageUpload" name="ImageUpload" type="file" accept="image/*" />
+        </div>
+
+        <button type="submit" class="btn-submit">Add Event</button>
+        <a href="/Volunteer/Create" class="btn-volunteer">Volunteer</a>
+    </form>
+</div>

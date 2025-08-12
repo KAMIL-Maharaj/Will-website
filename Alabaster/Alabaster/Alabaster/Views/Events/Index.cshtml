@@ -1,0 +1,25 @@
+@model List<Alabaster.Models.UpcomingEvent>
+
+<h2>Upcoming Events</h2>
+<a href="@Url.Action("AddEvent", "Events")" class="btn btn-primary">Add Event</a>
+
+<div class="row mt-4">
+    @foreach (var evt in Model)
+    {
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                @if (!string.IsNullOrEmpty(evt.ImageUrl))
+                {
+                    <img src="@evt.ImageUrl" class="card-img-top" alt="@evt.Name" />
+                }
+                <div class="card-body">
+                    <h5 class="card-title">@evt.Name</h5>
+                    <p class="card-text">@evt.Description</p>
+                    <p><strong>Date:</strong> @evt.Date</p>
+                    <p><strong>Time:</strong> @evt.Time</p>
+                    <a href="@Url.Action("Volunteer", "Events", new { eventId = evt.Id })" class="btn btn-success">Volunteer</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

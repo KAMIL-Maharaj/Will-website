@@ -1,0 +1,82 @@
+@model Alabaster.Models.Volunteer
+
+@{
+    ViewData["Title"] = "Volunteer";
+}
+
+<h2>Volunteer for an Event</h2>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+
+<form asp-action="Volunteer" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label>Select Event</label>
+        <select asp-for="EventId" class="form-control" required>
+            <option value="">-- Select Event --</option>
+            @if (ViewBag.Events != null)
+            {
+                foreach (var evt in ViewBag.Events)
+                {
+                    if (Model.EventId == evt.Id)
+                    {
+                        <option value="@evt.Id" selected="selected">@evt.Name (@evt.Date)</option>
+                    }
+                    else
+                    {
+                        <option value="@evt.Id">@evt.Name (@evt.Date)</option>
+                    }
+                }
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Name</label>
+        <input asp-for="Name" class="form-control" required />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>ID Number</label>
+        <input asp-for="IdNumber" class="form-control" />
+        <span asp-validation-for="IdNumber" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Email</label>
+        <input asp-for="Email" type="email" class="form-control" required />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Phone</label>
+        <input asp-for="Phone" class="form-control" required />
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Notes / Allergies</label>
+        <textarea asp-for="Notes" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>T-Shirt Size</label>
+        <input asp-for="TShirtSize" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Number of Volunteers</label>
+        <input asp-for="NumberOfVolunteers" type="number" class="form-control" min="1" value="1" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

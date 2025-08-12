@@ -1,0 +1,169 @@
+﻿@{
+    ViewBag.Title = "Volunteer Sign‑Up";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <style>
+        .volunteer-form-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #fff;
+            border-radius: .5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+            .volunteer-form-container h2 {
+                text-align: center;
+                margin-bottom: 1.5rem;
+                font-weight: 600;
+                color: #0f2f36;
+            }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+            .form-group label {
+                display: block;
+                font-weight: 500;
+                margin-bottom: .5rem;
+                color: #0f2f36;
+            }
+
+            .form-group input[type="text"],
+            .form-group input[type="email"],
+            .form-group input[type="number"],
+            .form-group input[type="tel"],
+            .form-group select,
+            .form-group textarea {
+                width: 100%;
+                padding: .75rem 1rem;
+                font-size: 1rem;
+                border: 1px solid #ccc;
+                border-radius: .375rem;
+                outline: none;
+            }
+
+            .form-group textarea {
+                resize: vertical;
+                min-height: 80px;
+            }
+
+        .btn {
+            display: inline-block;
+            padding: .75rem 1.5rem;
+            margin-right: .5rem;
+            border: none;
+            border-radius: .375rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-submit {
+            background-color: #007bff;
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+            .btn-submit:hover {
+                background-color: #0056b3;
+            }
+
+        .btn-add {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+            .btn-add:hover {
+                background-color: #218838;
+            }
+
+        .volunteer-block {
+            padding: 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: .375rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+            .volunteer-block .remove-btn {
+                position: absolute;
+                top: .5rem;
+                right: .5rem;
+                background: transparent;
+                border: none;
+                font-size: 1.25rem;
+                color: #dc3545;
+                cursor: pointer;
+            }
+    </style>
+}
+
+<div class="volunteer-form-container">
+    <h2>Volunteer Sign‑Up</h2>
+
+    <form action="/Volunteers/Create" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="EventSelect">Select Event</label>
+            <select id="EventSelect" name="EventSelect">
+                <option value="">-- choose an event --</option>
+                <option>Children’s Home Visit – Aug 15, 2025</option>
+                <option>Outreach at Tristan Home – Sep 05, 2025</option>
+                <option>Community Feeding – Oct 10, 2025</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="VolunteerCount">Number of Volunteers</label>
+            <input id="VolunteerCount" name="VolunteerCount" type="number" min="1" placeholder="e.g. 3" />
+        </div>
+
+        <div id="volunteerBlocks">
+            <div class="volunteer-block">
+                <button type="button" class="remove-btn" onclick="this.parentElement.remove()">×</button>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input name="VolunteerName[]" type="text" placeholder="Full name" />
+                </div>
+                <div class="form-group">
+                    <label>ID Number</label>
+                    <input name="VolunteerID[]" type="text" placeholder="ID or Passport No." />
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input name="VolunteerEmail[]" type="email" placeholder="Email address" />
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input name="VolunteerPhone[]" type="tel" placeholder="Contact number" />
+                </div>
+                <div class="form-group">
+                    <label>Notes / Other Info</label>
+                    <textarea name="VolunteerNotes[]" placeholder="Allergies, T‑shirt size, etc."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-add" onclick="addVolunteerBlock()">+ Add Another Volunteer</button>
+        <button type="submit" class="btn btn-submit">Submit Volunteer Info</button>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        function addVolunteerBlock() {
+            const container = document.getElementById('volunteerBlocks');
+            const block = container.firstElementChild.cloneNode(true);
+
+            // Clear input values
+            block.querySelectorAll('input, textarea').forEach(el => el.value = '');
+
+            container.appendChild(block);
+        }
+    </script>
+}

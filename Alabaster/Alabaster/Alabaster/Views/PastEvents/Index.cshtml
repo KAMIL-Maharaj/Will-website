@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewData["Title"] = "Past events";
+}
+
+@section Styles {
+    <style>
+        /* Full-width banner */
+        .hero {
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            position: relative;
+            background: url('../images/PastEvents.jpg') center center / cover no-repeat;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+            margin-bottom: 3rem;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        /* About card styling */
+        .about-card {
+            margin-top: -5rem;
+            background: #fff;
+            border-radius: .5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 2rem;
+        }
+
+        .about-image {
+            width: 100%;
+            border-radius: .5rem;
+            object-fit: cover;
+            max-height: 450px;
+        }
+
+        /* Gap between card and text content */
+        .about-content p {
+            margin-bottom: 1rem;
+        }
+    </style>
+}
+
+<div class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="display-4 font-weight-bold">Past Events</h1>
+        <p class="lead mt-2">Then Jesus said to them, "So wherever you go in the world,<br /> tell everyone the Good News."</p>
+    </div>
+</div>
+
