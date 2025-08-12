@@ -35,7 +35,7 @@
         if (file) {
             const reader = new FileReader();
             reader.onloadend = function () {
-                document.getElementById("ImageUrl").value = reader.result; // Base64 string
+                document.getElementById("ImageUrl").value = reader.result;
             };
             reader.readAsDataURL(file);
         }

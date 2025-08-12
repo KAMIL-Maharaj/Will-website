@@ -48,6 +48,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/kamil/OneDrive/Desktop/willproject/Alabaster/Alabaster/Alabaster/Views/Events/Past.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRzXFBhc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/kamil/OneDrive/Desktop/willproject/Alabaster/Alabaster/Alabaster/Views/Events/Volunteer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRzXFZvbHVudGVlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -64,18 +68,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kamil/OneDrive/Desktop/willproject/Alabaster/Alabaster/Alabaster/Views/PastEvents/AddPastEvents.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFzdEV2ZW50c1xBZGRQYXN0RXZlbnRzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/kamil/OneDrive/Desktop/willproject/Alabaster/Alabaster/Alabaster/Views/PastEvents/Admin.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFzdEV2ZW50c1xBZG1pbi5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/kamil/OneDrive/Desktop/willproject/Alabaster/Alabaster/Alabaster/Views/PastEvents/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFzdEV2ZW50c1xJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/kamil/OneDrive/Desktop/willproject/Alabaster/Alabaster/Alabaster/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -90,22 +82,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/kamil/OneDrive/Desktop/willproject/Alabaster/Alabaster/Alabaster/Views/Testimonies/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdGltb25pZXNcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/kamil/OneDrive/Desktop/willproject/Alabaster/Alabaster/Alabaster/Views/UpcomingEvents/AddUpcomingEvents.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXBjb21pbmdFdmVudHNcQWRkVXBjb21pbmdFdmVudHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/kamil/OneDrive/Desktop/willproject/Alabaster/Alabaster/Alabaster/Views/UpcomingEvents/Admin.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXBjb21pbmdFdmVudHNcQWRtaW4uY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/kamil/OneDrive/Desktop/willproject/Alabaster/Alabaster/Alabaster/Views/UpcomingEvents/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXBjb21pbmdFdmVudHNcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/kamil/OneDrive/Desktop/willproject/Alabaster/Alabaster/Alabaster/Views/UpcomingEvents/Volunteer.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXBjb21pbmdFdmVudHNcVm9sdW50ZWVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/kamil/OneDrive/Desktop/willproject/Alabaster/Alabaster/Alabaster/Views/_ViewImports.cshtml]

@@ -4,78 +4,191 @@
     ViewData["Title"] = "Volunteer";
 }
 
-<h2>Volunteer for an Event</h2>
+<style>
+    /* Basic reset for the form container */
+    .volunteer-container {
+        max-width: 600px;
+        margin: 80px auto 40px; /* top margin to avoid navbar overlap */
+        padding: 30px 35px;
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #3a3a3a;
+        position: relative;
+        z-index: 1;
+    }
 
-@if (TempData["Message"] != null)
-{
-    <div class="alert alert-success">@TempData["Message"]</div>
-}
+    h2 {
+        text-align: center;
+        font-weight: 700;
+        margin-bottom: 30px;
+        color: #5a2a83;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        text-shadow: 0 1px 3px rgba(90, 42, 131, 0.3);
+    }
 
-<form asp-action="Volunteer" method="post">
-    <div asp-validation-summary="All" class="text-danger"></div>
+    label {
+        font-weight: 600;
+        margin-bottom: 8px;
+        display: block;
+        color: #4b3a66;
+    }
 
-    <div class="form-group">
-        <label>Select Event</label>
-        <select asp-for="EventId" class="form-control" required>
-            <option value="">-- Select Event --</option>
-            @if (ViewBag.Events != null)
-            {
-                foreach (var evt in ViewBag.Events)
+    .form-control {
+        width: 100%;
+        padding: 12px 15px;
+        font-size: 1rem;
+        border-radius: 12px;
+        border: 2px solid #bda0d1;
+        transition: all 0.3s ease;
+        font-family: inherit;
+        box-sizing: border-box;
+        outline-offset: 2px;
+    }
+
+    .form-control:focus {
+        border-color: #6c4a9c;
+        box-shadow: 0 0 8px rgba(108, 74, 156, 0.5);
+    }
+
+    select.form-control {
+        cursor: pointer;
+    }
+
+    textarea.form-control {
+        resize: vertical;
+        min-height: 80px;
+    }
+
+    .text-danger {
+        color: #c62828;
+        font-weight: 600;
+        margin-top: 4px;
+        font-size: 0.9rem;
+    }
+
+    .alert-success {
+        background-color: #d7f3d7;
+        border: 1px solid #82c182;
+        color: #2e7d32;
+        font-weight: 700;
+        padding: 14px 20px;
+        border-radius: 14px;
+        margin-bottom: 25px;
+        text-align: center;
+        box-shadow: 0 4px 14px rgba(46, 125, 50, 0.3);
+    }
+
+    .btn-success {
+        display: block;
+        width: 100%;
+        background: linear-gradient(135deg, #7b5bcf, #4a3f7a);
+        color: #fff;
+        font-weight: 700;
+        font-size: 1.2rem;
+        padding: 14px 0;
+        border-radius: 30px;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 10px 30px rgba(123, 91, 207, 0.6);
+        transition: background 0.4s ease, box-shadow 0.4s ease;
+        letter-spacing: 1.2px;
+    }
+
+    .btn-success:hover {
+        background: linear-gradient(135deg, #5a3d9f, #3a2c65);
+        box-shadow: 0 14px 40px rgba(58, 44, 101, 0.8);
+    }
+
+    /* Responsive tweaks */
+    @@media (max-width: 640px) {
+        .volunteer-container {
+            margin: 60px 15px 30px;
+            padding: 25px 20px;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+        }
+    }
+</style>
+
+<div class="volunteer-container">
+    <h2>Volunteer for an Event</h2>
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert-success">@TempData["Message"]</div>
+    }
+
+    <form asp-action="Volunteer" method="post" novalidate>
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="form-group">
+            <label>Select Event</label>
+            <select asp-for="EventId" class="form-control" required>
+                <option value="">-- Select Event --</option>
+                @if (ViewBag.Events != null)
                 {
-                    if (Model.EventId == evt.Id)
+                    foreach (var evt in ViewBag.Events)
                     {
-                        <option value="@evt.Id" selected="selected">@evt.Name (@evt.Date)</option>
-                    }
-                    else
-                    {
-                        <option value="@evt.Id">@evt.Name (@evt.Date)</option>
+                        if (Model.EventId == evt.Id)
+                        {
+                            <option value="@evt.Id" selected="selected">@evt.Name (@evt.Date)</option>
+                        }
+                        else
+                        {
+                            <option value="@evt.Id">@evt.Name (@evt.Date)</option>
+                        }
                     }
                 }
-            }
-        </select>
-    </div>
+            </select>
+        </div>
 
-    <div class="form-group">
-        <label>Name</label>
-        <input asp-for="Name" class="form-control" required />
-        <span asp-validation-for="Name" class="text-danger"></span>
-    </div>
+        <div class="form-group">
+            <label>Name</label>
+            <input asp-for="Name" class="form-control" required />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label>ID Number</label>
-        <input asp-for="IdNumber" class="form-control" />
-        <span asp-validation-for="IdNumber" class="text-danger"></span>
-    </div>
+        <div class="form-group">
+            <label>ID Number</label>
+            <input asp-for="IdNumber" class="form-control" />
+            <span asp-validation-for="IdNumber" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label>Email</label>
-        <input asp-for="Email" type="email" class="form-control" required />
-        <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input asp-for="Email" type="email" class="form-control" required />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label>Phone</label>
-        <input asp-for="Phone" class="form-control" required />
-        <span asp-validation-for="Phone" class="text-danger"></span>
-    </div>
+        <div class="form-group">
+            <label>Phone</label>
+            <input asp-for="Phone" class="form-control" required />
+            <span asp-validation-for="Phone" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label>Notes / Allergies</label>
-        <textarea asp-for="Notes" class="form-control"></textarea>
-    </div>
+        <div class="form-group">
+            <label>Notes / Allergies</label>
+            <textarea asp-for="Notes" class="form-control" rows="3"></textarea>
+        </div>
 
-    <div class="form-group">
-        <label>T-Shirt Size</label>
-        <input asp-for="TShirtSize" class="form-control" />
-    </div>
+        <div class="form-group">
+            <label>T-Shirt Size</label>
+            <input asp-for="TShirtSize" class="form-control" />
+        </div>
 
-    <div class="form-group">
-        <label>Number of Volunteers</label>
-        <input asp-for="NumberOfVolunteers" type="number" class="form-control" min="1" value="1" />
-    </div>
+        <div class="form-group">
+            <label>Number of Volunteers</label>
+            <input asp-for="NumberOfVolunteers" type="number" class="form-control" min="1" value="1" />
+        </div>
 
-    <button type="submit" class="btn btn-success">Submit</button>
-</form>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

@@ -1,22 +1,23 @@
 @model List<Alabaster.Models.UpcomingEvent>
 
 @{
-    ViewData["Title"] = "Upcoming Events";
+    ViewData["Title"] = "Past Events";
 }
 
 <style>
-    /* Full background image */
+    /* Background image same as upcoming but with darker overlay */
     body {
         background: url('../images/Testimonies.png') no-repeat center center fixed;
         background-size: cover;
         font-family: 'Segoe UI', sans-serif;
     }
 
-    /* Semi-transparent overlay to make text readable */
+    /* Darker overlay for past events */
     .page-overlay {
-        background: rgba(0, 0, 0, 0.6);
+        background: rgba(10, 25, 50, 0.75);
         min-height: 100vh;
         padding: 30px;
+        color: #e0e6f1;
     }
 
     /* Card styling */
@@ -24,60 +25,56 @@
         border: none;
         border-radius: 15px;
         overflow: hidden;
-        background: rgba(255, 255, 255, 0.9);
+        background: rgba(25, 40, 70, 0.9);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        color: #d1d9ff;
     }
 
-    /* Hover effect on cards */
+    /* Hover effect with subtle lift and glow */
     .event-card:hover {
         transform: translateY(-5px) scale(1.02);
-        box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+        box-shadow: 0 0 15px 3px rgba(100, 150, 255, 0.7);
     }
 
     /* Event images */
     .event-card img {
         height: 200px;
         object-fit: cover;
+        filter: brightness(0.85);
     }
 
     /* Card titles */
     .event-card .card-title {
-        font-weight: bold;
-        color: #333;
+        font-weight: 700;
+        color: #a8b8ff;
     }
 
-    /* Buttons */
-    .btn-custom {
-        background-color: #28a745;
+    /* Back button styling */
+    .btn-back {
+        background-color: #6078ff;
         color: white;
         border-radius: 30px;
-        padding: 8px 20px;
-        font-weight: bold;
+        padding: 8px 22px;
+        font-weight: 600;
         transition: background-color 0.3s ease;
+        box-shadow: 0 4px 12px rgba(96, 120, 255, 0.5);
+        display: inline-block;
+        margin-bottom: 20px;
     }
 
-    .btn-custom:hover {
-        background-color: #218838;
+    .btn-back:hover {
+        background-color: #3f51b5;
         color: white;
-    }
-
-    /* Top buttons */
-    .top-buttons a {
-        margin-right: 10px;
-        border-radius: 25px;
-        font-weight: bold;
-        padding: 8px 18px;
+        text-decoration: none;
+        box-shadow: 0 6px 18px rgba(63, 81, 181, 0.7);
     }
 </style>
 
-<div class="page-overlay text-white">
+<div class="page-overlay">
     <div class="container">
-        <h2 class="mb-4 text-center">🌟 Upcoming Events 🌟</h2>
+        <h2 class="mb-4 text-center">📜 Past Events</h2>
 
-        <div class="text-center top-buttons mb-4">
-            <a href="@Url.Action("AddEvent", "Events")" class="btn btn-primary">➕ Add Event</a>
-            <a href="@Url.Action("Past", "Events")" class="btn btn-warning text-dark">📜 View Past Events</a>
-        </div>
+        <a href="@Url.Action("Index", "Events")" class="btn btn-back">⬅ Back to Upcoming Events</a>
 
         @if (Model != null && Model.Any())
         {
@@ -95,7 +92,6 @@
                                 <p class="card-text">@evt.Description</p>
                                 <p><strong>Date:</strong> @evt.Date</p>
                                 <p><strong>Time:</strong> @evt.Time</p>
-                                <a href="@Url.Action("Volunteer", "Events", new { eventId = evt.Id })" class="btn btn-custom">🤝 Volunteer</a>
                             </div>
                         </div>
                     </div>
@@ -104,8 +100,8 @@
         }
         else
         {
-            <div class="alert alert-info text-center">
-                No upcoming events available at the moment.
+            <div class="alert alert-info text-center text-white-50">
+                No past events found.
             </div>
         }
     </div>
