@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kamil\\OneDrive\\Desktop\\willproject\\Alabaster\\Alabaster\\Alabaster\\Alabaster.csproj": {}
+    "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kamil\\OneDrive\\Desktop\\willproject\\Alabaster\\Alabaster\\Alabaster\\Alabaster.csproj": {
+    "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kamil\\OneDrive\\Desktop\\willproject\\Alabaster\\Alabaster\\Alabaster\\Alabaster.csproj",
+        "projectUniqueName": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster.csproj",
         "projectName": "Alabaster",
-        "projectPath": "C:\\Users\\kamil\\OneDrive\\Desktop\\willproject\\Alabaster\\Alabaster\\Alabaster\\Alabaster.csproj",
+        "projectPath": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster.csproj",
         "packagesPath": "C:\\Users\\kamil\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kamil\\OneDrive\\Desktop\\willproject\\Alabaster\\Alabaster\\Alabaster\\obj\\",
+        "outputPath": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

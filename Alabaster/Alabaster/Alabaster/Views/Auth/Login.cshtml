@@ -12,14 +12,13 @@ body {
     font-size: 16px;
 }
 
-
 .main-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: calc(100vh - 80px);
-    padding-top: 100px; /* more top padding */
-    padding-bottom: 60px; /* more bottom padding */
+    padding-top: 100px;
+    padding-bottom: 60px;
 }
 
 .auth-container {
@@ -31,11 +30,11 @@ body {
     max-width: 1000px;
     width: 100%;
     margin: auto;
-    min-height: 700px; /* make container taller */
+    min-height: 700px;
 }
 
 .auth-form {
-    padding: 60px 60px; /* increased vertical padding */
+    padding: 60px 60px;
     flex: 1;
 }
 
@@ -44,13 +43,13 @@ body {
     background: url('@Url.Content("~/Images/logo.jpg")') center center no-repeat;
     background-size: contain;
     background-color: #ffffff;
-    min-height: 700px; /* taller image container */
+    min-height: 700px;
     padding: 30px;
     border-left: 1.5px solid #e5e7eb;
 }
 
 .auth-title {
-    font-size: 32px; /* slightly smaller */
+    font-size: 32px;
     font-weight: 900;
     color: #1e3a8a;
     margin-bottom: 30px;
@@ -59,12 +58,12 @@ body {
 
 label.form-label {
     font-weight: 700;
-    font-size: 1.15rem; /* a bit smaller */
+    font-size: 1.15rem;
 }
 
 input.form-control {
-    font-size: 1rem; /* smaller font */
-    padding: 10px 12px; /* smaller padding */
+    font-size: 1rem;
+    padding: 10px 12px;
     border-radius: 8px;
 }
 
@@ -76,8 +75,8 @@ input.form-control {
 button.btn-primary {
     background-color: #4f46e5;
     border-color: #4f46e5;
-    font-size: 1.15rem; /* smaller font */
-    padding: 12px 0; /* smaller padding */
+    font-size: 1.15rem;
+    padding: 12px 0;
     border-radius: 10px;
     font-weight: 700;
     transition: background-color 0.3s ease;
@@ -91,8 +90,8 @@ button.btn-primary:hover {
 button.btn-danger {
     background-color: #db4437;
     border: none;
-    font-size: 1.15rem; /* smaller font */
-    padding: 12px 0; /* smaller padding */
+    font-size: 1.15rem;
+    padding: 12px 0;
     border-radius: 10px;
     font-weight: 700;
     transition: background-color 0.3s ease;
@@ -106,7 +105,7 @@ button.btn-danger:hover {
     color: #4f46e5;
     text-decoration: none;
     font-weight: 600;
-    font-size: 1.05rem; /* slightly smaller */
+    font-size: 1.05rem;
 }
 
 .link-custom:hover {
@@ -115,12 +114,12 @@ button.btn-danger:hover {
 
 .text-center {
     text-align: center;
-    font-size: 1.05rem; /* slightly smaller */
+    font-size: 1.05rem;
     margin-top: 20px;
 }
 
 .alert {
-    font-size: 0.95rem; /* slightly smaller */
+    font-size: 0.95rem;
     margin-bottom: 20px;
     padding: 15px 20px;
     border-radius: 10px;
@@ -145,10 +144,6 @@ hr {
         border-top: 1.5px solid #e5e7eb;
         padding: 20px;
         min-height: auto;
-    }
-
-    .main-wrapper {
-        padding-top: 100px;
     }
 
     .auth-form {
@@ -177,7 +172,6 @@ hr {
         padding: 10px 0;
     }
 }
-
 </style>
 
 <div class="main-wrapper">
@@ -233,7 +227,7 @@ hr {
             apiKey: "AIzaSyBEjxaEf_S9x9NZhmJrWwHLDdZvoyDajDg",
             authDomain: "alabaster-8cfcd.firebaseapp.com",
             projectId: "alabaster-8cfcd",
-            storageBucket: "alabaster-8cfcd.firebasestorage.app",
+            storageBucket: "alabaster-8cfcd.appspot.com",
             messagingSenderId: "1014314025942",
             appId: "1:1014314025942:web:fedff22641b2b8bd219a77"
         };
@@ -241,10 +235,7 @@ hr {
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const provider = new GoogleAuthProvider();
-
-        provider.setCustomParameters({
-            prompt: 'select_account'
-        });
+        provider.setCustomParameters({ prompt: 'select_account' });
 
         document.getElementById("google-signin-btn").addEventListener("click", async () => {
             try {
