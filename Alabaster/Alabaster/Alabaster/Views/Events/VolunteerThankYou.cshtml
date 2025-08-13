@@ -6,17 +6,13 @@
     body {
         background: linear-gradient(135deg, #f6d365, #fda085);
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0;
-        color: #5a3e1b;
-    }
-
-    /* New wrapper for content */
-    .thank-you-wrapper {
-        min-height: calc(100vh - 70px); /* adjust 70px to your navbar height */
+        min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 40px;
+        margin: 0;
+        color: #5a3e1b;
     }
 
     .thank-you-container {
@@ -79,10 +75,8 @@
     }
 </style>
 
-<div class="thank-you-wrapper">
-    <div class="thank-you-container">
-        <h2>Thank You for Volunteering!</h2>
-        <p>Your volunteer information has been successfully submitted.</p>
-        <a href="/Events" class="btn btn-primary">Back to Events</a>
-    </div>
+<div class="thank-you-container">
+    <h2>Thank You for Volunteering!</h2>
+    <p>Your volunteer information has been successfully submitted.</p>
+    <a href="/Events" class="btn btn-primary">Back to Events</a>
 </div>

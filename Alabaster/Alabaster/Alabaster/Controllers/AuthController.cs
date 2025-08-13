@@ -1,7 +1,8 @@
 using FirebaseAdmin.Auth;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Alabaster.Services;
+using Alabaster.Services;     
+
 
 namespace Alabaster.Controllers
 {
@@ -83,81 +84,38 @@ namespace Alabaster.Controllers
             return View();
         }
 
-        // Google Register
-        [HttpPost("GoogleRegister")]
-        public async Task<IActionResult> GoogleRegister([FromBody] string idToken)
+        [HttpPost("GoogleLogin")]
+        public async Task<IActionResult> GoogleLogin([FromBody] string idToken)
         {
             if (string.IsNullOrEmpty(idToken))
+            {
                 return Json(new { success = false, error = "No token provided" });
+            }
 
             try
             {
+                // Verify the token with Firebase Admin SDK
                 FirebaseToken decodedToken = await FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(idToken);
+
                 string uid = decodedToken.Uid;
                 string email = decodedToken.Claims.ContainsKey("email") ? decodedToken.Claims["email"].ToString() : null;
 
-                // Check if user exists
-                try
-                {
-                    var existingUser = await FirebaseAuth.DefaultInstance.GetUserAsync(uid);
-                    if (existingUser != null)
-                        return Json(new { success = false, error = "Google account already registered. Please log in." });
-                }
-                catch (FirebaseAuthException)
-                {
-                    // Not found → OK to create
-                }
+                // Optional: Create or update user in your DB here based on uid/email
 
-                await FirebaseAuth.DefaultInstance.CreateUserAsync(new UserRecordArgs
-                {
-                    Uid = uid,
-                    Email = email
-                });
-
+                // Store token and user info in session
                 HttpContext.Session.SetString("FirebaseToken", idToken);
                 HttpContext.Session.SetString("UserId", uid);
                 HttpContext.Session.SetString("UserEmail", email ?? "");
 
                 return Json(new { success = true });
             }
-            catch (Exception ex)
+            catch (FirebaseAuthException ex)
             {
-                return Json(new { success = false, error = $"Google registration failed: {ex.Message}" });
-            }
-        }
-
-        // Google Login
-        [HttpPost("GoogleLogin")]
-        public async Task<IActionResult> GoogleLogin([FromBody] string idToken)
-        {
-            if (string.IsNullOrEmpty(idToken))
-                return Json(new { success = false, error = "No token provided" });
-
-            try
-            {
-                FirebaseToken decodedToken = await FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(idToken);
-                string uid = decodedToken.Uid;
-
-                try
-                {
-                    var userRecord = await FirebaseAuth.DefaultInstance.GetUserAsync(uid);
-                    if (userRecord == null)
-                        return Json(new { success = false, error = "Google account not registered. Please register first." });
-
-                    HttpContext.Session.SetString("FirebaseToken", idToken);
-                    HttpContext.Session.SetString("UserId", uid);
-                    HttpContext.Session.SetString("UserEmail", userRecord.Email ?? "");
-
-                    return Json(new { success = true });
-                }
-                catch (FirebaseAuthException)
-                {
-                    return Json(new { success = false, error = "Google account not registered. Please register first." });
-                }
+                return Json(new { success = false, error = $"Token verification failed: {ex.Message}" });
             }
             catch (Exception ex)
             {
-                return Json(new { success = false, error = $"Google login failed: {ex.Message}" });
+                return Json(new { success = false, error = $"Unexpected error: {ex.Message}" });
             }
         }
 
@@ -168,4 +126,4 @@ namespace Alabaster.Controllers
             return RedirectToAction("Login");
         }
     }
-}
+} 
