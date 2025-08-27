@@ -29,6 +29,14 @@
       "PackagePath": "staticwebassets\\Images\\Background3.jpg"
     },
     {
+      "Id": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\Background4.jpg",
+      "PackagePath": "staticwebassets\\Images\\Background4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\Background5.jpg",
+      "PackagePath": "staticwebassets\\Images\\Background5.jpg"
+    },
+    {
       "Id": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\Donate.jpg",
       "PackagePath": "staticwebassets\\Images\\Donate.jpg"
     },

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gUOW3VPUQ8CB9bzq/TyHYh94ZQDNyub2S37CFtDr1P0=",
+  "Hash": "pCFfp2eT5aw5WIskNi/B960zCeOUMGKiHtT29iM+B4s=",
   "Source": "Alabaster",
   "BasePath": "_content/Alabaster",
   "Mode": "Default",
@@ -1590,6 +1590,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\Background3.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\Background4.jpg",
+      "SourceId": "Alabaster",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\",
+      "BasePath": "_content/Alabaster",
+      "RelativePath": "Images/Background4#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "mu1vkhscxk",
+      "Integrity": "HlNNQKNumfcrz4dUQ/q0cW3Up7SYLD8KVFtrkFG3t+M=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Background4.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\Background5.jpg",
+      "SourceId": "Alabaster",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\",
+      "BasePath": "_content/Alabaster",
+      "RelativePath": "Images/Background5#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "lspdk7c34m",
+      "Integrity": "K6zvHa0JrbSTvJvoHAVw20jX5WvNmSynhCjsCkcLJEI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Background5.jpg"
     },
     {
       "Identity": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\Donate.jpg",
@@ -4786,6 +4828,170 @@
         {
           "Name": "integrity",
           "Value": "sha256-hvY6WkMP3gHpq57PTuTLgk9Fid8e+4PZQ6CrgNq/sME="
+        }
+      ]
+    },
+    {
+      "Route": "Images/Background4.jpg",
+      "AssetFile": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\Background4.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "381224"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HlNNQKNumfcrz4dUQ/q0cW3Up7SYLD8KVFtrkFG3t+M=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Aug 2025 16:28:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-HlNNQKNumfcrz4dUQ/q0cW3Up7SYLD8KVFtrkFG3t+M="
+        }
+      ]
+    },
+    {
+      "Route": "Images/Background4.mu1vkhscxk.jpg",
+      "AssetFile": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\Background4.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "381224"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HlNNQKNumfcrz4dUQ/q0cW3Up7SYLD8KVFtrkFG3t+M=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Aug 2025 16:28:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "mu1vkhscxk"
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Background4.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-HlNNQKNumfcrz4dUQ/q0cW3Up7SYLD8KVFtrkFG3t+M="
+        }
+      ]
+    },
+    {
+      "Route": "Images/Background5.jpg",
+      "AssetFile": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\Background5.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "41833"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"K6zvHa0JrbSTvJvoHAVw20jX5WvNmSynhCjsCkcLJEI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Aug 2025 16:54:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-K6zvHa0JrbSTvJvoHAVw20jX5WvNmSynhCjsCkcLJEI="
+        }
+      ]
+    },
+    {
+      "Route": "Images/Background5.lspdk7c34m.jpg",
+      "AssetFile": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\Background5.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "41833"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"K6zvHa0JrbSTvJvoHAVw20jX5WvNmSynhCjsCkcLJEI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Aug 2025 16:54:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "lspdk7c34m"
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Background5.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-K6zvHa0JrbSTvJvoHAVw20jX5WvNmSynhCjsCkcLJEI="
         }
       ]
     },

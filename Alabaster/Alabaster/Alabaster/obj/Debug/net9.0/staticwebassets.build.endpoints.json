@@ -793,6 +793,170 @@
       ]
     },
     {
+      "Route": "Images/Background4.jpg",
+      "AssetFile": "Images/Background4.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "381224"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HlNNQKNumfcrz4dUQ/q0cW3Up7SYLD8KVFtrkFG3t+M=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Aug 2025 16:28:34 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-HlNNQKNumfcrz4dUQ/q0cW3Up7SYLD8KVFtrkFG3t+M="
+        }
+      ]
+    },
+    {
+      "Route": "Images/Background4.mu1vkhscxk.jpg",
+      "AssetFile": "Images/Background4.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "381224"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HlNNQKNumfcrz4dUQ/q0cW3Up7SYLD8KVFtrkFG3t+M=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Aug 2025 16:28:34 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "mu1vkhscxk"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-HlNNQKNumfcrz4dUQ/q0cW3Up7SYLD8KVFtrkFG3t+M="
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Background4.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "Images/Background5.jpg",
+      "AssetFile": "Images/Background5.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "41833"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"K6zvHa0JrbSTvJvoHAVw20jX5WvNmSynhCjsCkcLJEI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Aug 2025 16:54:22 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-K6zvHa0JrbSTvJvoHAVw20jX5WvNmSynhCjsCkcLJEI="
+        }
+      ]
+    },
+    {
+      "Route": "Images/Background5.lspdk7c34m.jpg",
+      "AssetFile": "Images/Background5.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "41833"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"K6zvHa0JrbSTvJvoHAVw20jX5WvNmSynhCjsCkcLJEI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 22 Aug 2025 16:54:22 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "lspdk7c34m"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-K6zvHa0JrbSTvJvoHAVw20jX5WvNmSynhCjsCkcLJEI="
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Background5.jpg"
+        }
+      ]
+    },
+    {
       "Route": "Images/Donate.jpg",
       "AssetFile": "Images/Donate.jpg",
       "Selectors": [],
