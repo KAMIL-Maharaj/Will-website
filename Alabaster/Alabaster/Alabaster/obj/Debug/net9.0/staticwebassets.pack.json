@@ -49,6 +49,14 @@
       "PackagePath": "staticwebassets\\Images\\Login.jpg"
     },
     {
+      "Id": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\Logo2.jpg",
+      "PackagePath": "staticwebassets\\Images\\Logo2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\Logo3.jpg",
+      "PackagePath": "staticwebassets\\Images\\Logo3.jpg"
+    },
+    {
       "Id": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\PastEvents.jpg",
       "PackagePath": "staticwebassets\\Images\\PastEvents.jpg"
     },
@@ -71,6 +79,10 @@
     {
       "Id": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\logo.png",
       "PackagePath": "staticwebassets\\Images\\logo.png"
+    },
+    {
+      "Id": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\logo1.png",
+      "PackagePath": "staticwebassets\\Images\\logo1.png"
     },
     {
       "Id": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\team-member.jpg",

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pCFfp2eT5aw5WIskNi/B960zCeOUMGKiHtT29iM+B4s=",
+  "Hash": "+EbBUoflr02JG+lIgJDz/3ESavK8Y/2vVeBjSrn+02I=",
   "Source": "Alabaster",
   "BasePath": "_content/Alabaster",
   "Mode": "Default",
@@ -1737,6 +1737,69 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\logo.png"
+    },
+    {
+      "Identity": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\logo1.png",
+      "SourceId": "Alabaster",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\",
+      "BasePath": "_content/Alabaster",
+      "RelativePath": "Images/logo1#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "tpczibv7hv",
+      "Integrity": "38YwMIdTq/vkxcpxG+4jfQP2jnFkF7FNZLPAuTODj9c=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\logo1.png"
+    },
+    {
+      "Identity": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\Logo2.jpg",
+      "SourceId": "Alabaster",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\",
+      "BasePath": "_content/Alabaster",
+      "RelativePath": "Images/Logo2#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "n7jnykwepr",
+      "Integrity": "A3OrjH6wxvYDtvBJPOhc+hjICy7q9X+/MMJcuY52qGs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Logo2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\Logo3.jpg",
+      "SourceId": "Alabaster",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\",
+      "BasePath": "_content/Alabaster",
+      "RelativePath": "Images/Logo3#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "tn1rchj35d",
+      "Integrity": "117SmO7xn1GmOVcZ+xrFIrv+1CLEsjBRyIwdW+YvyHw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Logo3.jpg"
     },
     {
       "Identity": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\PastEvents.jpg",
@@ -5402,6 +5465,252 @@
         {
           "Name": "integrity",
           "Value": "sha256-wSeSTPLrNvo9Aq/TzzONjbr4xhlqA8C3l/QwyPgxCiA="
+        }
+      ]
+    },
+    {
+      "Route": "Images/logo1.png",
+      "AssetFile": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\logo1.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2460483"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"38YwMIdTq/vkxcpxG+4jfQP2jnFkF7FNZLPAuTODj9c=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 28 Aug 2025 15:07:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-38YwMIdTq/vkxcpxG+4jfQP2jnFkF7FNZLPAuTODj9c="
+        }
+      ]
+    },
+    {
+      "Route": "Images/logo1.tpczibv7hv.png",
+      "AssetFile": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\logo1.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2460483"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"38YwMIdTq/vkxcpxG+4jfQP2jnFkF7FNZLPAuTODj9c=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 28 Aug 2025 15:07:34 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "tpczibv7hv"
+        },
+        {
+          "Name": "label",
+          "Value": "Images/logo1.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-38YwMIdTq/vkxcpxG+4jfQP2jnFkF7FNZLPAuTODj9c="
+        }
+      ]
+    },
+    {
+      "Route": "Images/Logo2.jpg",
+      "AssetFile": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\Logo2.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "31873"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"A3OrjH6wxvYDtvBJPOhc+hjICy7q9X+/MMJcuY52qGs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 28 Aug 2025 15:17:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-A3OrjH6wxvYDtvBJPOhc+hjICy7q9X+/MMJcuY52qGs="
+        }
+      ]
+    },
+    {
+      "Route": "Images/Logo2.n7jnykwepr.jpg",
+      "AssetFile": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\Logo2.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "31873"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"A3OrjH6wxvYDtvBJPOhc+hjICy7q9X+/MMJcuY52qGs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 28 Aug 2025 15:17:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "n7jnykwepr"
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Logo2.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-A3OrjH6wxvYDtvBJPOhc+hjICy7q9X+/MMJcuY52qGs="
+        }
+      ]
+    },
+    {
+      "Route": "Images/Logo3.jpg",
+      "AssetFile": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\Logo3.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "51832"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"117SmO7xn1GmOVcZ+xrFIrv+1CLEsjBRyIwdW+YvyHw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 28 Aug 2025 15:39:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-117SmO7xn1GmOVcZ+xrFIrv+1CLEsjBRyIwdW+YvyHw="
+        }
+      ]
+    },
+    {
+      "Route": "Images/Logo3.tn1rchj35d.jpg",
+      "AssetFile": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\wwwroot\\Images\\Logo3.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "51832"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"117SmO7xn1GmOVcZ+xrFIrv+1CLEsjBRyIwdW+YvyHw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 28 Aug 2025 15:39:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "tn1rchj35d"
+        },
+        {
+          "Name": "label",
+          "Value": "Images/Logo3.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-117SmO7xn1GmOVcZ+xrFIrv+1CLEsjBRyIwdW+YvyHw="
         }
       ]
     },

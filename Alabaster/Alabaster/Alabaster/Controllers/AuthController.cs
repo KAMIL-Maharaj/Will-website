@@ -1,8 +1,7 @@
 using FirebaseAdmin.Auth;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Alabaster.Services;     
-
+using Alabaster.Services;
 
 namespace Alabaster.Controllers
 {
@@ -25,13 +24,19 @@ namespace Alabaster.Controllers
         [HttpGet("ForgotPassword")]
         public IActionResult ForgotPassword() => View();
 
+        /// <summary>
+        /// Register a new user (role "User" is automatically assigned)
+        /// </summary>
         [HttpPost("Register")]
         public async Task<IActionResult> Register(string email, string password)
         {
             try
             {
                 var result = await _authService.Register(email, password);
+
+                // Store Firebase token in session (optional, can also skip until login)
                 HttpContext.Session.SetString("FirebaseToken", result.FirebaseToken);
+
                 TempData["Success"] = "Registration successful! Please login.";
                 return RedirectToAction("Login");
             }
@@ -45,27 +50,40 @@ namespace Alabaster.Controllers
             }
         }
 
+        /// <summary>
+        /// Login a user or admin with role-based redirect
+        /// </summary>
         [HttpPost("Login")]
         public async Task<IActionResult> Login(string email, string password)
         {
             try
             {
                 var result = await _authService.Login(email, password);
+
+                // Decode Firebase token to get custom claims (roles)
+                var decodedToken = await FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(result.FirebaseToken);
+                string role = decodedToken.Claims.ContainsKey("role") ? decodedToken.Claims["role"].ToString() : "User";
+
+                // Store session info
                 HttpContext.Session.SetString("FirebaseToken", result.FirebaseToken);
+                HttpContext.Session.SetString("UserId", decodedToken.Uid);
+                HttpContext.Session.SetString("UserEmail", email);
+                HttpContext.Session.SetString("UserRole", role);
+
+                // Redirect based on role
+                if (role == "Admin") return RedirectToAction("Index", "Admin");
                 return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
             {
-                var msg = ex.Message;
-                if (msg.Contains("EMAIL_NOT_FOUND") || msg.Contains("INVALID_LOGIN_CREDENTIALS"))
-                    ViewBag.Error = "Account not found.";
-                else if (msg.Contains("INVALID_PASSWORD"))
-                    ViewBag.Error = "Incorrect password.";
-                else ViewBag.Error = "Login failed.";
+                ViewBag.Error = "Login failed: " + ex.Message;
                 return View();
             }
         }
 
+        /// <summary>
+        /// Send password reset email
+        /// </summary>
         [HttpPost("ForgotPassword")]
         public async Task<IActionResult> ForgotPassword(string email)
         {
@@ -84,28 +102,29 @@ namespace Alabaster.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Google Sign-In
+        /// </summary>
         [HttpPost("GoogleLogin")]
         public async Task<IActionResult> GoogleLogin([FromBody] string idToken)
         {
             if (string.IsNullOrEmpty(idToken))
-            {
                 return Json(new { success = false, error = "No token provided" });
-            }
 
             try
             {
-                // Verify the token with Firebase Admin SDK
+                // Verify Firebase token
                 FirebaseToken decodedToken = await FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(idToken);
 
                 string uid = decodedToken.Uid;
                 string email = decodedToken.Claims.ContainsKey("email") ? decodedToken.Claims["email"].ToString() : null;
+                string role = decodedToken.Claims.ContainsKey("role") ? decodedToken.Claims["role"].ToString() : "User";
 
-                // Optional: Create or update user in your DB here based on uid/email
-
-                // Store token and user info in session
+                // Store session info
                 HttpContext.Session.SetString("FirebaseToken", idToken);
                 HttpContext.Session.SetString("UserId", uid);
                 HttpContext.Session.SetString("UserEmail", email ?? "");
+                HttpContext.Session.SetString("UserRole", role);
 
                 return Json(new { success = true });
             }
@@ -119,6 +138,9 @@ namespace Alabaster.Controllers
             }
         }
 
+        /// <summary>
+        /// Logout the current user
+        /// </summary>
         [HttpGet("Logout")]
         public IActionResult Logout()
         {
@@ -126,4 +148,4 @@ namespace Alabaster.Controllers
             return RedirectToAction("Login");
         }
     }
-} 
+}

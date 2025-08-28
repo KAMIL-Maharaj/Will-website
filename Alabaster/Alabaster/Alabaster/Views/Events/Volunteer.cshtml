@@ -134,13 +134,16 @@
         }
     }
 </style>
-
 <div class="volunteer-container">
     <h2>Volunteer for an Event</h2>
 
     @if (TempData["Message"] != null)
     {
         <div class="alert-success">@TempData["Message"]</div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert-danger">@TempData["Error"]</div>
     }
 
     <form asp-action="Volunteer" method="post" novalidate>
@@ -165,6 +168,7 @@
                     }
                 }
             </select>
+            <span asp-validation-for="EventId" class="text-danger"></span>
         </div>
 
         <div class="form-group">
@@ -204,6 +208,7 @@
         <div class="form-group">
             <label>Number of Volunteers</label>
             <input asp-for="NumberOfVolunteers" type="number" class="form-control" min="1" value="1" />
+            <span asp-validation-for="NumberOfVolunteers" class="text-danger"></span>
         </div>
 
         <button type="submit" class="btn btn-success">Submit</button>
