@@ -5,134 +5,135 @@
 }
 
 <style>
-    /* Full background with dark overlay */
-    body {
-        background: url('../images/Background4.jpg') no-repeat center center fixed;
-        background-size: cover;
-        font-family: 'Poppins', 'Segoe UI', sans-serif;
-        margin: 0;
-        padding: 0;
-        position: relative;
-        color: #fff;
-    }
+/* Full background with overlay */
+body {
+    background: url('../images/Background4.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    color: #fff;
+    font-size: 11px; /* scaled down from ~16px */
+}
 
-    body::before {
-        content: "";
-        position: absolute;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: rgba(0, 0, 0, 0.55); /* overlay for readability */
-        backdrop-filter: blur(2px);
-        z-index: -1;
-    }
+body::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(2px);
+    z-index: -1;
+}
 
-    /* Volunteer form container (glassmorphism style) */
+/* Volunteer form container */
+.volunteer-container {
+    max-width: 455px; /* 650px -> scaled */
+    margin: 70px auto 35px; /* 100px/50px -> scaled */
+    padding: 28px 31px; /* 40px/45px -> scaled */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(14px);
+    border-radius: 14px; /* 20px -> scaled */
+    box-shadow: 0 8.4px 24.5px rgba(0,0,0,0.5); /* scaled */
+    color: #fff;
+    z-index: 1;
+}
+
+h2 {
+    text-align: center;
+    font-weight: 900;
+    margin-bottom: 24.5px; /* 35px -> scaled */
+    color: #ffffff;
+    letter-spacing: 1px; /* slightly reduced */
+    text-transform: uppercase;
+    font-size: 1.4rem; /* 2rem -> scaled */
+    text-shadow: 1.4px 1.4px 5.6px rgba(0,0,0,0.8);
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 5.5px; /* 8px -> scaled */
+    display: block;
+    color: #f5f5f5;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8.4px 10.5px; /* 12px/15px -> scaled */
+    font-size: 0.7rem; /* 1rem -> scaled */
+    border-radius: 8.4px; /* 12px -> scaled */
+    border: none;
+    outline: none;
+    margin-bottom: 12.6px; /* 18px -> scaled */
+    transition: all 0.3s ease;
+    box-shadow: 0 1.4px 4.2px rgba(0,0,0,0.2); /* scaled */
+}
+
+.form-control:focus {
+    border: 1.4px solid #00c6ff; /* scaled */
+    box-shadow: 0 0 4.2px rgba(0,198,255,0.7);
+}
+
+select.form-control {
+    cursor: pointer;
+}
+
+textarea.form-control {
+    resize: vertical;
+}
+
+.text-danger {
+    color: #ff4d4d;
+    font-weight: 600;
+    font-size: 0.63rem; /* 0.9rem -> scaled */
+}
+
+.alert-success {
+    background-color: rgba(40, 167, 69, 0.2);
+    border: 1px solid #28a745;
+    color: #e9ffe9;
+    font-weight: 700;
+    padding: 9.8px 14px; /* 14px/20px -> scaled */
+    border-radius: 8.4px; /* 12px -> scaled */
+    margin-bottom: 17.5px; /* 25px -> scaled */
+    text-align: center;
+    box-shadow: 0 2.8px 9.8px rgba(0, 0, 0, 0.4); /* scaled */
+}
+
+/* Submit button */
+.btn-success {
+    display: block;
+    width: 100%;
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.84rem; /* 1.2rem -> scaled */
+    padding: 9.8px 0; /* 14px -> scaled */
+    border-radius: 21px; /* 30px -> scaled */
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 7px 19.6px rgba(32, 201, 151, 0.6); /* scaled */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    letter-spacing: 0.7px; /* scaled */
+}
+
+.btn-success:hover {
+    transform: translateY(-2px); /* 3px -> scaled */
+    box-shadow: 0 9.8px 28px rgba(32, 201, 151, 0.8); /* scaled */
+}
+
+/* Responsive tweaks */
+@@media (max-width: 640px) {
     .volunteer-container {
-        max-width: 650px;
-        margin: 100px auto 50px;
-        padding: 40px 45px;
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(14px);
-        border-radius: 20px;
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
-        color: #fff;
-        z-index: 1;
+        margin: 42px 10px 18px; /* scaled */
+        padding: 17.5px 14px; /* scaled */
     }
 
     h2 {
-        text-align: center;
-        font-weight: 900;
-        margin-bottom: 35px;
-        color: #ffffff;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        font-size: 2rem;
-        text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+        font-size: 1.05rem; /* 1.5rem -> scaled */
     }
-
-    label {
-        font-weight: 600;
-        margin-bottom: 8px;
-        display: block;
-        color: #f5f5f5;
-    }
-
-    .form-control {
-        width: 100%;
-        padding: 12px 15px;
-        font-size: 1rem;
-        border-radius: 12px;
-        border: none;
-        outline: none;
-        margin-bottom: 18px;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
-
-    .form-control:focus {
-        border: 2px solid #00c6ff;
-        box-shadow: 0 0 12px rgba(0, 198, 255, 0.7);
-    }
-
-    select.form-control {
-        cursor: pointer;
-    }
-
-    textarea.form-control {
-        resize: vertical;
-    }
-
-    .text-danger {
-        color: #ff4d4d;
-        font-weight: 600;
-        font-size: 0.9rem;
-    }
-
-    .alert-success {
-        background-color: rgba(40, 167, 69, 0.2);
-        border: 1px solid #28a745;
-        color: #e9ffe9;
-        font-weight: 700;
-        padding: 14px 20px;
-        border-radius: 12px;
-        margin-bottom: 25px;
-        text-align: center;
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
-    }
-
-    /* Submit button */
-    .btn-success {
-        display: block;
-        width: 100%;
-        background: linear-gradient(135deg, #28a745, #20c997);
-        color: #fff;
-        font-weight: 700;
-        font-size: 1.2rem;
-        padding: 14px 0;
-        border-radius: 30px;
-        border: none;
-        cursor: pointer;
-        box-shadow: 0 10px 28px rgba(32, 201, 151, 0.6);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        letter-spacing: 1px;
-    }
-
-    .btn-success:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 14px 40px rgba(32, 201, 151, 0.8);
-    }
-
-    /* Responsive tweaks */
-    @@media (max-width: 640px) {
-        .volunteer-container {
-            margin: 60px 15px 30px;
-            padding: 25px 20px;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-        }
-    }
+}
 </style>
 
 <div class="volunteer-container">

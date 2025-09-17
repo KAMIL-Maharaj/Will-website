@@ -9,152 +9,153 @@ body {
     min-height: 100vh;
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 16px;
+    font-size: 11px; /* 16px -> scaled down 30% */
 }
 
-    .main-wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: calc(100vh - 80px);
-        padding-top: 100px;
-        padding-bottom: 60px;
-    }
+.main-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    padding-top: 70px; /* 100px -> scaled down */
+    padding-bottom: 42px; /* 60px -> scaled down */
+}
 
+.auth-container {
+    display: flex;
+    background-color: #fff;
+    border-radius: 21px; /* 30px -> scaled */
+    box-shadow: 0 17px 35px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    max-width: 700px; /* 1000px -> scaled */
+    width: 100%;
+    margin: auto;
+    min-height: 490px; /* 700px -> scaled */
+}
+
+.auth-form {
+    padding: 42px 42px; /* 60px -> scaled */
+    flex: 1;
+}
+
+.auth-image {
+    flex: 1;
+    background: url('@Url.Content("~/Images/logo.jpg")') center center no-repeat;
+    background-size: contain;
+    background-color: #ffffff;
+    min-height: 490px; /* 700px -> scaled */
+    padding: 21px; /* 30px -> scaled */
+    border-left: 1px solid #e5e7eb; /* slightly thinner */
+}
+
+.auth-title {
+    font-size: 22px; /* 32px -> scaled */
+    font-weight: 900;
+    color: #047857;
+    margin-bottom: 21px; /* 30px -> scaled */
+    text-align: center;
+}
+
+label.form-label {
+    font-weight: 700;
+    font-size: 0.8rem; /* 1.15rem -> scaled */
+}
+
+input.form-control {
+    font-size: 0.7rem; /* 1rem -> scaled */
+    padding: 7px 8px; /* 10px/12px -> scaled */
+    border-radius: 6px;
+}
+
+.form-control:focus {
+    border-color: #22c55e;
+    box-shadow: 0 0 0 0.21rem rgba(34, 197, 94, 0.3);
+}
+
+button.btn-success {
+    background-color: #16a34a;
+    border-color: #16a34a;
+    font-size: 0.8rem; /* 1.15rem -> scaled */
+    padding: 8px 0; /* 12px -> scaled */
+    border-radius: 7px; /* 10px -> scaled */
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+}
+
+button.btn-success:hover {
+    background-color: #15803d;
+    border-color: #15803d;
+}
+
+.link-custom {
+    color: #16a34a;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.75rem; /* 1.05rem -> scaled */
+}
+
+.link-custom:hover {
+    text-decoration: underline;
+}
+
+.text-center {
+    text-align: center;
+    font-size: 0.75rem; /* 1.05rem -> scaled */
+    margin-top: 14px; /* 20px -> scaled */
+}
+
+.alert {
+    font-size: 0.65rem; /* 0.95rem -> scaled */
+    margin-top: 14px; /* 20px -> scaled */
+    padding: 10px 14px; /* 15px/20px -> scaled */
+    border-radius: 7px; /* 10px -> scaled */
+}
+
+/* Responsive */
+@@media (max-width: 768px) {
     .auth-container {
-        display: flex;
-        background-color: #fff;
-        border-radius: 30px;
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-        overflow: hidden;
-        max-width: 1000px;
-        width: 100%;
-        margin: auto;
-        min-height: 700px;
-    }
-
-    .auth-form {
-        padding: 60px 60px;
-        flex: 1;
+        flex-direction: column;
+        max-width: 90vw;
+        min-height: auto;
     }
 
     .auth-image {
-        flex: 1;
-        background: url('@Url.Content("~/Images/logo.jpg")') center center no-repeat;
-        background-size: contain;
-        background-color: #ffffff;
-        min-height: 700px;
-        padding: 30px;
-        border-left: 1.5px solid #e5e7eb;
+        height: 245px; /* 350px -> scaled */
+        border-left: none;
+        border-top: 1px solid #e5e7eb; /* 1.5px -> scaled */
+        padding: 14px; /* 20px -> scaled */
+        min-height: auto;
+    }
+
+    .main-wrapper {
+        padding-top: 70px;
+    }
+
+    .auth-form {
+        padding: 28px 21px; /* 40px/30px -> scaled */
     }
 
     .auth-title {
-        font-size: 32px;
-        font-weight: 900;
-        color: #047857;
-        margin-bottom: 30px;
-        text-align: center;
+        font-size: 20px; /* 28px -> scaled */
+        margin-bottom: 18px; /* 25px -> scaled */
     }
 
-    label.form-label {
-        font-weight: 700;
-        font-size: 1.15rem;
+    label.form-label,
+    .link-custom,
+    .text-center {
+        font-size: 0.7rem; /* scaled */
     }
 
     input.form-control {
-        font-size: 1rem;
-        padding: 10px 12px;
-        border-radius: 8px;
-    }
-
-    .form-control:focus {
-        border-color: #22c55e;
-        box-shadow: 0 0 0 0.3rem rgba(34, 197, 94, 0.3);
+        font-size: 0.65rem; /* scaled */
+        padding: 7px 8px;
     }
 
     button.btn-success {
-        background-color: #16a34a;
-        border-color: #16a34a;
-        font-size: 1.15rem;
-        padding: 12px 0;
-        border-radius: 10px;
-        font-weight: 700;
-        transition: background-color 0.3s ease;
+        font-size: 0.7rem;
+        padding: 6px 0;
     }
-
-    button.btn-success:hover {
-        background-color: #15803d;
-        border-color: #15803d;
-    }
-
-    .link-custom {
-        color: #16a34a;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 1.05rem;
-    }
-
-    .link-custom:hover {
-        text-decoration: underline;
-    }
-
-    .text-center {
-        text-align: center;
-        font-size: 1.05rem;
-        margin-top: 20px;
-    }
-
-    .alert {
-        font-size: 0.95rem;
-        margin-top: 20px;
-        padding: 15px 20px;
-        border-radius: 10px;
-    }
-
-    @@media (max-width: 768px) {
-        .auth-container {
-            flex-direction: column;
-            max-width: 90vw;
-            min-height: auto;
-        }
-
-        .auth-image {
-            height: 350px;
-            border-left: none;
-            border-top: 1.5px solid #e5e7eb;
-            padding: 20px;
-            min-height: auto;
-        }
-
-        .main-wrapper {
-            padding-top: 100px;
-        }
-
-        .auth-form {
-            padding: 40px 30px;
-        }
-
-        .auth-title {
-            font-size: 28px;
-            margin-bottom: 25px;
-        }
-
-        label.form-label,
-        .link-custom,
-        .text-center {
-            font-size: 1rem;
-        }
-
-        input.form-control {
-            font-size: 0.95rem;
-            padding: 10px 12px;
-        }
-
-        button.btn-success {
-            font-size: 1.1rem;
-            padding: 10px 0;
-        }
-    }
+}
 </style>
 
 <div class="main-wrapper">
@@ -163,11 +164,11 @@ body {
             <h3 class="auth-title">Create Your Account 📝</h3>
 
             <form method="post">
-                <div class="mb-4">
+                <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email" required />
                 </div>
-                <div class="mb-4">
+                <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" name="password" id="password" class="form-control" placeholder="Password (min 6 chars)" required />
                 </div>

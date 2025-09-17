@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Donate";
 }
 
@@ -11,13 +10,13 @@
             margin-left: calc(-50vw + 50%);
             position: relative;
             background: url('../images/Donate.jpg') center center / cover no-repeat;
-            height: 350px;
+            height: 245px; /* 350px -> scaled down 30% */
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
-            margin-bottom: 3rem;
+            text-shadow: 0 1.4px 2.8px rgba(0,0,0,0.6); /* scaled shadow */
+            margin-bottom: 2rem; /* 3rem -> scaled */
         }
 
         .hero-overlay {
@@ -35,25 +34,51 @@
             text-align: center;
         }
 
+        .hero-content h1 {
+            font-size: 2.1rem; /* display-4 scaled down */
+            font-weight: 700; 
+        }
+
+        .hero-content p {
+            font-size: 0.9rem; /* lead text scaled down */
+            margin-top: 0.5rem; /* mt-2 scaled */
+        }
+
+        .hero-cta {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 6px 14px; /* scaled down button/padding */
+            font-size: 0.8rem;
+            color: #fff;
+            background-color: #4f46e5;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero-cta:hover {
+            background-color: #4338ca;
+        }
+
         /* About card styling */
         .about-card {
-            margin-top: -5rem;
+            margin-top: -3.5rem; /* -5rem scaled down */
             background: #fff;
-            border-radius: .5rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            padding: 2rem;
+            border-radius: 0.35rem; /* .5rem scaled */
+            box-shadow: 0 2.8px 8.4px rgba(0,0,0,0.1); /* 4px/12px scaled */
+            padding: 1.4rem; /* 2rem scaled */
         }
 
         .about-image {
             width: 100%;
-            border-radius: .5rem;
+            border-radius: 0.35rem; /* .5rem scaled */
             object-fit: cover;
-            max-height: 450px;
+            max-height: 315px; /* 450px -> scaled */
         }
 
         /* Gap between card and text content */
         .about-content p {
-            margin-bottom: 1rem;
+            margin-bottom: 0.7rem; /* 1rem -> scaled */
         }
     </style>
 }
@@ -64,7 +89,5 @@
         <h1 class="display-4 font-weight-bold">Donate</h1>
         <p class="lead mt-2">Then Jesus said to them, "So wherever you go in the world,<br /> tell everyone the Good News."</p>
         <a href="/UpcomingEvents/AddUpcomingEvents" class="hero-cta">Add Upcoming Event</a>
-
     </div>
 </div>
-

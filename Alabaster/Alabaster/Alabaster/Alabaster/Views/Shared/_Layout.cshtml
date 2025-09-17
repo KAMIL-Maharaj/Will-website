@@ -24,8 +24,9 @@
         .nav-link {
             color: white !important;
             font-weight: 500;
-            text-decoration: none !important; /* No underline */
+            text-decoration: none !important;
             transition: all 0.3s ease;
+            font-size: 0.7rem; /* scaled ~30% */
         }
 
         .nav-link:hover {
@@ -34,7 +35,7 @@
 
         /* Bigger Hamburger */
         .hamburger-icon {
-            font-size: 2.2rem;
+            font-size: 1.54rem; /* 2.2rem -> scaled */
             cursor: pointer;
             color: white;
             transition: transform 0.3s ease;
@@ -47,8 +48,8 @@
         /* Scrolling Saying */
         .navbar-saying-container {
             position: absolute;
-            left: 3rem;  /* offset from hamburger */
-            right: 15rem; /* offset from login/register */
+            left: 2.1rem;  /* 3rem -> scaled */
+            right: 10.5rem; /* 15rem -> scaled */
             overflow: hidden;
             height: 100%;
             display: flex;
@@ -60,6 +61,7 @@
             font-style: italic;
             white-space: nowrap;
             display: inline-block;
+            font-size: 0.7rem; /* scaled */
             animation: floatRight 25s linear infinite;
         }
 
@@ -80,25 +82,25 @@
             box-shadow: 4px 0 15px rgba(0, 0, 0, 0.5);
             overflow-x: hidden;
             transition: width 0.4s ease;
-            border-radius: 0 10px 10px 0;
+            border-radius: 0 7px 7px 0; /* scaled */
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* keeps logo at bottom */
+            justify-content: space-between;
         }
 
         .side-drawer-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
+            padding: 10.5px 14px; /* 15px 20px -> scaled */
             background: linear-gradient(90deg, #ffb400, #ff9900);
             color: #111;
-            font-size: 1.3rem;
+            font-size: 0.91rem; /* 1.3rem -> scaled */
             font-weight: bold;
         }
 
         .side-drawer .close-btn {
-            font-size: 1.8rem;
+            font-size: 1.26rem; /* 1.8rem -> scaled */
             cursor: pointer;
             color: #111;
         }
@@ -107,48 +109,48 @@
         .menu-links {
             flex-grow: 1;
             overflow-y: auto;
-            padding-bottom: 20px;
+            padding-bottom: 14px; /* 20px -> scaled */
         }
 
         .menu-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 14px 20px;
-            font-size: 1.1rem;
+            gap: 8.4px; /* 12px -> scaled */
+            padding: 9.8px 14px; /* 14px 20px -> scaled */
+            font-size: 0.77rem; /* 1.1rem -> scaled */
             color: #f1f1f1;
             text-decoration: none;
             background: rgba(255, 255, 255, 0.05);
-            margin: 8px 12px;
-            border-radius: 8px;
+            margin: 5.6px 8.4px; /* 8px 12px -> scaled */
+            border-radius: 5.6px; /* 8px -> scaled */
             transition: all 0.3s ease;
         }
 
         .menu-item i {
-            font-size: 1.3rem;
+            font-size: 0.91rem; /* 1.3rem -> scaled */
         }
 
         .menu-item:hover {
             background-color: #ffb400;
             color: #111;
-            transform: translateX(6px);
+            transform: translateX(4.2px); /* 6px -> scaled */
         }
 
         /* Logo at bottom */
         .drawer-logo {
             position: absolute;
-            bottom: 100px;
+            bottom: 70px; /* 100px -> scaled */
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
-            width: 80%;
+            width: 56%; /* 80% -> scaled */
         }
 
         .drawer-logo img {
             max-width: 100%;
             height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border-radius: 7px; /* 10px -> scaled */
+            box-shadow: 0 2.8px 7px rgba(0,0,0,0.3); /* 0 4px 10px -> scaled */
         }
 
         /* Overlay */
@@ -253,7 +255,7 @@
 <!-- Drawer Script -->
 <script>
     function openDrawer() {
-        document.getElementById("sideDrawer").style.width = "400px"; // Wider menu
+        document.getElementById("sideDrawer").style.width = "280px"; // 400px -> scaled
         document.getElementById("menuOverlay").style.display = "block";
     }
     function closeDrawer() {

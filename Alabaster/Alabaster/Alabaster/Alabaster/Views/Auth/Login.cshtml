@@ -9,33 +9,32 @@ body {
     min-height: 100vh;
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 16px;
+    font-size: 11px; /* was 16px */
 }
-
 
 .main-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: calc(100vh - 80px);
-    padding-top: 100px; /* more top padding */
-    padding-bottom: 60px; /* more bottom padding */
+    padding-top: 70px; /* reduced by 30% */
+    padding-bottom: 40px;
 }
 
 .auth-container {
     display: flex;
     background-color: #fff;
-    border-radius: 30px;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    border-radius: 21px; /* 30px scaled down */
+    box-shadow: 0 17px 35px rgba(0, 0, 0, 0.15);
     overflow: hidden;
-    max-width: 1000px;
+    max-width: 700px; /* was 1000px */
     width: 100%;
     margin: auto;
-    min-height: 700px; /* make container taller */
+    min-height: 490px; /* was 700px */
 }
 
 .auth-form {
-    padding: 60px 60px; /* increased vertical padding */
+    padding: 42px 42px; /* 60px -> scaled down */
     flex: 1;
 }
 
@@ -44,41 +43,41 @@ body {
     background: url('@Url.Content("~/Images/logo.jpg")') center center no-repeat;
     background-size: contain;
     background-color: #ffffff;
-    min-height: 700px; /* taller image container */
-    padding: 30px;
-    border-left: 1.5px solid #e5e7eb;
+    min-height: 490px; /* scaled down */
+    padding: 21px;
+    border-left: 1px solid #e5e7eb;
 }
 
 .auth-title {
-    font-size: 32px; /* slightly smaller */
+    font-size: 22px; /* 32px scaled down */
     font-weight: 900;
     color: #1e3a8a;
-    margin-bottom: 30px;
+    margin-bottom: 21px; /* 30px -> scaled down */
     text-align: center;
 }
 
 label.form-label {
     font-weight: 700;
-    font-size: 1.15rem; /* a bit smaller */
+    font-size: 0.8rem; /* 1.15rem -> scaled down */
 }
 
 input.form-control {
-    font-size: 1rem; /* smaller font */
-    padding: 10px 12px; /* smaller padding */
-    border-radius: 8px;
+    font-size: 0.7rem; /* 1rem -> scaled */
+    padding: 7px 8px; /* 10px/12px -> scaled down */
+    border-radius: 6px;
 }
 
 .form-control:focus {
     border-color: #6366f1;
-    box-shadow: 0 0 0 0.3rem rgba(99, 102, 241, 0.3);
+    box-shadow: 0 0 0 0.21rem rgba(99, 102, 241, 0.3);
 }
 
 button.btn-primary {
     background-color: #4f46e5;
     border-color: #4f46e5;
-    font-size: 1.15rem; /* smaller font */
-    padding: 12px 0; /* smaller padding */
-    border-radius: 10px;
+    font-size: 0.8rem; /* 1.15rem scaled down */
+    padding: 8px 0;
+    border-radius: 7px;
     font-weight: 700;
     transition: background-color 0.3s ease;
 }
@@ -91,9 +90,9 @@ button.btn-primary:hover {
 button.btn-danger {
     background-color: #db4437;
     border: none;
-    font-size: 1.15rem; /* smaller font */
-    padding: 12px 0; /* smaller padding */
-    border-radius: 10px;
+    font-size: 0.8rem;
+    padding: 8px 0;
+    border-radius: 7px;
     font-weight: 700;
     transition: background-color 0.3s ease;
 }
@@ -106,7 +105,7 @@ button.btn-danger:hover {
     color: #4f46e5;
     text-decoration: none;
     font-weight: 600;
-    font-size: 1.05rem; /* slightly smaller */
+    font-size: 0.75rem; /* 1.05rem -> scaled down */
 }
 
 .link-custom:hover {
@@ -115,21 +114,21 @@ button.btn-danger:hover {
 
 .text-center {
     text-align: center;
-    font-size: 1.05rem; /* slightly smaller */
-    margin-top: 20px;
+    font-size: 0.75rem; /* 1.05rem scaled */
+    margin-top: 14px; /* 20px -> scaled */
 }
 
 .alert {
-    font-size: 0.95rem; /* slightly smaller */
-    margin-bottom: 20px;
-    padding: 15px 20px;
-    border-radius: 10px;
+    font-size: 0.65rem; /* 0.95rem -> scaled */
+    margin-bottom: 14px;
+    padding: 10px 14px;
+    border-radius: 7px;
 }
 
 hr {
-    margin: 40px 0 30px;
+    margin: 28px 0 21px; /* scaled down */
     border-color: #ddd;
-    border-width: 1.5px;
+    border-width: 1px;
 }
 
 @@media (max-width: 768px) {
@@ -140,44 +139,43 @@ hr {
     }
 
     .auth-image {
-        height: 350px;
+        height: 245px; /* scaled */
         border-left: none;
-        border-top: 1.5px solid #e5e7eb;
-        padding: 20px;
+        border-top: 1px solid #e5e7eb;
+        padding: 14px;
         min-height: auto;
     }
 
     .main-wrapper {
-        padding-top: 100px;
+        padding-top: 70px;
     }
 
     .auth-form {
-        padding: 40px 30px;
+        padding: 28px 21px;
     }
 
     .auth-title {
-        font-size: 28px;
-        margin-bottom: 25px;
+        font-size: 20px;
+        margin-bottom: 18px;
     }
 
     label.form-label,
     .link-custom,
     .text-center {
-        font-size: 1rem;
+        font-size: 0.7rem;
     }
 
     input.form-control {
-        font-size: 0.95rem;
-        padding: 10px 12px;
+        font-size: 0.65rem;
+        padding: 7px 8px;
     }
 
     button.btn-primary,
     button.btn-danger {
-        font-size: 1.1rem;
-        padding: 10px 0;
+        font-size: 0.7rem;
+        padding: 6px 0;
     }
 }
-
 </style>
 
 <div class="main-wrapper">
@@ -196,18 +194,18 @@ hr {
             }
 
             <form method="post" asp-action="Login">
-                <div class="mb-4">
+                <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email" required />
                 </div>
-                <div class="mb-4">
+                <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" required />
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Login</button>
             </form>
 
-            <div class="mt-4 text-center">
+            <div class="mt-3 text-center">
                 <a class="link-custom" href="/Auth/ForgotPassword">Forgot Password?</a><br />
                 <span class="text-muted">Don't have an account?
                     <a class="link-custom" href="/Auth/Register">Register</a>
@@ -215,7 +213,7 @@ hr {
             </div>
 
             <hr />
-            <button id="google-signin-btn" class="btn btn-danger w-100 mt-4">
+            <button id="google-signin-btn" class="btn btn-danger w-100 mt-3">
                 <i class="bi bi-google"></i> Sign in with Google
             </button>
         </div>
@@ -242,9 +240,7 @@ hr {
         const auth = getAuth(app);
         const provider = new GoogleAuthProvider();
 
-        provider.setCustomParameters({
-            prompt: 'select_account'
-        });
+        provider.setCustomParameters({ prompt: 'select_account' });
 
         document.getElementById("google-signin-btn").addEventListener("click", async () => {
             try {
