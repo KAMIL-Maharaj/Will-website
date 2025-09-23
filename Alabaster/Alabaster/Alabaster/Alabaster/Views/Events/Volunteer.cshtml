@@ -2,10 +2,11 @@
 
 @{
     ViewData["Title"] = "Volunteer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section Styles {
 <style>
-/* Full background with overlay */
 body {
     background: url('../images/Background4.jpg') no-repeat center center fixed;
     background-size: cover;
@@ -15,7 +16,6 @@ body {
     color: #fff;
     position: relative;
 }
-
 body::before {
     content: "";
     position: absolute;
@@ -25,8 +25,6 @@ body::before {
     backdrop-filter: blur(2px);
     z-index: -1;
 }
-
-/* Volunteer form container */
 .volunteer-container {
     max-width: 480px;
     margin: 60px auto;
@@ -38,111 +36,21 @@ body::before {
     color: #fff;
     animation: fadeIn 0.6s ease;
 }
-
-@@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-h2 {
-    text-align: center;
-    font-weight: 900;
-    margin-bottom: 25px;
-    color: #ffffff;
-    font-size: 1.5rem;
-    text-shadow: 1.5px 1.5px 6px rgba(0,0,0,0.8);
-}
-
-label {
-    font-weight: 600;
-    margin-bottom: 4px;
-    display: block;
-    color: #f0f0f0;
-    font-size: 0.9rem;
-}
-
-.form-control {
-    width: 100%;
-    padding: 8px 10px;
-    border-radius: 10px;
-    border: none;
-    margin-bottom: 10px;
-    transition: all 0.3s ease;
-    background: rgba(255,255,255,0.85);
-    color: #333;
-    font-size: 0.9rem;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-}
-.form-control:focus {
-    border: 1px solid #00c6ff;
-    box-shadow: 0 0 6px rgba(0,198,255,0.7);
-}
-
-/* Textarea */
-textarea.form-control {
-    resize: vertical;
-}
-
-/* Error text */
-.text-danger {
-    font-size: 0.7rem;
-    color: #ff4d4d;
-    margin-top: 2px;
-}
-
-/* Success alert */
-.alert-success {
-    background-color: rgba(40,167,69,0.2);
-    border: 1px solid #28a745;
-    color: #e9ffe9;
-    font-weight: 700;
-    padding: 10px 14px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-/* Submit button */
-.btn-success {
-    width: 100%;
-    padding: 10px 0;
-    border-radius: 25px;
-    border: none;
-    font-weight: 700;
-    font-size: 0.95rem;
-    background: linear-gradient(135deg, #28a745, #20c997, #00c6ff);
-    box-shadow: 0 6px 18px rgba(0,198,255,0.5);
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.btn-success:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 28px rgba(0,198,255,0.7);
-}
-
-/* Two-column layout for desktop */
-.form-row {
-    display: flex;
-    gap: 10px;
-}
-.form-row .form-group {
-    flex: 1;
-}
-
-/* Responsive tweaks */
-@@media (max-width: 600px) {
-    .volunteer-container {
-        margin: 35px 15px;
-        padding: 20px 15px;
-    }
-    .form-row {
-        flex-direction: column;
-    }
-    h2 {
-        font-size: 1.25rem;
-    }
-}
+@@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+h2 { text-align: center; font-weight: 900; margin-bottom: 25px; color: #ffffff; font-size: 1.5rem; text-shadow: 1.5px 1.5px 6px rgba(0,0,0,0.8); }
+label { font-weight: 600; margin-bottom: 4px; display: block; color: #f0f0f0; font-size: 0.9rem; }
+.form-control { width: 100%; padding: 8px 10px; border-radius: 10px; border: none; margin-bottom: 10px; transition: all 0.3s ease; background: rgba(255,255,255,0.85); color: #333; font-size: 0.9rem; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+.form-control:focus { border: 1px solid #00c6ff; box-shadow: 0 0 6px rgba(0,198,255,0.7); }
+textarea.form-control { resize: vertical; }
+.text-danger { font-size: 0.7rem; color: #ff4d4d; margin-top: 2px; }
+.alert-success { background-color: rgba(40,167,69,0.2); border: 1px solid #28a745; color: #e9ffe9; font-weight: 700; padding: 10px 14px; border-radius: 10px; margin-bottom: 15px; text-align: center; }
+.btn-success { width: 100%; padding: 10px 0; border-radius: 25px; border: none; font-weight: 700; font-size: 0.95rem; background: linear-gradient(135deg, #28a745, #20c997, #00c6ff); box-shadow: 0 6px 18px rgba(0,198,255,0.5); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.btn-success:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,198,255,0.7); }
+.form-row { display: flex; gap: 10px; }
+.form-row .form-group { flex: 1; }
+@@media (max-width: 600px) { .volunteer-container { margin: 35px 15px; padding: 20px 15px; } .form-row { flex-direction: column; } h2 { font-size: 1.25rem; } }
 </style>
+}
 
 <div class="volunteer-container">
     <h2>Volunteer for an Event</h2>
@@ -153,33 +61,27 @@ textarea.form-control {
     }
 
     <form asp-action="Volunteer" method="post" novalidate>
-        <div asp-validation-summary="All" class="text-danger"></div>
+        <!-- Only show general errors (not field-specific) -->
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
         <div class="form-group">
             <label>Select Event</label>
-            <select asp-for="EventId" class="form-control" required>
+            <select asp-for="EventId" class="form-control">
                 <option value="">-- Select Event --</option>
-                @if (ViewBag.Events != null)
+                @foreach (var evt in (List<Alabaster.Models.UpcomingEvent>)ViewBag.Events)
                 {
-                    foreach (var evt in ViewBag.Events)
-                    {
-                        if (Model.EventId == evt.Id)
-                        {
-                            <option value="@evt.Id" selected="selected">@evt.Name (@evt.Date)</option>
-                        }
-                        else
-                        {
-                            <option value="@evt.Id">@evt.Name (@evt.Date)</option>
-                        }
-                    }
+                    <option value="@evt.Id" selected="@(Model.EventId == evt.Id)">
+                        @evt.Name (@evt.Date)
+                    </option>
                 }
             </select>
+            <span asp-validation-for="EventId" class="text-danger"></span>
         </div>
 
         <div class="form-row">
             <div class="form-group">
                 <label>Name</label>
-                <input asp-for="Name" class="form-control" required />
+                <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -192,12 +94,12 @@ textarea.form-control {
         <div class="form-row">
             <div class="form-group">
                 <label>Email</label>
-                <input asp-for="Email" type="email" class="form-control" required />
+                <input asp-for="Email" type="email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label>Phone</label>
-                <input asp-for="Phone" class="form-control" required />
+                <input asp-for="Phone" class="form-control" />
                 <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
         </div>
@@ -205,6 +107,7 @@ textarea.form-control {
         <div class="form-group">
             <label>Notes / Allergies</label>
             <textarea asp-for="Notes" class="form-control" rows="2"></textarea>
+            <span asp-validation-for="Notes" class="text-danger"></span>
         </div>
 
         <div class="form-row">

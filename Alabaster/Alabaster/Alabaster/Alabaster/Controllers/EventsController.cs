@@ -21,19 +21,17 @@ namespace Alabaster.Controllers
         // GET: /Events
         public async Task<IActionResult> Index()
         {
-            // Load all events from Firebase
             var events = await _firebase.Child("Events").OnceAsync<UpcomingEvent>();
             var eventList = events.Select(e =>
             {
                 var ev = e.Object;
-                ev.Id = e.Key; // store Firebase ID
+                ev.Id = e.Key;
                 return ev;
             }).ToList();
 
             // Move past events to PastEvents
             await MovePastEvents(eventList);
 
-            // Filter only upcoming events
             var upcomingEvents = eventList
                 .Where(e => DateTime.TryParse(e.Date, out DateTime date) && date >= DateTime.Today)
                 .OrderBy(e => DateTime.Parse(e.Date))
@@ -63,7 +61,7 @@ namespace Alabaster.Controllers
 
         // GET: /Events/Volunteer
         [HttpGet]
-        public async Task<IActionResult> Volunteer(string eventId)
+        public async Task<IActionResult> Volunteer(string eventId = null)
         {
             var events = await _firebase.Child("Events").OnceAsync<UpcomingEvent>();
             var eventList = events.Select(e =>
@@ -72,9 +70,10 @@ namespace Alabaster.Controllers
                 ev.Id = e.Key;
                 return ev;
             }).ToList();
+
             ViewBag.Events = eventList;
 
-            Volunteer volunteer = new Volunteer();
+            var volunteer = new Volunteer();
 
             if (!string.IsNullOrEmpty(eventId))
             {
@@ -93,40 +92,45 @@ namespace Alabaster.Controllers
         [HttpPost]
         public async Task<IActionResult> Volunteer(Volunteer model)
         {
-            if (ModelState.IsValid)
+            // Fetch events for dropdown
+            var allEvents = await _firebase.Child("Events").OnceAsync<UpcomingEvent>();
+            var eventList = allEvents.Select(e =>
             {
-                if (!string.IsNullOrEmpty(model.EventId))
-                {
-                    var events = await _firebase.Child("Events").OnceAsync<UpcomingEvent>();
-                    var selectedEvent = events.Select(e =>
-                    {
-                        var ev = e.Object;
-                        ev.Id = e.Key;
-                        return ev;
-                    }).FirstOrDefault(e => e.Id == model.EventId);
+                var ev = e.Object;
+                ev.Id = e.Key;
+                return ev;
+            }).ToList();
+            ViewBag.Events = eventList;
 
-                    if (selectedEvent != null)
-                    {
-                        model.EventName = selectedEvent.Name;
-                    }
-                }
-
-                try
-                {
-                    await _firebase.Child("Volunteers").PostAsync(model);
-                    TempData["Message"] = "Thank you for volunteering!";
-                    return RedirectToAction("VolunteerThankYou");
-                }
-                catch (Exception ex)
-                {
-                    ModelState.AddModelError("", "Failed to save volunteer: " + ex.Message);
-                }
+            // Only add error if EventId is empty
+            if (string.IsNullOrEmpty(model.EventId))
+            {
+                ModelState.AddModelError("EventId", "Please select an event.");
             }
 
-            var allEvents = await _firebase.Child("Events").OnceAsync<UpcomingEvent>();
-            ViewBag.Events = allEvents.Select(e => e.Object).ToList();
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
 
-            return View(model);
+            // Assign EventName from EventId
+            var selectedEvent = eventList.FirstOrDefault(e => e.Id == model.EventId);
+            if (selectedEvent != null)
+            {
+                model.EventName = selectedEvent.Name;
+            }
+
+            try
+            {
+                await _firebase.Child("Volunteers").PostAsync(model);
+                TempData["Message"] = "Thank you for volunteering!";
+                return RedirectToAction("VolunteerThankYou");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Failed to save volunteer: " + ex.Message);
+                return View(model);
+            }
         }
 
         // GET: /Events/VolunteerThankYou

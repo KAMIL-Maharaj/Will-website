@@ -1,14 +1,28 @@
 @{
     ViewData["Title"] = "Thank You";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section Styles {
 <style>
+/* Full background with overlay (same as volunteer page) */
 body {
-    background: linear-gradient(135deg, #f6d365, #fda085);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url('../images/Background4.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
     margin: 0;
-    color: #5a3e1b;
-    font-size: 11px;
+    padding: 0;
+    color: #fff;
+    position: relative;
+}
+body::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(2px);
+    z-index: -1;
 }
 
 /* Wrapper centers the thank-you message */
@@ -20,65 +34,74 @@ body {
     min-height: calc(100vh - 56px);
 }
 
+/* Card container */
 .thank-you-container {
-    background: #fff7e6;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(14px);
     padding: 28px 42px;
-    border-radius: 14px;
-    box-shadow: 0 7px 21px rgba(253, 160, 133, 0.4);
-    max-width: 350px;
+    border-radius: 16px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.6);
+    max-width: 380px;
     text-align: center;
-    animation: fadeInUp 1s ease forwards;
+    color: #fff;
+    animation: fadeIn 0.6s ease forwards;
 }
 
+/* Heading */
 h2 {
-    font-weight: 700;
-    font-size: 1.96rem;
+    font-weight: 900;
+    font-size: 1.5rem;
     margin-bottom: 14px;
-    letter-spacing: 0.84px;
-    color: #d35400;
-    text-transform: uppercase;
-    text-shadow: 0.7px 0.7px 2.8px rgba(211, 84, 0, 0.5);
+    letter-spacing: 0.5px;
+    text-shadow: 1.5px 1.5px 6px rgba(0,0,0,0.8);
 }
 
+/* Paragraph */
 p {
-    font-size: 0.875rem;
-    margin-bottom: 24.5px;
-    color: #7f5700;
-    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+    color: #f0f0f0;
 }
 
+/* Button */
 .btn-primary {
-    background-color: #d35400;
+    background: linear-gradient(135deg, #28a745, #20c997, #00c6ff);
     border: none;
-    padding: 10.5px 31.5px;
-    font-size: 0.77rem;
+    padding: 10px 28px;
+    font-size: 0.95rem;
     font-weight: 700;
-    border-radius: 35px;
-    color: white;
+    border-radius: 25px;
+    color: #fff;
     cursor: pointer;
-    box-shadow: 0 4.2px 14px rgba(211, 84, 0, 0.5);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 18px rgba(0,198,255,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-decoration: none;
     display: inline-block;
 }
 
 .btn-primary:hover {
-    background-color: #a03e00;
-    box-shadow: 0 5.6px 21px rgba(160, 62, 0, 0.7);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(0,198,255,0.7);
     text-decoration: none;
 }
 
-@@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(21px);
+/* Animation */
+@@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive tweaks */
+@@media (max-width: 600px) {
+    .thank-you-container {
+        margin: 35px 15px;
+        padding: 20px 15px;
     }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    h2 { font-size: 1.25rem; }
+    p { font-size: 0.85rem; }
 }
 </style>
+}
 
 <div class="thank-you-wrapper">
     <div class="thank-you-container">
