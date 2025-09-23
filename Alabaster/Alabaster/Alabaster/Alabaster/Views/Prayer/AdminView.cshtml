@@ -1,0 +1,37 @@
+@model IEnumerable<Alabaster.Models.PrayerRequest>
+@{
+    ViewData["Title"] = "All Prayer Requests";
+}
+
+<div class="container mt-5">
+    <h2>Prayer Requests 🙏 (Admin Only)</h2>
+
+    @if (!Model.Any())
+    {
+        <p>No prayer requests yet.</p>
+    }
+    else
+    {
+        <table class="table table-bordered mt-3">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Request</th>
+                    <th>Submitted At</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var prayer in Model)
+                {
+                    <tr>
+                        <td>@prayer.Name</td>
+                        <td>@prayer.UserEmail</td>
+                        <td>@prayer.Request</td>
+                        <td>@prayer.CreatedAt.ToLocalTime()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

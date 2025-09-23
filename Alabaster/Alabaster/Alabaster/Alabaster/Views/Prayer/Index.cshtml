@@ -1,0 +1,24 @@
+@{
+    ViewData["Title"] = "Prayer Request";
+}
+
+<div class="container mt-5">
+    <h2>Submit a Prayer Request 🙏</h2>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    <form asp-action="Submit" method="post" class="mt-3">
+        <div class="mb-3">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" name="name" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label for="request" class="form-label">Prayer Request</label>
+            <textarea name="request" class="form-control" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Request</button>
+    </form>
+</div>

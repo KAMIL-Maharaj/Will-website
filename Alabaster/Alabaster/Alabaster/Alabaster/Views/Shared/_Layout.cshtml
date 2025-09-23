@@ -137,21 +137,20 @@
             transform: translateX(0.244rem);
         }
 
-        .drawer-logo {
-            position: absolute;
-            bottom: 4.09rem;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            width: 63%;
-        }
+.drawer-logo {
+    position: relative; /* changed from absolute */
+    margin-top: auto;   /* pushes it to the bottom of the drawer */
+    text-align: center;
+    padding: 1rem 0;    /* some spacing from menu links */
+}
 
-        .drawer-logo img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 0.409rem;
-            box-shadow: 0 0.164rem 0.409rem rgba(0,0,0,0.3);
-        }
+.drawer-logo img {
+    max-width: 80%;     /* smaller width so it doesn’t block */
+    height: auto;
+    border-radius: 0.409rem;
+    box-shadow: 0 0.164rem 0.409rem rgba(0,0,0,0.3);
+}
+
 
         /* Overlay */
         .overlay {
@@ -243,6 +242,14 @@
             <a class="menu-item" asp-controller="Events" asp-action="Volunteer"><i class="bi bi-people"></i> Volunteer</a>
             <a class="menu-item" asp-controller="Testimonies" asp-action="Index"><i class="bi bi-chat-quote"></i> Testimonies</a>
             <a class="menu-item" asp-controller="Donate" asp-action="Index"><i class="bi bi-heart"></i> Donate</a>
+            <a class="menu-item" asp-controller="Prayer" asp-action="Index"><i class="bi bi-journal"></i> Prayer</a>
+
+            @if (Context.Session.GetString("IsAdmin") == "true")
+            {
+                <a class="menu-item" asp-controller="Prayer" asp-action="AdminView">
+                    <i class="bi bi-shield-lock"></i> Prayer Requests (Admin)
+                </a>
+            }
         </div>
     </div>
     <div class="drawer-logo">
