@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container
 builder.Services.AddControllersWithViews();
 
-// Register Firebase authentication service (your custom service)
+// Register your custom Firebase authentication service
 builder.Services.AddSingleton<FirebaseAuthService>();
 
 // Enable session support
@@ -22,7 +22,7 @@ builder.Services.AddSession(options =>
 // Initialize Firebase Admin SDK once
 if (FirebaseApp.DefaultInstance == null)
 {
-    FirebaseApp.Create(new AppOptions()
+    FirebaseApp.Create(new AppOptions
     {
         Credential = GoogleCredential.FromFile("serviceAccountKey.json")
     });
@@ -30,7 +30,7 @@ if (FirebaseApp.DefaultInstance == null)
 
 var app = builder.Build();
 
-// Use development error page or exception handler
+// Middleware pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
@@ -41,22 +41,19 @@ else
     app.UseHsts();
 }
 
-// Middleware pipeline
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
 
+// Enable session and authorization
 app.UseSession();
 app.UseAuthorization();
 
-// Default route: when no controller/action is specified, go to Auth/Login
+// Map default controller routes
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-
-// Optional: Remove the explicit redirect if default route works
-// app.MapGet("/", () => Results.Redirect("/Auth/Login"));
 
 app.Run();

@@ -1,7 +1,11 @@
+using Firebase.Auth;
 using FirebaseAdmin.Auth;
+using Firebase.Database;
+using Firebase.Database.Query;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Alabaster.Services;
+using System;
 using System.Threading.Tasks;
 
 namespace Alabaster.Controllers
@@ -10,10 +14,12 @@ namespace Alabaster.Controllers
     public class AuthController : Controller
     {
         private readonly FirebaseAuthService _authService;
+        private readonly FirebaseClient _dbClient;
 
         public AuthController(FirebaseAuthService authService)
         {
             _authService = authService;
+            _dbClient = new FirebaseClient("https://alabaster-8cfcd-default-rtdb.firebaseio.com/");
         }
 
         [HttpGet("Register")]
@@ -32,9 +38,20 @@ namespace Alabaster.Controllers
             {
                 var result = await _authService.Register(email, password);
 
-                // Store token and email in session
+                string uid = result.User.LocalId; // FIX: Use LocalId instead of UserUid
+
+                // Store token, email, UID in session
                 HttpContext.Session.SetString("FirebaseToken", result.FirebaseToken);
                 HttpContext.Session.SetString("UserEmail", email);
+                HttpContext.Session.SetString("UserId", uid);
+
+                // Check if user is admin
+                var isAdmin = await _dbClient
+                    .Child("admins")
+                    .Child(uid)
+                    .OnceSingleAsync<bool?>() ?? false;
+
+                HttpContext.Session.SetString("IsAdmin", isAdmin ? "true" : "false");
 
                 TempData["Success"] = "Registration successful! You are now logged in.";
                 return RedirectToAction("Index", "Home");
@@ -56,9 +73,20 @@ namespace Alabaster.Controllers
             {
                 var result = await _authService.Login(email, password);
 
-                // Store token and email in session
+                string uid = result.User.LocalId; // FIX: Use LocalId instead of UserUid
+
+                // Store token, email, UID in session
                 HttpContext.Session.SetString("FirebaseToken", result.FirebaseToken);
                 HttpContext.Session.SetString("UserEmail", email);
+                HttpContext.Session.SetString("UserId", uid);
+
+                // Check if user is admin
+                var isAdmin = await _dbClient
+                    .Child("admins")
+                    .Child(uid)
+                    .OnceSingleAsync<bool?>() ?? false;
+
+                HttpContext.Session.SetString("IsAdmin", isAdmin ? "true" : "false");
 
                 return RedirectToAction("Index", "Home");
             }
@@ -95,34 +123,45 @@ namespace Alabaster.Controllers
             return View();
         }
 
-        [HttpPost("GoogleLogin")]
-        public async Task<IActionResult> GoogleLogin([FromBody] string idToken)
-        {
-            if (string.IsNullOrEmpty(idToken))
-                return Json(new { success = false, error = "No token provided." });
+[HttpPost("GoogleLogin")]
+public async Task<IActionResult> GoogleLogin([FromBody] string idToken)
+{
+    if (string.IsNullOrEmpty(idToken))
+        return Json(new { success = false, error = "No token provided." });
 
-            try
-            {
-                FirebaseToken decodedToken = await FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(idToken);
-                string uid = decodedToken.Uid;
-                string email = decodedToken.Claims.ContainsKey("email") ? decodedToken.Claims["email"].ToString() : null;
+    try
+    {
+        // Fully qualified FirebaseAdmin namespace
+        FirebaseAdmin.Auth.FirebaseToken decodedToken = 
+            await FirebaseAdmin.Auth.FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(idToken);
 
-                // Store session info
-                HttpContext.Session.SetString("FirebaseToken", idToken);
-                HttpContext.Session.SetString("UserEmail", email ?? "");
-                HttpContext.Session.SetString("UserId", uid);
+        string uid = decodedToken.Uid;
+        string email = decodedToken.Claims.ContainsKey("email") ? decodedToken.Claims["email"].ToString() : null;
 
-                return Json(new { success = true });
-            }
-            catch (FirebaseAuthException ex)
-            {
-                return Json(new { success = false, error = "Token verification failed: " + ex.Message });
-            }
-            catch (Exception ex)
-            {
-                return Json(new { success = false, error = "Unexpected error: " + ex.Message });
-            }
-        }
+        HttpContext.Session.SetString("FirebaseToken", idToken);
+        HttpContext.Session.SetString("UserEmail", email ?? "");
+        HttpContext.Session.SetString("UserId", uid);
+
+        // Admin check
+        var isAdmin = await _dbClient
+            .Child("admins")
+            .Child(uid)
+            .OnceSingleAsync<bool?>() ?? false;
+
+        HttpContext.Session.SetString("IsAdmin", isAdmin ? "true" : "false");
+
+        return Json(new { success = true });
+    }
+    catch (FirebaseAdmin.Auth.FirebaseAuthException ex)
+    {
+        return Json(new { success = false, error = "Token verification failed: " + ex.Message });
+    }
+    catch (Exception ex)
+    {
+        return Json(new { success = false, error = "Unexpected error: " + ex.Message });
+    }
+}
+
 
         [HttpGet("Logout")]
         public IActionResult Logout()
