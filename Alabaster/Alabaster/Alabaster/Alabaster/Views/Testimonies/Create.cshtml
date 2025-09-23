@@ -8,14 +8,15 @@
             height: 100%;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 0.7rem; /* scaled down ~30% */
+            font-family: 'Poppins', Arial, sans-serif;
+            /* font-size removed so navbar/footer stay consistent with Index */
         }
 
         body {
             background: url('../images/Background5.jpg') no-repeat center center fixed;
             background-size: cover;
             position: relative;
+            color: #333;
         }
 
         body::before {
@@ -30,51 +31,53 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 70vh; /* scaled from 100vh */
-            padding: 1.4rem; /* scaled from 2rem */
+            min-height: 75vh;
+            padding: 1rem;
             position: relative;
             z-index: 1;
         }
 
         .create-testimony-form {
             width: 100%;
-            max-width: 455px; /* 650px -> 30% smaller */
-            padding: 2.1rem 1.75rem; /* 3rem 2.5rem -> scaled */
+            max-width: 480px;
+            padding: 1.5rem 1.2rem;
             background: rgba(255, 255, 255, 0.97);
-            border-radius: 0.84rem; /* 1.2rem -> scaled */
-            box-shadow: 0 17.5px 42px rgba(0, 0, 0, 0.3); /* 25px 60px -> scaled */
+            border-radius: 0.5rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
             backdrop-filter: blur(10px);
-            animation: fadeIn 0.9s ease;
+            animation: fadeIn 0.8s ease;
+            font-size: 0.7rem; /* ✅ font-size applied only to form */
         }
 
         .create-testimony-form h2 {
             text-align: center;
-            font-size: 1.68rem; /* 2.4rem -> scaled */
+            font-size: 1.4rem;
             font-weight: 800;
             color: #2c3e50;
-            margin-bottom: 1.4rem; /* 2rem -> scaled */
-            letter-spacing: 0.7px; /* 1px -> scaled */
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
         }
 
         .form-group {
-            margin-bottom: 1.05rem; /* 1.5rem -> scaled */
+            margin-bottom: 0.9rem;
         }
 
         .form-group label {
             display: block;
             font-weight: 600;
-            margin-bottom: 0.42rem; /* 0.6rem -> scaled */
+            margin-bottom: 0.3rem;
             color: #34495e;
+            font-size: 0.7rem;
         }
 
         .form-group input[type="text"],
         .form-group textarea,
         .form-group input[type="file"] {
             width: 100%;
-            padding: 0.595rem 0.7rem; /* 0.85rem 1rem -> scaled */
-            font-size: 0.7rem; /* 1rem -> scaled */
+            padding: 0.55rem 0.65rem;
+            font-size: 0.7rem;
             border: 1px solid #d1d1d1;
-            border-radius: 0.42rem; /* 0.6rem -> scaled */
+            border-radius: 0.4rem;
             outline: none;
             transition: all 0.3s ease;
             background: #fff;
@@ -83,34 +86,34 @@
         .form-group input:focus,
         .form-group textarea:focus {
             border-color: #5c8df6;
-            box-shadow: 0 0 4.2px rgba(92, 141, 246, 0.4); /* 6px -> scaled */
+            box-shadow: 0 0 3px rgba(92, 141, 246, 0.35);
         }
 
         .form-group textarea {
             resize: vertical;
-            min-height: 112px; /* 160px -> scaled */
+            min-height: 100px;
         }
 
         .btn-submit {
             display: block;
             width: 100%;
-            padding: 0.7rem; /* 1rem -> scaled */
-            font-size: 0.84rem; /* 1.2rem -> scaled */
+            padding: 0.65rem;
+            font-size: 0.75rem;
             font-weight: 700;
             color: #fff;
             background: linear-gradient(to right, #5c8df6, #6b60ec);
             border: none;
-            border-radius: 0.42rem; /* 0.6rem -> scaled */
+            border-radius: 0.4rem;
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 0.7px; /* 1px -> scaled */
+            letter-spacing: 0.5px;
         }
 
         .btn-submit:hover {
             background: linear-gradient(to right, #4a7cf0, #5849de);
-            transform: translateY(-2.1px); /* 3px -> scaled */
-            box-shadow: 0 8.4px 17.5px rgba(0,0,0,0.3); /* scaled */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
         }
 
         .btn-submit:active {
@@ -118,17 +121,17 @@
         }
 
         @@keyframes fadeIn {
-            from { opacity: 0; transform: translateY(14px); } /* 20px -> scaled */
+            from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         @@media (max-width: 768px) {
             .create-testimony-form {
-                padding: 1.4rem 1.05rem; /* 2rem 1.5rem -> scaled */
+                padding: 1rem;
             }
 
             .create-testimony-form h2 {
-                font-size: 1.4rem; /* 2rem -> scaled */
+                font-size: 1.2rem;
             }
         }
     </style>

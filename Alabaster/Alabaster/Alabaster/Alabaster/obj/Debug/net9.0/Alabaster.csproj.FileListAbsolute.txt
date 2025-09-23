@@ -450,8 +450,6 @@ C:\Users\kamil\OneDrive\Desktop\Will-website\Alabaster\Alabaster\Alabaster\Alaba
 C:\Users\kamil\OneDrive\Desktop\Will-website\Alabaster\Alabaster\Alabaster\Alabaster\obj\Debug\net9.0\compressed\2lgo4dnygi-muycvpuwrr.gz
 C:\Users\kamil\OneDrive\Desktop\Will-website\Alabaster\Alabaster\Alabaster\Alabaster\obj\Debug\net9.0\compressed\3z0z81dcn0-87fc7y1x7t.gz
 C:\Users\kamil\OneDrive\Desktop\Will-website\Alabaster\Alabaster\Alabaster\Alabaster\obj\Debug\net9.0\compressed\klesg30sz2-mlv21k5csn.gz
-C:\Users\kamil\OneDrive\Desktop\Will-website\Alabaster\Alabaster\Alabaster\Alabaster\obj\Debug\net9.0\compressed\0qy35vnmcd-yfa3lbk5ir.gz
-C:\Users\kamil\OneDrive\Desktop\Will-website\Alabaster\Alabaster\Alabaster\Alabaster\obj\Debug\net9.0\compressed\qp2ezpbmj6-yfa3lbk5ir.gz
 C:\Users\kamil\OneDrive\Desktop\Will-website\Alabaster\Alabaster\Alabaster\Alabaster\obj\Debug\net9.0\staticwebassets.build.json
 C:\Users\kamil\OneDrive\Desktop\Will-website\Alabaster\Alabaster\Alabaster\Alabaster\obj\Debug\net9.0\staticwebassets.development.json
 C:\Users\kamil\OneDrive\Desktop\Will-website\Alabaster\Alabaster\Alabaster\Alabaster\obj\Debug\net9.0\staticwebassets.build.endpoints.json
@@ -466,3 +464,5 @@ C:\Users\kamil\OneDrive\Desktop\Will-website\Alabaster\Alabaster\Alabaster\Alaba
 C:\Users\kamil\OneDrive\Desktop\Will-website\Alabaster\Alabaster\Alabaster\Alabaster\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
 C:\Users\kamil\OneDrive\Desktop\Will-website\Alabaster\Alabaster\Alabaster\Alabaster\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
 C:\Users\kamil\OneDrive\Desktop\Will-website\Alabaster\Alabaster\Alabaster\Alabaster\obj\Debug\net9.0\staticwebassets.build.json.cache
+C:\Users\kamil\OneDrive\Desktop\Will-website\Alabaster\Alabaster\Alabaster\Alabaster\obj\Debug\net9.0\compressed\0qy35vnmcd-sb5ty9bspo.gz
+C:\Users\kamil\OneDrive\Desktop\Will-website\Alabaster\Alabaster\Alabaster\Alabaster\obj\Debug\net9.0\compressed\qp2ezpbmj6-sb5ty9bspo.gz

@@ -13,37 +13,41 @@
         color: #fff;
     }
 
-    /* Transparent page overlay for padding */
+    /* Transparent page overlay for padding with scale */
     .page-overlay {
         min-height: 100vh;
-        padding: 35px 14px; /* 50px 20px -> scaled */
-        background: transparent; /* Remove dark overlay */
+        padding: 35px 14px;
+        background: transparent;
+
+        /* scaling */
+        transform: scale(0.8);
+        transform-origin: top center;
     }
 
     /* Page heading */
     .page-overlay h2 {
-        font-size: 2.1rem; /* 3rem -> scaled */
+        font-size: 2.1rem;
         font-weight: 900;
         text-align: center;
-        margin-bottom: 28px; /* 40px -> scaled */
+        margin-bottom: 28px;
         color: #ffffff;
-        text-shadow: 1.4px 1.4px 7px rgba(0,0,0,0.6); /* scaled */
+        text-shadow: 1.4px 1.4px 7px rgba(0,0,0,0.6);
     }
 
     /* Back button */
     .btn-back {
         background: linear-gradient(135deg, #ff7e5f, #feb47b);
         color: white;
-        border-radius: 21px; /* 30px -> scaled */
-        padding: 7px 17px; /* 10px 25px -> scaled */
+        border-radius: 21px;
+        padding: 7px 17px;
         font-weight: 700;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         display: inline-block;
-        margin-bottom: 21px; /* 30px -> scaled */
+        margin-bottom: 21px;
     }
     .btn-back:hover {
-        transform: translateY(-2px); /* 3px -> scaled */
-        box-shadow: 0 5.6px 14px rgba(0,0,0,0.5); /* scaled */
+        transform: translateY(-2px);
+        box-shadow: 0 5.6px 14px rgba(0,0,0,0.5);
         color: white;
         text-decoration: none;
     }
@@ -51,60 +55,71 @@
     /* Event cards */
     .event-card {
         border: none;
-        border-radius: 14px; /* 20px -> scaled */
+        border-radius: 14px;
         overflow: hidden;
         background: rgba(255, 255, 255, 0.15);
         backdrop-filter: blur(10px);
-        box-shadow: 0 7px 17px rgba(0,0,0,0.4); /* 10px 25px -> scaled */
+        box-shadow: 0 7px 17px rgba(0,0,0,0.4);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         color: #fff;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
     }
     .event-card:hover {
-        transform: translateY(-7px); /* 10px -> scaled */
-        box-shadow: 0 14px 28px rgba(0,0,0,0.6); /* scaled */
+        transform: translateY(-7px);
+        box-shadow: 0 14px 28px rgba(0,0,0,0.6);
     }
 
-    /* Image wrapper to show full image */
+    /* Image wrapper with aspect ratio */
     .image-wrapper {
+        position: relative;
         width: 100%;
-        height: 175px; /* 250px -> scaled */
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        padding-top: 65%; /* 16:10 aspect ratio */
         overflow: hidden;
     }
     .image-wrapper img {
-        width: auto;
-        max-height: 100%;
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
         display: block;
     }
 
     /* Card body */
+    .card-body {
+        flex: 1;
+        padding: 14px;
+    }
     .card-body h5 {
-        font-size: 1.05rem; /* 1.5rem -> scaled */
+        font-size: 1.05rem;
         font-weight: 800;
-        margin-bottom: 7px; /* 10px -> scaled */
+        margin-bottom: 7px;
         color: #ffffff;
-        text-shadow: 0.7px 0.7px 3.5px rgba(0,0,0,0.5); /* scaled */
+        text-shadow: 0.7px 0.7px 3.5px rgba(0,0,0,0.5);
     }
     .card-body p {
-        font-size: 0.77rem; /* 1.1rem -> scaled */
-        margin-bottom: 3.5px; /* 5px -> scaled */
+        font-size: 0.77rem;
+        margin-bottom: 5px;
         color: #e0e0e0;
     }
 
     /* Responsive */
     @@media (max-width: 992px) {
+        .page-overlay {
+            transform: scale(1); /* disable scaling on tablets */
+        }
         .page-overlay h2 {
-            font-size: 1.75rem; /* 2.5rem -> scaled */
+            font-size: 1.75rem;
         }
         .btn-back {
-            margin-bottom: 14px; /* 20px -> scaled */
+            margin-bottom: 14px;
         }
     }
     @@media (max-width: 768px) {
         .page-overlay h2 {
-            font-size: 1.4rem; /* 2rem -> scaled */
+            font-size: 1.4rem;
         }
     }
 </style>
@@ -120,7 +135,7 @@
             <div class="row">
                 @foreach (var evt in Model)
                 {
-                    <div class="col-md-4 mb-2.8"> <!-- 4rem ~ 30% smaller -->
+                    <div class="col-md-4 mb-4">
                         <div class="card event-card shadow-lg">
                             @if (!string.IsNullOrEmpty(evt.ImageUrl))
                             {
