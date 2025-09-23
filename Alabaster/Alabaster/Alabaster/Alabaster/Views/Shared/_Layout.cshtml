@@ -64,7 +64,7 @@
             white-space: nowrap;
             display: inline-block;
             font-size: 0.655rem;
-            animation: floatRight 25s linear infinite;
+            animation: floatRight 35s linear infinite;
         }
 
         @@keyframes floatRight {
@@ -171,6 +171,13 @@
             font-size: 0.85rem;
             line-height: 1;
         }
+
+        /* Fix username text height */
+        .navbar .user-email {
+            font-size: 0.655rem; /* matches nav-link size */
+            line-height: 1;
+            display: inline-block;
+        }
     </style>
 
     @RenderSection("Styles", required: false)
@@ -194,7 +201,7 @@
             {
                 <li class="nav-item d-flex align-items-center text-white me-2">
                     <i class="bi bi-person-circle"></i>
-                    <span class="ms-1">
+                    <span class="ms-1 user-email">
                         @Context.Session.GetString("UserEmail")
                     </span>
                 </li>

@@ -139,7 +139,10 @@ body {
         <h2>🌟 Upcoming Events 🌟</h2>
 
         <div class="text-center top-buttons mb-4">
-            <a href="@Url.Action("AddEvent", "Events")" class="btn btn-primary">➕ Add Event</a>
+            @if (Context.Session.GetString("IsAdmin") == "true")
+            {
+                <a href="@Url.Action("AddEvent", "Events")" class="btn btn-primary">➕ Add Event</a>
+            }
             <a href="@Url.Action("Past", "Events")" class="btn btn-warning text-dark">📜 View Past Events</a>
         </div>
 

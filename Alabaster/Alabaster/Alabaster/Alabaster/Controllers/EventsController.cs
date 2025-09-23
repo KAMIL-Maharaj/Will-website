@@ -40,17 +40,29 @@ namespace Alabaster.Controllers
             return View(upcomingEvents);
         }
 
-        // GET: /Events/AddEvent
+        // GET: /Events/AddEvent (Admin only)
         [HttpGet]
         public IActionResult AddEvent()
         {
+            var isAdmin = HttpContext.Session.GetString("IsAdmin");
+            if (isAdmin != "true")
+            {
+                return RedirectToAction("Login", "Auth"); // only admins can access
+            }
+
             return View();
         }
 
-        // POST: /Events/AddEvent
+        // POST: /Events/AddEvent (Admin only)
         [HttpPost]
         public async Task<IActionResult> AddEvent(UpcomingEvent model)
         {
+            var isAdmin = HttpContext.Session.GetString("IsAdmin");
+            if (isAdmin != "true")
+            {
+                return RedirectToAction("Login", "Auth"); // only admins can submit
+            }
+
             if (ModelState.IsValid)
             {
                 await _firebase.Child("Events").PostAsync(model);
@@ -102,7 +114,6 @@ namespace Alabaster.Controllers
             }).ToList();
             ViewBag.Events = eventList;
 
-            // Only add error if EventId is empty
             if (string.IsNullOrEmpty(model.EventId))
             {
                 ModelState.AddModelError("EventId", "Please select an event.");
@@ -113,7 +124,6 @@ namespace Alabaster.Controllers
                 return View(model);
             }
 
-            // Assign EventName from EventId
             var selectedEvent = eventList.FirstOrDefault(e => e.Id == model.EventId);
             if (selectedEvent != null)
             {
@@ -162,17 +172,12 @@ namespace Alabaster.Controllers
         {
             DateTime today = DateTime.Today;
 
-            foreach (var evt in eventList.ToList()) // work on a copy
+            foreach (var evt in eventList.ToList())
             {
                 if (DateTime.TryParse(evt.Date, out DateTime eventDate) && eventDate < today)
                 {
-                    // Add to PastEvents
                     await _firebase.Child("PastEvents").PostAsync(evt);
-
-                    // Remove from Events
                     await _firebase.Child("Events").Child(evt.Id).DeleteAsync();
-
-                    // Remove locally so it won't be shown as upcoming
                     eventList.Remove(evt);
                 }
             }
