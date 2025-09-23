@@ -20,7 +20,7 @@
         .navbar {
             background: linear-gradient(90deg, #111, #222);
             position: relative;
-            padding-top: 0.425rem;   /* scaled down 15% */
+            padding-top: 0.425rem;
             padding-bottom: 0.425rem;
         }
 
@@ -29,7 +29,7 @@
             font-weight: 500;
             text-decoration: none !important;
             transition: all 0.3s ease;
-            font-size: 0.655rem; /* scaled down 15% */
+            font-size: 0.655rem;
         }
 
         .nav-link:hover {
@@ -37,7 +37,7 @@
         }
 
         .hamburger-icon {
-            font-size: 1.445rem; /* scaled down 15% */
+            font-size: 1.445rem;
             cursor: pointer;
             color: white;
             transition: transform 0.3s ease;
@@ -50,8 +50,8 @@
         /* Scrolling Saying */
         .navbar-saying-container {
             position: absolute;
-            left: 1.955rem;  /* scaled down 15% */
-            right: 9.86rem;  /* scaled down 15% */
+            left: 1.955rem;
+            right: 9.86rem;
             overflow: hidden;
             height: 100%;
             display: flex;
@@ -63,7 +63,7 @@
             font-style: italic;
             white-space: nowrap;
             display: inline-block;
-            font-size: 0.655rem; /* scaled down 15% */
+            font-size: 0.655rem;
             animation: floatRight 25s linear infinite;
         }
 
@@ -94,15 +94,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.612rem 0.816rem; /* scaled down 15% */
+            padding: 0.612rem 0.816rem;
             background: linear-gradient(90deg, #ffb400, #ff9900);
             color: #111;
-            font-size: 0.85rem; /* scaled down 15% */
+            font-size: 0.85rem;
             font-weight: bold;
         }
 
         .side-drawer .close-btn {
-            font-size: 1.173rem; /* scaled down 15% */
+            font-size: 1.173rem;
             cursor: pointer;
             color: #111;
         }
@@ -110,50 +110,48 @@
         .menu-links {
             flex-grow: 1;
             overflow-y: auto;
-            padding-bottom: 0.816rem; /* scaled */
+            padding-bottom: 0.816rem;
         }
 
-.menu-item {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem; /* increased from 0.489rem */
-    padding: 0.65rem 0.95rem; /* increased from 0.574rem 0.816rem */
-    font-size: 0.78rem; /* increased from 0.723rem */
-    color: #f1f1f1;
-    text-decoration: none;
-    background: rgba(255, 255, 255, 0.05);
-    margin: 0.38rem 0.55rem; /* increased from 0.33rem 0.489rem */
-    border-radius: 0.36rem; /* increased from 0.33rem */
-    transition: all 0.3s ease;
-}
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.65rem 0.95rem;
+            font-size: 0.78rem;
+            color: #f1f1f1;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.05);
+            margin: 0.38rem 0.55rem;
+            border-radius: 0.36rem;
+            transition: all 0.3s ease;
+        }
 
-.menu-item i {
-    font-size: 0.92rem; /* increased from 0.85rem */
-}
-
+        .menu-item i {
+            font-size: 0.92rem;
+        }
 
         .menu-item:hover {
             background-color: #ffb400;
             color: #111;
-            transform: translateX(0.244rem); /* scaled */
+            transform: translateX(0.244rem);
         }
 
-.drawer-logo {
-    position: absolute;
-    bottom: 4.09rem; /* same as before */
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    width: 63%; /* increased from 57% */
-}
+        .drawer-logo {
+            position: absolute;
+            bottom: 4.09rem;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            width: 63%;
+        }
 
-.drawer-logo img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 0.409rem; /* same as before */
-    box-shadow: 0 0.164rem 0.409rem rgba(0,0,0,0.3);
-}
-
+        .drawer-logo img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.409rem;
+            box-shadow: 0 0.164rem 0.409rem rgba(0,0,0,0.3);
+        }
 
         /* Overlay */
         .overlay {
@@ -167,11 +165,11 @@
             z-index: 1040;
         }
 
-        /* Footer - scaled down 15% */
+        /* Footer */
         .footer {
-            padding: 0.15rem 0; /* very small vertical padding */
-            font-size: 0.85rem; /* keep text readable */
-            line-height: 1; /* remove extra spacing */
+            padding: 0.15rem 0;
+            font-size: 0.85rem;
+            line-height: 1;
         }
     </style>
 
@@ -190,10 +188,16 @@
             </span>
         </div>
 
-        <!-- Login/Register -->
+        <!-- Login/Register / User Info -->
         <ul class="navbar-nav ms-auto flex-row gap-3">
             @if (Context.Session.GetString("FirebaseToken") != null)
             {
+                <li class="nav-item d-flex align-items-center text-white me-2">
+                    <i class="bi bi-person-circle"></i>
+                    <span class="ms-1">
+                        @Context.Session.GetString("UserEmail")
+                    </span>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Auth" asp-action="Logout">
                         <i class="bi bi-box-arrow-right"></i> Logout
@@ -264,7 +268,7 @@
 <!-- Drawer Script -->
 <script>
     function openDrawer() {
-        document.getElementById("sideDrawer").style.width = "340px"; // increased from 308px
+        document.getElementById("sideDrawer").style.width = "340px";
         document.getElementById("menuOverlay").style.display = "block";
     }
     function closeDrawer() {

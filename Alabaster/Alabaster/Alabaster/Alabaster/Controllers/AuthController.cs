@@ -1,8 +1,8 @@
 using FirebaseAdmin.Auth;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Alabaster.Services;     
-
+using Alabaster.Services;
+using System.Threading.Tasks;
 
 namespace Alabaster.Controllers
 {
@@ -31,16 +31,20 @@ namespace Alabaster.Controllers
             try
             {
                 var result = await _authService.Register(email, password);
+
+                // Store token and email in session
                 HttpContext.Session.SetString("FirebaseToken", result.FirebaseToken);
-                TempData["Success"] = "Registration successful! Please login.";
-                return RedirectToAction("Login");
+                HttpContext.Session.SetString("UserEmail", email);
+
+                TempData["Success"] = "Registration successful! You are now logged in.";
+                return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
             {
-                var msg = ex.Message;
+                string msg = ex.Message;
                 if (msg.Contains("EMAIL_EXISTS")) ViewBag.Error = "Email already exists.";
-                else if (msg.Contains("WEAK_PASSWORD")) ViewBag.Error = "Password too weak.";
-                else ViewBag.Error = "Registration failed.";
+                else if (msg.Contains("WEAK_PASSWORD")) ViewBag.Error = "Password too weak (min 6 chars).";
+                else ViewBag.Error = "Registration failed. " + msg;
                 return View();
             }
         }
@@ -51,17 +55,23 @@ namespace Alabaster.Controllers
             try
             {
                 var result = await _authService.Login(email, password);
+
+                // Store token and email in session
                 HttpContext.Session.SetString("FirebaseToken", result.FirebaseToken);
+                HttpContext.Session.SetString("UserEmail", email);
+
                 return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
             {
-                var msg = ex.Message;
+                string msg = ex.Message;
                 if (msg.Contains("EMAIL_NOT_FOUND") || msg.Contains("INVALID_LOGIN_CREDENTIALS"))
                     ViewBag.Error = "Account not found.";
                 else if (msg.Contains("INVALID_PASSWORD"))
                     ViewBag.Error = "Incorrect password.";
-                else ViewBag.Error = "Login failed.";
+                else
+                    ViewBag.Error = "Login failed. " + msg;
+
                 return View();
             }
         }
@@ -72,14 +82,15 @@ namespace Alabaster.Controllers
             try
             {
                 await _authService.SendPasswordResetEmail(email);
-                ViewBag.Message = "Password reset link sent!";
+                ViewBag.Message = "Password reset link sent! Check your email.";
             }
             catch (Exception ex)
             {
-                if (ex.Message.Contains("EMAIL_NOT_FOUND"))
-                    ViewBag.Error = "No account with that email.";
+                string msg = ex.Message;
+                if (msg.Contains("EMAIL_NOT_FOUND"))
+                    ViewBag.Error = "No account found with that email.";
                 else
-                    ViewBag.Error = "Something went wrong.";
+                    ViewBag.Error = "Failed to send reset link. " + msg;
             }
             return View();
         }
@@ -88,34 +99,28 @@ namespace Alabaster.Controllers
         public async Task<IActionResult> GoogleLogin([FromBody] string idToken)
         {
             if (string.IsNullOrEmpty(idToken))
-            {
-                return Json(new { success = false, error = "No token provided" });
-            }
+                return Json(new { success = false, error = "No token provided." });
 
             try
             {
-                // Verify the token with Firebase Admin SDK
                 FirebaseToken decodedToken = await FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(idToken);
-
                 string uid = decodedToken.Uid;
                 string email = decodedToken.Claims.ContainsKey("email") ? decodedToken.Claims["email"].ToString() : null;
 
-                // Optional: Create or update user in your DB here based on uid/email
-
-                // Store token and user info in session
+                // Store session info
                 HttpContext.Session.SetString("FirebaseToken", idToken);
-                HttpContext.Session.SetString("UserId", uid);
                 HttpContext.Session.SetString("UserEmail", email ?? "");
+                HttpContext.Session.SetString("UserId", uid);
 
                 return Json(new { success = true });
             }
             catch (FirebaseAuthException ex)
             {
-                return Json(new { success = false, error = $"Token verification failed: {ex.Message}" });
+                return Json(new { success = false, error = "Token verification failed: " + ex.Message });
             }
             catch (Exception ex)
             {
-                return Json(new { success = false, error = $"Unexpected error: {ex.Message}" });
+                return Json(new { success = false, error = "Unexpected error: " + ex.Message });
             }
         }
 
@@ -126,4 +131,4 @@ namespace Alabaster.Controllers
             return RedirectToAction("Login");
         }
     }
-} 
+}

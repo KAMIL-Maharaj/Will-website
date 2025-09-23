@@ -1,9 +1,7 @@
 using Firebase.Auth;
 using System.Threading.Tasks;
 
-
 namespace Alabaster.Services
-
 {
     public class FirebaseAuthService
     {
