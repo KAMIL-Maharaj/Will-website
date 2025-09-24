@@ -46,9 +46,7 @@ namespace Alabaster.Controllers
         {
             var isAdmin = HttpContext.Session.GetString("IsAdmin");
             if (isAdmin != "true")
-            {
-                return RedirectToAction("Login", "Auth"); // only admins can access
-            }
+                return RedirectToAction("Login", "Auth");
 
             return View();
         }
@@ -59,15 +57,14 @@ namespace Alabaster.Controllers
         {
             var isAdmin = HttpContext.Session.GetString("IsAdmin");
             if (isAdmin != "true")
-            {
-                return RedirectToAction("Login", "Auth"); // only admins can submit
-            }
+                return RedirectToAction("Login", "Auth");
 
             if (ModelState.IsValid)
             {
                 await _firebase.Child("Events").PostAsync(model);
                 return RedirectToAction("Index");
             }
+
             return View(model);
         }
 
@@ -75,6 +72,13 @@ namespace Alabaster.Controllers
         [HttpGet]
         public async Task<IActionResult> Volunteer(string eventId = null)
         {
+            // Ensure user is logged in
+            if (HttpContext.Session.GetString("UserId") == null)
+            {
+                TempData["ErrorMessage"] = "You must log in to volunteer.";
+                return RedirectToAction("Login", "Auth");
+            }
+
             var events = await _firebase.Child("Events").OnceAsync<UpcomingEvent>();
             var eventList = events.Select(e =>
             {
@@ -104,6 +108,13 @@ namespace Alabaster.Controllers
         [HttpPost]
         public async Task<IActionResult> Volunteer(Volunteer model)
         {
+            // Ensure user is logged in
+            if (HttpContext.Session.GetString("UserId") == null)
+            {
+                TempData["ErrorMessage"] = "You must log in to volunteer.";
+                return RedirectToAction("Login", "Auth");
+            }
+
             // Fetch events for dropdown
             var allEvents = await _firebase.Child("Events").OnceAsync<UpcomingEvent>();
             var eventList = allEvents.Select(e =>
@@ -112,23 +123,27 @@ namespace Alabaster.Controllers
                 ev.Id = e.Key;
                 return ev;
             }).ToList();
+
             ViewBag.Events = eventList;
 
+            // Server-side validation
             if (string.IsNullOrEmpty(model.EventId))
-            {
                 ModelState.AddModelError("EventId", "Please select an event.");
-            }
+
+            if (!string.IsNullOrEmpty(model.IdNumber) && !System.Text.RegularExpressions.Regex.IsMatch(model.IdNumber, @"^\d{13}$"))
+                ModelState.AddModelError("IdNumber", "ID Number must be exactly 13 digits.");
+
+            if (!string.IsNullOrEmpty(model.Phone) && !System.Text.RegularExpressions.Regex.IsMatch(model.Phone, @"^\d{10}$"))
+                ModelState.AddModelError("Phone", "Phone number must be exactly 10 digits.");
+
+            // Notes is optional
 
             if (!ModelState.IsValid)
-            {
                 return View(model);
-            }
 
             var selectedEvent = eventList.FirstOrDefault(e => e.Id == model.EventId);
             if (selectedEvent != null)
-            {
                 model.EventName = selectedEvent.Name;
-            }
 
             try
             {

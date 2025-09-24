@@ -164,7 +164,15 @@ body {
                                 <p>@evt.Description</p>
                                 <p><strong>Date:</strong> @(DateTime.TryParse(evt.Date, out var dt) ? dt.ToString("MMMM dd, yyyy") : evt.Date)</p>
                                 <p><strong>Time:</strong> @evt.Time</p>
-                                <a href="@Url.Action("Volunteer", "Events", new { eventId = evt.Id })" class="btn btn-custom">🤝 Volunteer</a>
+
+                                @* Check if user is logged in before allowing volunteering *@
+                                <a 
+                                    href="@(Context.Session.GetString("UserId") != null 
+                                            ? Url.Action("Volunteer", "Events", new { eventId = evt.Id }) 
+                                            : Url.Action("Login", "Auth"))" 
+                                    class="btn btn-custom">
+                                    🤝 Volunteer
+                                </a>
                             </div>
                         </div>
                     </div>

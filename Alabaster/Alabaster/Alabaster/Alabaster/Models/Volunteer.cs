@@ -15,7 +15,8 @@ namespace Alabaster.Models
         [Required(ErrorMessage = "Name is required.")]
         public string Name { get; set; }
 
-        [StringLength(13, ErrorMessage = "ID Number cannot exceed 13 characters.")]
+        [Required(ErrorMessage = "ID Number is required.")]
+        [RegularExpression(@"^\d{13}$", ErrorMessage = "ID Number must be exactly 13 digits.")]
         public string IdNumber { get; set; }
 
         [Required(ErrorMessage = "Email is required.")]
@@ -23,11 +24,10 @@ namespace Alabaster.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Phone number is required.")]
-        [Phone(ErrorMessage = "Enter a valid phone number.")]
+        [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone number must be exactly 10 digits.")]
         public string Phone { get; set; }
 
-        public string Notes { get; set; }
-        public string TShirtSize { get; set; }
+        public string? Notes { get; set; } // optional
 
         [Range(1, 50, ErrorMessage = "Please enter between 1 and 50 volunteers.")]
         public int NumberOfVolunteers { get; set; } = 1;
