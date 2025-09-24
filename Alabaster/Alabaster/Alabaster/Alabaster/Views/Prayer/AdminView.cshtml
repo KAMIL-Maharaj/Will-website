@@ -3,35 +3,83 @@
     ViewData["Title"] = "All Prayer Requests";
 }
 
-<div class="container mt-5">
-    <h2>Prayer Requests 🙏 (Admin Only)</h2>
+<style>
+    body {
+        background: url('../images/Background4.jpg') no-repeat center center fixed;
+        background-size: cover;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .page-container {
+        max-width: 900px;
+        margin: 2rem auto;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+        font-size: 0.85rem;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 1rem;
+        color: #2c3e50;
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+
+    table {
+        font-size: 0.8rem;
+        border-radius: 0.4rem;
+        overflow: hidden;
+    }
+
+    table thead {
+        background: #ffb400;
+        color: #111;
+        font-size: 0.78rem;
+    }
+
+    table tbody tr {
+        transition: background 0.2s ease;
+    }
+
+    table tbody tr:hover {
+        background: rgba(255, 180, 0, 0.15);
+    }
+</style>
+
+<div class="page-container">
+    <h2>🙏 Prayer Requests (Admin Only)</h2>
 
     @if (!Model.Any())
     {
-        <p>No prayer requests yet.</p>
+        <p class="text-center">No prayer requests yet.</p>
     }
     else
     {
-        <table class="table table-bordered mt-3">
-            <thead class="table-dark">
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Request</th>
-                    <th>Submitted At</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var prayer in Model)
-                {
+        <div class="table-responsive">
+            <table class="table table-bordered align-middle">
+                <thead>
                     <tr>
-                        <td>@prayer.Name</td>
-                        <td>@prayer.UserEmail</td>
-                        <td>@prayer.Request</td>
-                        <td>@prayer.CreatedAt.ToLocalTime()</td>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Request</th>
+                        <th>Submitted At</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var prayer in Model)
+                    {
+                        <tr>
+                            <td>@prayer.Name</td>
+                            <td>@prayer.UserEmail</td>
+                            <td>@prayer.Request</td>
+                            <td>@prayer.CreatedAt.ToLocalTime()</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     }
 </div>
