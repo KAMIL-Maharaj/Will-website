@@ -5,61 +5,65 @@
 }
 
 <style>
-    /* Full background image without dark overlay */
     body {
         background: url('../images/Background4.jpg') no-repeat center center fixed;
         background-size: cover;
         font-family: 'Poppins', 'Segoe UI', sans-serif;
         color: #fff;
+        margin: 0;
+        padding: 0;
     }
 
-    /* Transparent page overlay for padding with scale */
+    /* Outer wrapper to prevent extra space */
+    .page-wrapper {
+        overflow: hidden; /* prevents extra space caused by scaling */
+        padding-top: 20px;
+    }
+
+    /* Page overlay with scale */
     .page-overlay {
-        min-height: 100vh;
-        padding: 35px 14px;
-        background: transparent;
-
-        /* scaling */
-        transform: scale(0.8);
+        transform: scale(0.85);
         transform-origin: top center;
+        margin: 0 auto;
+        width: 100%;
     }
 
-    /* Page heading */
     .page-overlay h2 {
-        font-size: 2.1rem;
+        font-size: 2rem;
         font-weight: 900;
         text-align: center;
-        margin-bottom: 28px;
-        color: #ffffff;
-        text-shadow: 1.4px 1.4px 7px rgba(0,0,0,0.6);
+        margin-bottom: 20px;
+        color: #fff;
+        text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
     }
 
-    /* Back button */
-    .btn-back {
-        background: linear-gradient(135deg, #ff7e5f, #feb47b);
-        color: white;
-        border-radius: 21px;
-        padding: 7px 17px;
-        font-weight: 700;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .top-button {
         display: inline-block;
-        margin-bottom: 21px;
+        margin-bottom: 25px;
+        background: linear-gradient(135deg, #0072ff, #00c6ff);
+        border: none;
+        border-radius: 22px;
+        padding: 10px 18px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: #fff;
+        text-decoration: none;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .btn-back:hover {
+    .top-button:hover {
         transform: translateY(-2px);
-        box-shadow: 0 5.6px 14px rgba(0,0,0,0.5);
-        color: white;
+        box-shadow: 0px 6px 14px rgba(0,0,0,0.55);
+        color: #fff;
         text-decoration: none;
     }
 
-    /* Event cards */
     .event-card {
         border: none;
-        border-radius: 14px;
+        border-radius: 18px;
         overflow: hidden;
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 7px 17px rgba(0,0,0,0.4);
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(16px);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.55);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         color: #fff;
         display: flex;
@@ -67,15 +71,14 @@
         height: 100%;
     }
     .event-card:hover {
-        transform: translateY(-7px);
-        box-shadow: 0 14px 28px rgba(0,0,0,0.6);
+        transform: translateY(-6px);
+        box-shadow: 0 18px 36px rgba(0,0,0,0.65);
     }
 
-    /* Image wrapper with aspect ratio */
     .image-wrapper {
         position: relative;
         width: 100%;
-        padding-top: 65%; /* 16:10 aspect ratio */
+        padding-top: 65%;
         overflow: hidden;
     }
     .image-wrapper img {
@@ -84,81 +87,87 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        display: block;
     }
 
-    /* Card body */
     .card-body {
         flex: 1;
-        padding: 14px;
+        padding: 18px;
+        background: rgba(0, 0, 0, 0.35);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-radius: 0 0 18px 18px;
     }
     .card-body h5 {
-        font-size: 1.05rem;
-        font-weight: 800;
-        margin-bottom: 7px;
+        font-size: 1.25rem;
+        font-weight: 900;
+        margin-bottom: 10px;
+        text-align: center;
         color: #ffffff;
-        text-shadow: 0.7px 0.7px 3.5px rgba(0,0,0,0.5);
+        text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
     }
     .card-body p {
-        font-size: 0.77rem;
-        margin-bottom: 5px;
-        color: #e0e0e0;
+        font-size: 0.88rem;
+        margin-bottom: 8px;
+        color: #f0f0f0;
+        text-align: left;
     }
 
-    /* Responsive */
     @@media (max-width: 992px) {
-        .page-overlay {
-            transform: scale(1); /* disable scaling on tablets */
-        }
         .page-overlay h2 {
-            font-size: 1.75rem;
-        }
-        .btn-back {
-            margin-bottom: 14px;
+            font-size: 1.85rem;
         }
     }
     @@media (max-width: 768px) {
         .page-overlay h2 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
+        }
+        .card-body h5 {
+            font-size: 1.1rem;
+        }
+        .card-body p {
+            font-size: 0.82rem;
         }
     }
 </style>
 
-<div class="page-overlay">
-    <div class="container">
-        <h2>📜 Past Events</h2>
+<div class="page-wrapper">
+    <div class="page-overlay">
+        <div class="container text-center">
+            <h2>📜 Past Events</h2>
 
-        <a href="@Url.Action("Index", "Events")" class="btn btn-back">⬅ Back to Upcoming Events</a>
+            <a href="@Url.Action("Index", "Events")" class="top-button">⬅ Back to Upcoming Events</a>
 
-        @if (Model != null && Model.Any())
-        {
-            <div class="row">
-                @foreach (var evt in Model)
-                {
-                    <div class="col-md-4 mb-4">
-                        <div class="card event-card shadow-lg">
-                            @if (!string.IsNullOrEmpty(evt.ImageUrl))
-                            {
-                                <div class="image-wrapper">
-                                    <img src="@evt.ImageUrl" alt="@evt.Name" />
+            @if (Model != null && Model.Any())
+            {
+                <div class="row mt-3">
+                    @foreach (var evt in Model)
+                    {
+                        <div class="col-md-4 mb-4">
+                            <div class="card event-card shadow-lg">
+                                @if (!string.IsNullOrEmpty(evt.ImageUrl))
+                                {
+                                    <div class="image-wrapper">
+                                        <img src="@evt.ImageUrl" alt="@evt.Name" />
+                                    </div>
+                                }
+                                <div class="card-body">
+                                    <h5 class="card-title">@evt.Name</h5>
+                                    <p>@evt.Description</p>
+                                    <p><strong>Date:</strong> @(DateTime.TryParse(evt.Date, out var dt) ? dt.ToString("MMMM dd, yyyy") : evt.Date)</p>
+                                    <p><strong>Time:</strong> @evt.Time</p>
                                 </div>
-                            }
-                            <div class="card-body">
-                                <h5 class="card-title">@evt.Name</h5>
-                                <p class="card-text">@evt.Description</p>
-                                <p><strong>Date:</strong> @evt.Date</p>
-                                <p><strong>Time:</strong> @evt.Time</p>
                             </div>
                         </div>
-                    </div>
-                }
-            </div>
-        }
-        else
-        {
-            <div class="alert alert-info text-center text-white-50">
-                No past events found.
-            </div>
-        }
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info text-center text-white-50">
+                    No past events found.
+                </div>
+            }
+        </div>
     </div>
 </div>
