@@ -8,7 +8,7 @@ namespace Alabaster.Controllers
     public class TestimoniesController : Controller
     {
         private readonly HttpClient _httpClient;
-        private readonly string firebaseUrl = "https://alabaster-8cfcd-default-rtdb.firebaseio.com"; // Replace with your actual Firebase Realtime DB URL (without `/` at end)
+        private readonly string firebaseUrl = "https://alabaster-8cfcd-default-rtdb.firebaseio.com"; 
 
         public TestimoniesController()
         {
@@ -26,7 +26,6 @@ namespace Alabaster.Controllers
 
             var dict = JsonConvert.DeserializeObject<Dictionary<string, Testimony>>(json);
 
-            // Add Firebase keys as IDs
             foreach (var item in dict)
                 item.Value.Id = item.Key;
 
@@ -37,23 +36,43 @@ namespace Alabaster.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("FirebaseToken")))
+            {
+                TempData["Error"] = "You must be logged in to submit a testimony.";
+                return RedirectToAction("Login", "Auth");
+            }
+
             return View();
         }
 
         // Handle submission of the testimony form
         [HttpPost]
-        public async Task<IActionResult> Create(Testimony model, IFormFile ImageUpload)
+        public async Task<IActionResult> Create(Testimony model, IFormFile ImageUpload, string NameOption, string CustomName)
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("FirebaseToken")))
+            {
+                TempData["Error"] = "You must be logged in to submit a testimony.";
+                return RedirectToAction("Login", "Auth");
+            }
+
             if (ImageUpload != null && ImageUpload.Length > 0)
             {
                 using var ms = new MemoryStream();
                 await ImageUpload.CopyToAsync(ms);
-                var imageBytes = ms.ToArray();
-                model.ImageBase64 = Convert.ToBase64String(imageBytes);
+                model.ImageBase64 = Convert.ToBase64String(ms.ToArray());
             }
 
             model.CreatedAt = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
-            model.CreatedBy = User.Identity?.Name ?? "Anonymous";
+
+            // Determine CreatedBy based on user's choice
+            if (NameOption == "Custom" && !string.IsNullOrEmpty(CustomName))
+            {
+                model.CreatedBy = CustomName;
+            }
+            else
+            {
+                model.CreatedBy = "Anonymous";
+            }
 
             var json = JsonConvert.SerializeObject(model);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
