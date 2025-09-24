@@ -55,24 +55,31 @@ namespace Alabaster.Controllers
                 return RedirectToAction("Login", "Auth");
             }
 
+            if (string.IsNullOrEmpty(model.Title) || string.IsNullOrEmpty(model.Description))
+            {
+                ModelState.AddModelError("", "Title and Description are required.");
+                return View(model);
+            }
+
+            if (NameOption == "Custom" && string.IsNullOrEmpty(CustomName))
+            {
+                ModelState.AddModelError("", "Please enter your name or choose Anonymous.");
+                return View(model);
+            }
+
             if (ImageUpload != null && ImageUpload.Length > 0)
             {
                 using var ms = new MemoryStream();
                 await ImageUpload.CopyToAsync(ms);
                 model.ImageBase64 = Convert.ToBase64String(ms.ToArray());
             }
-
-            model.CreatedAt = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
-
-            // Determine CreatedBy based on user's choice
-            if (NameOption == "Custom" && !string.IsNullOrEmpty(CustomName))
-            {
-                model.CreatedBy = CustomName;
-            }
             else
             {
-                model.CreatedBy = "Anonymous";
+                model.ImageBase64 = ""; // blank, will show default image
             }
+
+            model.CreatedAt = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
+            model.CreatedBy = NameOption == "Custom" ? CustomName : "Anonymous";
 
             var json = JsonConvert.SerializeObject(model);
             var content = new StringContent(json, Encoding.UTF8, "application/json");

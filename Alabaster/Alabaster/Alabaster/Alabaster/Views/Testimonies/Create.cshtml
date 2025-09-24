@@ -4,164 +4,25 @@
 }
 @section Styles {
     <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', Arial, sans-serif;
-        }
-
-        body {
-            background: url('../images/Background5.jpg') no-repeat center center fixed;
-            background-size: cover;
-            position: relative;
-            color: #333;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.55);
-            z-index: 0;
-        }
-
-        .create-page-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 75vh;
-            padding: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .create-testimony-form {
-            width: 100%;
-            max-width: 480px;
-            padding: 1.5rem 1.2rem;
-            background: rgba(255, 255, 255, 0.97);
-            border-radius: 0.5rem;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-            backdrop-filter: blur(10px);
-            animation: fadeIn 0.8s ease;
-            font-size: 0.7rem;
-        }
-
-        .create-testimony-form h2 {
-            text-align: center;
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: #2c3e50;
-            margin-bottom: 1rem;
-            letter-spacing: 0.5px;
-        }
-
-        .form-group {
-            margin-bottom: 0.9rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-            color: #34495e;
-            font-size: 0.7rem;
-        }
-
-        .form-group input[type="text"],
-        .form-group textarea,
-        .form-group input[type="file"] {
-            width: 100%;
-            padding: 0.55rem 0.65rem;
-            font-size: 0.7rem;
-            border: 1px solid #d1d1d1;
-            border-radius: 0.4rem;
-            outline: none;
-            transition: all 0.3s ease;
-            background: #fff;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: #5c8df6;
-            box-shadow: 0 0 3px rgba(92, 141, 246, 0.35);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        /* Name selection radio buttons */
-        .name-option-group {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 0.3rem;
-        }
-
+        html, body { height: 100%; margin: 0; padding: 0; font-family: 'Poppins', Arial, sans-serif; }
+        body { background: url('../images/Background5.jpg') no-repeat center center fixed; background-size: cover; color: #333; position: relative; }
+        body::before { content: ""; position: fixed; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.55); z-index: 0; }
+        .create-page-container { display: flex; align-items: center; justify-content: center; min-height: 75vh; padding: 1rem; position: relative; z-index: 1; }
+        .create-testimony-form { width: 100%; max-width: 480px; padding: 1.5rem 1.2rem; background: rgba(255,255,255,0.97); border-radius: 0.5rem; box-shadow: 0 6px 18px rgba(0,0,0,0.25); backdrop-filter: blur(10px); font-size: 0.7rem; }
+        .create-testimony-form h2 { text-align: center; font-size: 1.4rem; font-weight: 800; color: #2c3e50; margin-bottom: 1rem; }
+        .form-group { margin-bottom: 0.9rem; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 0.3rem; color: #34495e; font-size: 0.7rem; }
+        .form-group input[type="text"], .form-group textarea, .form-group input[type="file"] { width: 100%; padding: 0.55rem 0.65rem; font-size: 0.7rem; border: 1px solid #d1d1d1; border-radius: 0.4rem; outline: none; transition: all 0.3s ease; background: #fff; }
+        .form-group input:focus, .form-group textarea:focus { border-color: #5c8df6; box-shadow: 0 0 3px rgba(92,141,246,0.35); }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .name-option-group { display: flex; gap: 0.5rem; margin-top: 0.3rem; }
         .name-option-group input[type="radio"] { display: none; }
-
-        .name-option-group label {
-            flex: 1;
-            text-align: center;
-            padding: 0.4rem 0;
-            border: 1px solid #5c8df6;
-            border-radius: 0.4rem;
-            cursor: pointer;
-            background: #f0f4ff;
-            font-size: 0.7rem;
-        }
-
-        .name-option-group input[type="radio"]:checked + label {
-            background: #5c8df6;
-            color: #fff;
-            font-weight: 700;
-        }
-
-        #customNameField {
-            display: none;
-            margin-top: 0.5rem;
-        }
-
-        .btn-submit {
-            display: block;
-            width: 100%;
-            padding: 0.65rem;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #fff;
-            background: linear-gradient(to right, #5c8df6, #6b60ec);
-            border: none;
-            border-radius: 0.4rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-        }
-
-        .btn-submit:hover {
-            background: linear-gradient(to right, #4a7cf0, #5849de);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-        }
-
-        .btn-submit:active {
-            transform: scale(0.97);
-        }
-
-        @@keyframes fadeIn {
-            from { opacity: 0; transform: translateY(12px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @@media (max-width: 768px) {
-            .create-testimony-form {
-                padding: 1rem;
-            }
-            .create-testimony-form h2 {
-                font-size: 1.2rem;
-            }
-        }
+        .name-option-group label { flex: 1; text-align: center; padding: 0.4rem 0; border: 1px solid #5c8df6; border-radius: 0.4rem; cursor: pointer; background: #f0f4ff; font-size: 0.7rem; }
+        .name-option-group input[type="radio"]:checked + label { background: #5c8df6; color: #fff; font-weight: 700; }
+        #customNameField { display: none; margin-top: 0.5rem; }
+        .btn-submit { display: block; width: 100%; padding: 0.65rem; font-size: 0.75rem; font-weight: 700; color: #fff; background: linear-gradient(to right, #5c8df6, #6b60ec); border: none; border-radius: 0.4rem; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; }
+        .btn-submit:hover { background: linear-gradient(to right, #4a7cf0, #5849de); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(0,0,0,0.25); }
+        .btn-submit:active { transform: scale(0.97); }
     </style>
 }
 
@@ -170,7 +31,6 @@
         <h2>Share Your Testimony</h2>
 
         <form asp-controller="Testimonies" asp-action="Create" method="post" enctype="multipart/form-data">
-
             <div class="form-group">
                 <label for="Title">Title</label>
                 <input id="Title" name="Title" type="text" required placeholder="Give your testimony a title" />
@@ -181,7 +41,6 @@
                 <div class="name-option-group">
                     <input type="radio" id="anonymous" name="NameOption" value="Anonymous" checked />
                     <label for="anonymous">Anonymous</label>
-
                     <input type="radio" id="customName" name="NameOption" value="Custom" />
                     <label for="customName">Use My Name</label>
                 </div>
@@ -219,7 +78,6 @@
 
         anonymousRadio.addEventListener("change", toggleNameField);
         customRadio.addEventListener("change", toggleNameField);
-
-        toggleNameField(); // initialize on load
+        toggleNameField();
     </script>
 }
