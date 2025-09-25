@@ -5,7 +5,6 @@
 }
 
 <style>
-/* Full background image */
 body {
     background: url('../images/Background4.jpg') no-repeat center center fixed;
     background-size: cover;
@@ -13,14 +12,12 @@ body {
     color: #fff;
 }
 
-/* Scale down entire page content */
 .page-overlay {
     transform: scale(0.8);
     transform-origin: top center;
     margin: 0 auto;
 }
 
-/* Page heading */
 .page-overlay h2 {
     font-size: 2rem;
     font-weight: 900;
@@ -30,7 +27,6 @@ body {
     text-shadow: 1.5px 1.5px 8px rgba(0,0,0,0.7);
 }
 
-/* Top buttons */
 .top-buttons a {
     margin-right: 10px;
     border-radius: 20px;
@@ -44,7 +40,6 @@ body {
     box-shadow: 0px 4px 12px rgba(0,0,0,0.4);
 }
 
-/* Event cards */
 .event-card {
     border: none;
     border-radius: 16px;
@@ -64,7 +59,6 @@ body {
     box-shadow: 0 20px 40px rgba(0,0,0,0.65);
 }
 
-/* Image wrapper with aspect ratio */
 .image-wrapper {
     position: relative;
     width: 100%;
@@ -79,14 +73,12 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
 }
 
-/* Card body */
 .card-body {
     flex: 1;
     padding: 15px;
-    text-align: center; /* title and button centered */
+    text-align: center;
 }
 
 .card-body h5 {
@@ -101,10 +93,9 @@ body {
     font-size: 0.85rem;
     margin-bottom: 8px;
     color: #e0e0e0;
-    text-align: left; /* description, date, time aligned left */
+    text-align: left;
 }
 
-/* Volunteer button */
 .btn-custom {
     background: linear-gradient(135deg, #0072ff, #00c6ff);
     border: none;
@@ -123,20 +114,12 @@ body {
     color: #fff;
 }
 
-/* Responsive */
 @@media (max-width: 992px) {
-    .page-overlay {
-        transform: scale(1);
-    }
-    .top-buttons {
-        text-align: center;
-        margin-bottom: 20px;
-    }
+    .page-overlay { transform: scale(1); }
+    .top-buttons { text-align: center; margin-bottom: 20px; }
 }
 @@media (max-width: 768px) {
-    .page-overlay h2 {
-        font-size: 1.6rem;
-    }
+    .page-overlay h2 { font-size: 1.6rem; }
 }
 </style>
 
@@ -166,15 +149,11 @@ body {
                                 </div>
                             }
                             <div class="card-body">
-                                <!-- Title centered -->
                                 <h5 class="card-title">@evt.Name</h5>
-
-                                <!-- Description, Date, Time left-aligned -->
                                 <p>@evt.Description</p>
                                 <p><strong>Date:</strong> @(DateTime.TryParse(evt.Date, out var dt) ? dt.ToString("MMMM dd, yyyy") : evt.Date)</p>
                                 <p><strong>Time:</strong> @evt.Time</p>
 
-                                <!-- Volunteer button centered -->
                                 <a 
                                     href="@(Context.Session.GetString("UserId") != null 
                                             ? Url.Action("Volunteer", "Events", new { eventId = evt.Id }) 
@@ -182,6 +161,16 @@ body {
                                     class="btn btn-custom">
                                     🤝 Volunteer
                                 </a>
+
+                                @if (Context.Session.GetString("IsAdmin") == "true")
+                                {
+                                    <form asp-action="DeleteEvent" method="post" style="display:inline;">
+                                        <input type="hidden" name="eventId" value="@evt.Id" />
+                                        <button type="submit" class="btn btn-danger btn-sm mt-2" onclick="return confirm('Are you sure you want to delete this event?');">
+                                            🗑 Delete
+                                        </button>
+                                    </form>
+                                }
                             </div>
                         </div>
                     </div>

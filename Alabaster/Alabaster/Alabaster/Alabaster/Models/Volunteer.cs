@@ -5,6 +5,9 @@ namespace Alabaster.Models
 {
     public class Volunteer
     {
+        [BindNever]
+        public string? Id { get; set; } // <-- Add this to store Firebase key
+
         [Required(ErrorMessage = "Please select an event.")]
         [Display(Name = "Event")]
         public string EventId { get; set; }

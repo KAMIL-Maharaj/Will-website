@@ -72,7 +72,6 @@ namespace Alabaster.Controllers
         [HttpGet]
         public async Task<IActionResult> Volunteer(string eventId = null)
         {
-            // Ensure user is logged in
             if (HttpContext.Session.GetString("UserId") == null)
             {
                 TempData["ErrorMessage"] = "You must log in to volunteer.";
@@ -108,14 +107,12 @@ namespace Alabaster.Controllers
         [HttpPost]
         public async Task<IActionResult> Volunteer(Volunteer model)
         {
-            // Ensure user is logged in
             if (HttpContext.Session.GetString("UserId") == null)
             {
                 TempData["ErrorMessage"] = "You must log in to volunteer.";
                 return RedirectToAction("Login", "Auth");
             }
 
-            // Fetch events for dropdown
             var allEvents = await _firebase.Child("Events").OnceAsync<UpcomingEvent>();
             var eventList = allEvents.Select(e =>
             {
@@ -126,7 +123,6 @@ namespace Alabaster.Controllers
 
             ViewBag.Events = eventList;
 
-            // Server-side validation
             if (string.IsNullOrEmpty(model.EventId))
                 ModelState.AddModelError("EventId", "Please select an event.");
 
@@ -135,8 +131,6 @@ namespace Alabaster.Controllers
 
             if (!string.IsNullOrEmpty(model.Phone) && !System.Text.RegularExpressions.Regex.IsMatch(model.Phone, @"^\d{10}$"))
                 ModelState.AddModelError("Phone", "Phone number must be exactly 10 digits.");
-
-            // Notes is optional
 
             if (!ModelState.IsValid)
                 return View(model);
@@ -158,14 +152,12 @@ namespace Alabaster.Controllers
             }
         }
 
-        // GET: /Events/VolunteerThankYou
         [HttpGet]
         public IActionResult VolunteerThankYou()
         {
             return View();
         }
 
-        // GET: /Events/Past
         [HttpGet]
         public async Task<IActionResult> Past()
         {
@@ -180,6 +172,73 @@ namespace Alabaster.Controllers
             .ToList();
 
             return View(pastList);
+        }
+
+        // DELETE events (admin only)
+        [HttpPost]
+        public async Task<IActionResult> DeleteEvent(string eventId)
+        {
+            var isAdmin = HttpContext.Session.GetString("IsAdmin");
+            if (isAdmin != "true")
+                return Unauthorized();
+
+            if (string.IsNullOrEmpty(eventId))
+                return BadRequest("Event ID is required.");
+
+            try
+            {
+                await _firebase.Child("Events").Child(eventId).DeleteAsync();
+                await _firebase.Child("PastEvents").Child(eventId).DeleteAsync();
+
+                TempData["Message"] = "Event deleted successfully.";
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "Failed to delete event: " + ex.Message;
+                return RedirectToAction("Index");
+            }
+        }
+
+        // GET: /Events/ManageVolunteers (Admin only)
+        [HttpGet]
+        public async Task<IActionResult> ManageVolunteers(string eventId = null)
+        {
+            var isAdmin = HttpContext.Session.GetString("IsAdmin");
+            if (isAdmin != "true")
+                return RedirectToAction("Login", "Auth");
+
+            // Get all events
+            var events = await _firebase.Child("Events").OnceAsync<UpcomingEvent>();
+            var eventList = events.Select(e =>
+            {
+                var ev = e.Object;
+                ev.Id = e.Key;
+                return ev;
+            }).OrderBy(e => DateTime.Parse(e.Date)).ToList();
+
+            ViewBag.Events = eventList;
+
+            List<Volunteer> volunteers = new List<Volunteer>();
+
+            if (!string.IsNullOrEmpty(eventId))
+            {
+                // Get volunteers for the selected event
+                var allVolunteers = await _firebase.Child("Volunteers").OnceAsync<Volunteer>();
+                volunteers = allVolunteers
+                    .Select(v =>
+                    {
+                        var vol = v.Object;
+                        vol.Id = v.Key;
+                        return vol;
+                    })
+                    .Where(v => v.EventId == eventId)
+                    .ToList();
+
+                ViewBag.SelectedEventId = eventId;
+            }
+
+            return View(volunteers);
         }
 
         // Move past events from Events to PastEvents in Firebase
