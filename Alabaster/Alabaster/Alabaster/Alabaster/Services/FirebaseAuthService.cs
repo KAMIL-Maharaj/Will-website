@@ -14,7 +14,15 @@ namespace Alabaster.Services
         }
 
         public async Task<FirebaseAuthLink> Register(string email, string password)
-            => await authProvider.CreateUserWithEmailAndPasswordAsync(email, password);
+        {
+            // Create user
+            var user = await authProvider.CreateUserWithEmailAndPasswordAsync(email, password);
+
+            // Send email verification
+            await authProvider.SendEmailVerificationAsync(user.FirebaseToken);
+
+            return user;
+        }
 
         public async Task<FirebaseAuthLink> Login(string email, string password)
             => await authProvider.SignInWithEmailAndPasswordAsync(email, password);

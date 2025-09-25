@@ -1,5 +1,4 @@
 using Firebase.Auth;
-using FirebaseAdmin.Auth;
 using Firebase.Database;
 using Firebase.Database.Query;
 using Microsoft.AspNetCore.Http;
@@ -7,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Alabaster.Services;
 using System;
 using System.Threading.Tasks;
+
+using FirebaseAdminAuth = FirebaseAdmin.Auth.FirebaseAuth;
 
 namespace Alabaster.Controllers
 {
@@ -22,50 +23,43 @@ namespace Alabaster.Controllers
             _dbClient = new FirebaseClient("https://alabaster-8cfcd-default-rtdb.firebaseio.com/");
         }
 
-        [HttpGet("Register")]
-        public IActionResult Register() => View();
+        [HttpGet("Register")] public IActionResult Register() => View();
+        [HttpGet("Login")] public IActionResult Login() => View();
+        [HttpGet("ForgotPassword")] public IActionResult ForgotPassword() => View();
 
-        [HttpGet("Login")]
-        public IActionResult Login() => View();
-
-        [HttpGet("ForgotPassword")]
-        public IActionResult ForgotPassword() => View();
-
+        // ---------------- Registration ----------------
         [HttpPost("Register")]
         public async Task<IActionResult> Register(string email, string password)
         {
             try
             {
+                // Strong password validation
+                if (string.IsNullOrWhiteSpace(password) ||
+                    password.Length < 6 ||
+                    !System.Text.RegularExpressions.Regex.IsMatch(password, @"[A-Z]") ||
+                    !System.Text.RegularExpressions.Regex.IsMatch(password, @"[a-z]") ||
+                    !System.Text.RegularExpressions.Regex.IsMatch(password, @"[0-9]") ||
+                    !System.Text.RegularExpressions.Regex.IsMatch(password, @"[\W_]"))
+                {
+                    ViewBag.Error = "Password must be at least 6 characters and include uppercase, lowercase, number, and special character.";
+                    return View();
+                }
+
                 var result = await _authService.Register(email, password);
 
-                string uid = result.User.LocalId; // FIX: Use LocalId instead of UserUid
-
-                // Store token, email, UID in session
-                HttpContext.Session.SetString("FirebaseToken", result.FirebaseToken);
-                HttpContext.Session.SetString("UserEmail", email);
-                HttpContext.Session.SetString("UserId", uid);
-
-                // Check if user is admin
-                var isAdmin = await _dbClient
-                    .Child("admins")
-                    .Child(uid)
-                    .OnceSingleAsync<bool?>() ?? false;
-
-                HttpContext.Session.SetString("IsAdmin", isAdmin ? "true" : "false");
-
-                TempData["Success"] = "Registration successful! You are now logged in.";
-                return RedirectToAction("Index", "Home");
+                TempData["Success"] = "Registration successful! Please login to continue.";
+                return RedirectToAction("Login"); // Redirect to login page
             }
             catch (Exception ex)
             {
                 string msg = ex.Message;
                 if (msg.Contains("EMAIL_EXISTS")) ViewBag.Error = "Email already exists.";
-                else if (msg.Contains("WEAK_PASSWORD")) ViewBag.Error = "Password too weak (min 6 chars).";
                 else ViewBag.Error = "Registration failed. " + msg;
                 return View();
             }
         }
 
+        // ---------------- Login ----------------
         [HttpPost("Login")]
         public async Task<IActionResult> Login(string email, string password)
         {
@@ -73,14 +67,14 @@ namespace Alabaster.Controllers
             {
                 var result = await _authService.Login(email, password);
 
-                string uid = result.User.LocalId; // FIX: Use LocalId instead of UserUid
+                // No email verification check
 
-                // Store token, email, UID in session
+                string uid = result.User.LocalId;
+
                 HttpContext.Session.SetString("FirebaseToken", result.FirebaseToken);
                 HttpContext.Session.SetString("UserEmail", email);
                 HttpContext.Session.SetString("UserId", uid);
 
-                // Check if user is admin
                 var isAdmin = await _dbClient
                     .Child("admins")
                     .Child(uid)
@@ -104,64 +98,65 @@ namespace Alabaster.Controllers
             }
         }
 
+        // ---------------- Forgot Password ----------------
         [HttpPost("ForgotPassword")]
         public async Task<IActionResult> ForgotPassword(string email)
         {
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                ViewBag.Error = "Please enter an email address.";
+                return View();
+            }
+
             try
             {
                 await _authService.SendPasswordResetEmail(email);
-                ViewBag.Message = "Password reset link sent! Check your email.";
+                ViewBag.Message = "If an account exists with that email, a reset link has been sent.";
             }
             catch (Exception ex)
             {
-                string msg = ex.Message;
+                string msg = ex.Message ?? "";
                 if (msg.Contains("EMAIL_NOT_FOUND"))
                     ViewBag.Error = "No account found with that email.";
                 else
                     ViewBag.Error = "Failed to send reset link. " + msg;
             }
+
             return View();
         }
 
-[HttpPost("GoogleLogin")]
-public async Task<IActionResult> GoogleLogin([FromBody] string idToken)
-{
-    if (string.IsNullOrEmpty(idToken))
-        return Json(new { success = false, error = "No token provided." });
+        // ---------------- Google Login ----------------
+        [HttpPost("GoogleLogin")]
+        public async Task<IActionResult> GoogleLogin([FromBody] string idToken)
+        {
+            if (string.IsNullOrEmpty(idToken))
+                return Json(new { success = false, error = "No token provided." });
 
-    try
-    {
-        // Fully qualified FirebaseAdmin namespace
-        FirebaseAdmin.Auth.FirebaseToken decodedToken = 
-            await FirebaseAdmin.Auth.FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(idToken);
+            try
+            {
+                var decodedToken = await FirebaseAdminAuth.DefaultInstance.VerifyIdTokenAsync(idToken);
 
-        string uid = decodedToken.Uid;
-        string email = decodedToken.Claims.ContainsKey("email") ? decodedToken.Claims["email"].ToString() : null;
+                string uid = decodedToken.Uid;
+                string email = decodedToken.Claims.ContainsKey("email") ? decodedToken.Claims["email"].ToString() : null;
 
-        HttpContext.Session.SetString("FirebaseToken", idToken);
-        HttpContext.Session.SetString("UserEmail", email ?? "");
-        HttpContext.Session.SetString("UserId", uid);
+                HttpContext.Session.SetString("FirebaseToken", idToken);
+                HttpContext.Session.SetString("UserEmail", email ?? "");
+                HttpContext.Session.SetString("UserId", uid);
 
-        // Admin check
-        var isAdmin = await _dbClient
-            .Child("admins")
-            .Child(uid)
-            .OnceSingleAsync<bool?>() ?? false;
+                var isAdmin = await _dbClient
+                    .Child("admins")
+                    .Child(uid)
+                    .OnceSingleAsync<bool?>() ?? false;
 
-        HttpContext.Session.SetString("IsAdmin", isAdmin ? "true" : "false");
+                HttpContext.Session.SetString("IsAdmin", isAdmin ? "true" : "false");
 
-        return Json(new { success = true });
-    }
-    catch (FirebaseAdmin.Auth.FirebaseAuthException ex)
-    {
-        return Json(new { success = false, error = "Token verification failed: " + ex.Message });
-    }
-    catch (Exception ex)
-    {
-        return Json(new { success = false, error = "Unexpected error: " + ex.Message });
-    }
-}
-
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, error = "Token verification failed: " + ex.Message });
+            }
+        }
 
         [HttpGet("Logout")]
         public IActionResult Logout()

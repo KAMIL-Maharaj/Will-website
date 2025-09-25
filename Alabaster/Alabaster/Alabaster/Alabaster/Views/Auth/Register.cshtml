@@ -175,12 +175,13 @@ button.btn-success:hover {
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Password (min 6 chars)" required />
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Password (min 6 chars, uppercase, lowercase, number, special char)" required />
+                    <small class="text-muted">Password must have uppercase, lowercase, number, and special character.</small>
                 </div>
                 <button type="submit" class="btn btn-success w-100">Register</button>
             </form>
 
-            <div class="text-center">
+            <div class="text-center mt-3">
                 <span class="text-muted">Already have an account?
                     <a class="link-custom" href="/Auth/Login">Login</a>
                 </span>
