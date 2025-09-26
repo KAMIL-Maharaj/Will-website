@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
 
     <style>
-        /* Navbar - scaled down 15% */
+        /* Navbar */
         .navbar {
             background: linear-gradient(90deg, #111, #222);
             position: relative;
@@ -163,12 +163,20 @@
             z-index: 1040;
         }
 
-        /* Footer */
-        .footer {
-            padding: 0.15rem 0;
-            font-size: 0.85rem;
-            line-height: 1;
-        }
+/* Footer Styling - matches navbar */
+.footer {
+    width: 100%;
+    height: 50px; /* fixed height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, #111, #222); /* same as navbar */
+    font-size: 0.85rem; /* uniform font size */
+    line-height: 1; /* remove extra spacing */
+    margin-top: 0;
+    padding: 0; /* no extra padding */
+    color: #fff; /* white text */
+}
 
         /* Fix username text height */
         .navbar .user-email {
@@ -269,9 +277,10 @@
     </main>
 </div>
 
-<footer class="footer bg-black text-white text-center">
-    <div class="container">
-        © Alabaster -2025
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        © Alabaster - 2025
     </div>
 </footer>
 
