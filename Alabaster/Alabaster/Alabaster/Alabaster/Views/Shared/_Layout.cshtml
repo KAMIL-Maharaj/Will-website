@@ -16,33 +16,44 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
 
     <style>
+        /* Global 80% scaling */
+        html {
+            font-size: 80%; /* scales all text, buttons, inputs */
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .page-wrapper {
+            flex: 1;
+            transform: scale(0.8);       /* shrink content to 80% */
+            transform-origin: top left;  /* anchor top-left */
+            width: 125%;                 /* compensate for scale */
+        }
+
         /* Navbar */
         .navbar {
             background: linear-gradient(90deg, #111, #222);
-            position: relative;
-            padding-top: 0.425rem;
-            padding-bottom: 0.425rem;
+            padding: 0.75rem 1rem;
         }
-
         .nav-link {
             color: white !important;
             font-weight: 500;
+            font-size: 1rem;
             text-decoration: none !important;
             transition: all 0.3s ease;
-            font-size: 0.655rem;
         }
-
         .nav-link:hover {
             color: #ffb400 !important;
         }
-
         .hamburger-icon {
-            font-size: 1.445rem;
+            font-size: 1.5rem;
             cursor: pointer;
             color: white;
             transition: transform 0.3s ease;
         }
-
         .hamburger-icon:hover {
             transform: scale(1.1);
         }
@@ -50,23 +61,20 @@
         /* Scrolling Saying */
         .navbar-saying-container {
             position: absolute;
-            left: 1.955rem;
-            right: 9.86rem;
+            left: 2rem;
+            right: 10rem;
             overflow: hidden;
             height: 100%;
             display: flex;
             align-items: center;
         }
-
         .navbar-saying {
             color: #ffb400;
             font-style: italic;
             white-space: nowrap;
-            display: inline-block;
-            font-size: 0.655rem;
+            font-size: 1rem;
             animation: floatRight 35s linear infinite;
         }
-
         @@keyframes floatRight {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(calc(100% + 100vw)); }
@@ -84,71 +92,63 @@
             box-shadow: 4px 0 15px rgba(0,0,0,0.5);
             overflow-x: hidden;
             transition: width 0.4s ease;
-            border-radius: 0 0.4375rem 0.4375rem 0;
+            border-radius: 0 0.5rem 0.5rem 0;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
-
         .side-drawer-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.612rem 0.816rem;
+            padding: 1rem;
             background: linear-gradient(90deg, #ffb400, #ff9900);
             color: #111;
-            font-size: 0.85rem;
+            font-size: 1rem;
             font-weight: bold;
         }
-
         .side-drawer .close-btn {
-            font-size: 1.173rem;
+            font-size: 1.5rem;
             cursor: pointer;
             color: #111;
         }
-
         .menu-links {
             flex-grow: 1;
             overflow-y: auto;
-            padding-bottom: 0.816rem;
+            padding: 0.5rem 0;
         }
-
         .menu-item {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
-            padding: 0.65rem 0.95rem;
-            font-size: 0.78rem;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
             color: #f1f1f1;
             text-decoration: none;
             background: rgba(255, 255, 255, 0.05);
-            margin: 0.38rem 0.55rem;
-            border-radius: 0.36rem;
+            margin: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
             transition: all 0.3s ease;
         }
-
         .menu-item i {
-            font-size: 0.92rem;
+            font-size: 1.2rem;
         }
-
         .menu-item:hover {
             background-color: #ffb400;
             color: #111;
-            transform: translateX(0.244rem);
+            transform: translateX(0.25rem);
         }
-
         .drawer-logo {
             position: relative; 
             margin-top: auto;  
             text-align: center;
             padding: 1rem 0;    
         }
-
         .drawer-logo img {
             max-width: 80%;     
             height: auto;
-            border-radius: 0.409rem;
-            box-shadow: 0 0.164rem 0.409rem rgba(0,0,0,0.3);
+            border-radius: 0.5rem;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.3);
         }
 
         /* Overlay */
@@ -163,24 +163,22 @@
             z-index: 1040;
         }
 
-/* Footer Styling - matches navbar */
-.footer {
-    width: 100%;
-    height: 50px; /* fixed height */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(90deg, #111, #222); /* same as navbar */
-    font-size: 0.85rem; /* uniform font size */
-    line-height: 1; /* remove extra spacing */
-    margin-top: 0;
-    padding: 0; /* no extra padding */
-    color: #fff; /* white text */
-}
+        /* Footer Styling */
+        .footer {
+            width: 100%;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(90deg, #111, #222);
+            font-size: 1rem;
+            color: #fff;
+            margin-top: auto;
+        }
 
         /* Fix username text height */
         .navbar .user-email {
-            font-size: 0.655rem; 
+            font-size: 1rem; 
             line-height: 1;
             display: inline-block;
         }
@@ -189,118 +187,106 @@
     @RenderSection("Styles", required: false)
 </head>
 <body>
-<header>
-    <nav class="navbar navbar-dark px-3">
-        <!-- Hamburger -->
-        <span class="hamburger-icon" onclick="openDrawer()">&#9776;</span>
+    <header>
+        <nav class="navbar navbar-dark px-3">
+            <span class="hamburger-icon" onclick="openDrawer()">&#9776;</span>
+            <div class="navbar-saying-container">
+                <span class="navbar-saying">
+                    Then Jesus said to them, "So wherever you go in the world, tell everyone the Good News."
+                </span>
+            </div>
 
-        <!-- Scrolling Saying -->
-        <div class="navbar-saying-container">
-            <span class="navbar-saying">
-                Then Jesus said to them, "So wherever you go in the world, tell everyone the Good News."
-            </span>
+            <ul class="navbar-nav ms-auto flex-row gap-3">
+                @if (Context.Session.GetString("FirebaseToken") != null)
+                {
+                    <li class="nav-item d-flex align-items-center text-white me-2">
+                        <i class="bi bi-person-circle"></i>
+                        <span class="ms-1 user-email">@Context.Session.GetString("UserEmail")</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Auth" asp-action="Logout">
+                            <i class="bi bi-box-arrow-right"></i> Logout
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Auth" asp-action="Login">
+                            <i class="bi bi-box-arrow-in-right"></i> Login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Auth" asp-action="Register">
+                            <i class="bi bi-person-plus"></i> Register
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </header>
+
+    <div id="sideDrawer" class="side-drawer">
+        <div>
+            <div class="side-drawer-header">
+                Menu
+                <span class="close-btn" onclick="closeDrawer()">&times;</span>
+            </div>
+            <div class="menu-links">
+                <a class="menu-item" asp-controller="Home" asp-action="Index"><i class="bi bi-house-door"></i> Home</a>
+                <a class="menu-item" asp-controller="AboutUs" asp-action="Index"><i class="bi bi-info-circle"></i> About Us</a>
+                <a class="menu-item" asp-controller="Events" asp-action="Index"><i class="bi bi-calendar-event"></i> Events</a>
+                <a class="menu-item" asp-controller="Events" asp-action="Past"><i class="bi bi-clock-history"></i> Past Events</a>
+                <a class="menu-item" asp-controller="Events" asp-action="Volunteer"><i class="bi bi-people"></i> Volunteer</a>
+                <a class="menu-item" asp-controller="Testimonies" asp-action="Index"><i class="bi bi-chat-quote"></i> Testimonies</a>
+                <a class="menu-item" asp-controller="Donate" asp-action="Index"><i class="bi bi-heart"></i> Donate</a>
+                <a class="menu-item" asp-controller="Prayer" asp-action="Index"><i class="bi bi-journal"></i> Prayer</a>
+
+                @if (Context.Session.GetString("IsAdmin") == "true")
+                {
+                    <a class="menu-item" asp-controller="Prayer" asp-action="AdminView">
+                        <i class="bi bi-shield-lock"></i> Prayer Requests (Admin)
+                    </a>
+                    <a class="menu-item" asp-controller="Events" asp-action="ManageVolunteers">
+                        <i class="bi bi-person-badge"></i> Manage Volunteers (Admin)
+                    </a>
+                }
+            </div>
         </div>
-
-        <!-- Login/Register / User Info -->
-        <ul class="navbar-nav ms-auto flex-row gap-3">
-            @if (Context.Session.GetString("FirebaseToken") != null)
-            {
-                <li class="nav-item d-flex align-items-center text-white me-2">
-                    <i class="bi bi-person-circle"></i>
-                    <span class="ms-1 user-email">
-                        @Context.Session.GetString("UserEmail")
-                    </span>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Auth" asp-action="Logout">
-                        <i class="bi bi-box-arrow-right"></i> Logout
-                    </a>
-                </li>
-            }
-            else
-            {
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Auth" asp-action="Login">
-                        <i class="bi bi-box-arrow-in-right"></i> Login
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Auth" asp-action="Register">
-                        <i class="bi bi-person-plus"></i> Register
-                    </a>
-                </li>
-            }
-        </ul>
-    </nav>
-</header>
-
-<!-- Side Drawer Menu -->
-<div id="sideDrawer" class="side-drawer">
-    <div>
-        <div class="side-drawer-header">
-            Menu
-            <span class="close-btn" onclick="closeDrawer()">&times;</span>
-        </div>
-        <div class="menu-links">
-            <a class="menu-item" asp-controller="Home" asp-action="Index"><i class="bi bi-house-door"></i> Home</a>
-            <a class="menu-item" asp-controller="AboutUs" asp-action="Index"><i class="bi bi-info-circle"></i> About Us</a>
-            <a class="menu-item" asp-controller="Events" asp-action="Index"><i class="bi bi-calendar-event"></i> Events</a>
-            <a class="menu-item" asp-controller="Events" asp-action="Past"><i class="bi bi-clock-history"></i> Past Events</a>
-            <a class="menu-item" asp-controller="Events" asp-action="Volunteer"><i class="bi bi-people"></i> Volunteer</a>
-            <a class="menu-item" asp-controller="Testimonies" asp-action="Index"><i class="bi bi-chat-quote"></i> Testimonies</a>
-            <a class="menu-item" asp-controller="Donate" asp-action="Index"><i class="bi bi-heart"></i> Donate</a>
-            <a class="menu-item" asp-controller="Prayer" asp-action="Index"><i class="bi bi-journal"></i> Prayer</a>
-
-            @* Admin-only links *@
-            @if (Context.Session.GetString("IsAdmin") == "true")
-            {
-                <a class="menu-item" asp-controller="Prayer" asp-action="AdminView">
-                    <i class="bi bi-shield-lock"></i> Prayer Requests (Admin)
-                </a>
-                <a class="menu-item" asp-controller="Events" asp-action="ManageVolunteers">
-                    <i class="bi bi-person-badge"></i> Manage Volunteers (Admin)
-                </a>
-            }
+        <div class="drawer-logo">
+            <img src="~/Images/logo.jpg" alt="Logo" />
         </div>
     </div>
-    <div class="drawer-logo">
-        <img src="~/Images/logo.jpg" alt="Logo" />
+
+    <div id="menuOverlay" class="overlay" onclick="closeDrawer()"></div>
+
+    <div class="page-wrapper">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
     </div>
-</div>
 
-<!-- Overlay -->
-<div id="menuOverlay" class="overlay" onclick="closeDrawer()"></div>
+    <footer class="footer">
+        <div class="footer-container">
+            © Alabaster - 2025
+        </div>
+    </footer>
 
-<div class="container">
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
-</div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script type="module" src="~/js/firebase-init.js"></script>
 
-<!-- Footer -->
-<footer class="footer">
-    <div class="footer-container">
-        © Alabaster - 2025
-    </div>
-</footer>
-
-<!-- Scripts -->
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
-@await RenderSectionAsync("Scripts", required: false)
-<script type="module" src="~/js/firebase-init.js"></script>
-
-<!-- Drawer Script -->
-<script>
-    function openDrawer() {
-        document.getElementById("sideDrawer").style.width = "340px";
-        document.getElementById("menuOverlay").style.display = "block";
-    }
-    function closeDrawer() {
-        document.getElementById("sideDrawer").style.width = "0";
-        document.getElementById("menuOverlay").style.display = "none";
-    }
-</script>
+    <script>
+        function openDrawer() {
+            document.getElementById("sideDrawer").style.width = "340px";
+            document.getElementById("menuOverlay").style.display = "block";
+        }
+        function closeDrawer() {
+            document.getElementById("sideDrawer").style.width = "0";
+            document.getElementById("menuOverlay").style.display = "none";
+        }
+    </script>
 </body>
 </html>

@@ -19,39 +19,114 @@ h2 {
     font-weight: 900;
     margin-bottom: 20px;
     color: #FFD700; /* golden/yellow like About Us */
-    font-size: 2rem; /* slightly bigger */
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.7); /* subtle shadow */
+    font-size: 2rem;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
 }
 
 .volunteer-container {
-    max-width: 480px;
-    margin: 30px auto; /* compact margin for no scroll */
-    padding: 25px 20px; /* compact padding */
+    margin: 50px auto;
+    padding: 30px 25px;
     background: rgba(255,255,255,0.12);
     backdrop-filter: blur(14px);
     border-radius: 16px;
     box-shadow: 0 12px 28px rgba(0,0,0,0.6);
     color: #fff;
-
-    max-height: calc(100vh - 80px); /* ensure fits screen */
-    overflow: hidden;
+    width: 100%;
+    max-width: 600px; /* keeps it centered and readable */
     animation: fadeIn 0.6s ease;
 }
 
+@@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
+label {
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: block;
+    color: #f0f0f0;
+    font-size: 0.9rem;
+}
 
-@@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-label { font-weight: 600; margin-bottom: 4px; display: block; color: #f0f0f0; font-size: 0.9rem; }
-.form-control { width: 100%; padding: 8px 10px; border-radius: 10px; border: none; margin-bottom: 10px; transition: all 0.3s ease; background: rgba(255,255,255,0.85); color: #333; font-size: 0.9rem; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
-.form-control:focus { border: 1px solid #00c6ff; box-shadow: 0 0 6px rgba(0,198,255,0.7); }
-textarea.form-control { resize: vertical; }
-.text-danger { font-size: 0.7rem; color: #ff4d4d; margin-top: 2px; }
-.alert-success { background-color: rgba(40,167,69,0.2); border: 1px solid #28a745; color: #e9ffe9; font-weight: 700; padding: 10px 14px; border-radius: 10px; margin-bottom: 15px; text-align: center; }
-.btn-success { width: 100%; padding: 10px 0; border-radius: 25px; border: none; font-weight: 700; font-size: 0.95rem; background: linear-gradient(135deg, #28a745, #20c997, #00c6ff); box-shadow: 0 6px 18px rgba(0,198,255,0.5); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-.btn-success:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,198,255,0.7); }
-.form-row { display: flex; gap: 10px; }
-.form-row .form-group { flex: 1; }
-@@media (max-width: 600px) { .volunteer-container { margin: 35px 15px; padding: 20px 15px; } .form-row { flex-direction: column; } h2 { font-size: 1.25rem; } }
+.form-control {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    background: rgba(255,255,255,0.85);
+    color: #333;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.form-control:focus {
+    border: 1px solid #00c6ff;
+    box-shadow: 0 0 6px rgba(0,198,255,0.7);
+}
+
+textarea.form-control {
+    resize: vertical;
+}
+
+.text-danger {
+    font-size: 0.7rem;
+    color: #ff4d4d;
+    margin-top: 2px;
+}
+
+.alert-success {
+    background-color: rgba(40,167,69,0.2);
+    border: 1px solid #28a745;
+    color: #e9ffe9;
+    font-weight: 700;
+    padding: 10px 14px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.btn-success {
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 25px;
+    border: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: linear-gradient(135deg, #28a745, #20c997, #00c6ff);
+    box-shadow: 0 6px 18px rgba(0,198,255,0.5);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(0,198,255,0.7);
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+@@media (max-width: 600px) {
+    .volunteer-container {
+        margin: 35px 15px;
+        padding: 20px 15px;
+    }
+    .form-row {
+        flex-direction: column;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+}
 </style>
 }
 

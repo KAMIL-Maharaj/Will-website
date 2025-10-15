@@ -7,40 +7,39 @@
         /* RESET & BASE */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html, body {
-            height: 100%;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: url('../images/Background4.jpg') center center / cover no-repeat fixed;
             color: #fff;
-            overflow: hidden; /* prevent scrolling */
+            min-height: 100vh;
+            overflow-y: auto; /* allow scrolling */
         }
 
         a { text-decoration: none; color: inherit; }
 
-        /* FULL SCREEN HERO */
+        /* MAIN SECTION */
         .about-section {
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100%;
-            padding: 1rem;
+            align-items: flex-start;
+            padding: 4rem 1rem;
         }
 
         /* GLASS CARD */
-.about-card {
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 2rem;
-    padding: 1.5rem 1.5rem; /* reduced padding */
-    backdrop-filter: blur(25px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 25px 60px rgba(0,0,0,0.5);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem; /* reduced gap */
-    max-width: 800px; /* slightly smaller than before */
-    width: 100%;
-    align-items: center;
-    animation: fadeIn 1.2s ease forwards;
-}
+        .about-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 2rem;
+            padding: 2rem;
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 950px;
+            width: 100%;
+            align-items: center;
+            animation: fadeIn 1.2s ease forwards;
+        }
 
         .about-card:hover {
             transform: translateY(-5px);
@@ -53,7 +52,7 @@
             text-align: center;
             font-size: 3rem;
             color: #FFD700;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             text-shadow: 3px 3px 12px rgba(0,0,0,0.5);
             letter-spacing: 1px;
         }
@@ -63,12 +62,14 @@
             display: grid;
             gap: 1rem;
         }
+
         .about-images img {
             width: 100%;
             border-radius: 1rem;
             object-fit: cover;
             transition: transform 0.35s ease, box-shadow 0.3s ease;
         }
+
         .about-images img:first-child { height: 180px; }
         .about-images img:last-child { width: 180px; height: 180px; }
         .about-images img:hover {
@@ -85,6 +86,7 @@
             position: relative;
             text-shadow: 0 3px 8px rgba(0,0,0,0.5);
         }
+
         .about-content h2::after {
             content: "";
             width: 60px;
@@ -94,12 +96,14 @@
             margin-top: 6px;
             border-radius: 2px;
         }
+
         .about-content p {
-            font-size: 0.92rem;
-            line-height: 1.5;
+            font-size: 0.95rem;
+            line-height: 1.6;
             color: #f1f1f1;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
         }
+
         .about-content p.font-weight-bold {
             font-weight: 700;
             color: #fff;
@@ -107,11 +111,17 @@
 
         /* RESPONSIVE */
         @@media (max-width: 992px) {
-            .about-card { grid-template-columns: 1fr; text-align: center; padding: 1.5rem; }
-            .about-content { margin-top: 1rem; }
+            .about-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 1.8rem;
+            }
+
+            .about-content { margin-top: 1.5rem; }
             .about-images img:first-child { height: 140px; }
             .about-images img:last-child { width: 140px; height: 140px; margin: 0 auto; }
         }
+
         @@media (max-width: 768px) {
             .about-card h1 { font-size: 2.2rem; }
             .about-content h2 { font-size: 1.4rem; }
@@ -144,4 +154,3 @@
         </div>
     </div>
 </div>
-

@@ -4,19 +4,19 @@
 
 @section Styles {
     <style>
-        /* Full-width banner */
+        /* Hero section (full width of page, natural height) */
         .hero {
-            width: 100vw;
-            margin-left: calc(-50vw + 50%);
             position: relative;
             background: url('../images/Donate.jpg') center center / cover no-repeat;
-            height: 245px; /* 350px -> scaled down 30% */
+            width: 100%;
+            height: auto;
+            min-height: 300px; /* ensures visibility but allows natural resizing */
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            text-shadow: 0 1.4px 2.8px rgba(0,0,0,0.6); /* scaled shadow */
-            margin-bottom: 2rem; /* 3rem -> scaled */
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+            margin-bottom: 2rem;
         }
 
         .hero-overlay {
@@ -25,33 +25,34 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.45);
         }
 
         .hero-content {
             position: relative;
             z-index: 1;
             text-align: center;
+            padding: 2rem 1rem;
         }
 
         .hero-content h1 {
-            font-size: 2.1rem; /* display-4 scaled down */
-            font-weight: 700; 
+            font-size: 2.5rem;
+            font-weight: 700;
         }
 
         .hero-content p {
-            font-size: 0.9rem; /* lead text scaled down */
-            margin-top: 0.5rem; /* mt-2 scaled */
+            font-size: 1rem;
+            margin-top: 0.6rem;
         }
 
         .hero-cta {
             display: inline-block;
             margin-top: 1rem;
-            padding: 6px 14px; /* scaled down button/padding */
-            font-size: 0.8rem;
+            padding: 0.6rem 1.2rem;
+            font-size: 0.95rem;
             color: #fff;
             background-color: #4f46e5;
-            border-radius: 5px;
+            border-radius: 6px;
             text-decoration: none;
             transition: background-color 0.3s ease;
         }
@@ -60,34 +61,59 @@
             background-color: #4338ca;
         }
 
-        /* About card styling */
+        /* Main content section */
         .about-card {
-            margin-top: -3.5rem; /* -5rem scaled down */
             background: #fff;
-            border-radius: 0.35rem; /* .5rem scaled */
-            box-shadow: 0 2.8px 8.4px rgba(0,0,0,0.1); /* 4px/12px scaled */
-            padding: 1.4rem; /* 2rem scaled */
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin: 0 auto 3rem auto;
+            max-width: 900px;
         }
 
         .about-image {
             width: 100%;
-            border-radius: 0.35rem; /* .5rem scaled */
+            border-radius: 0.5rem;
             object-fit: cover;
-            max-height: 315px; /* 450px -> scaled */
+            margin-bottom: 1rem;
         }
 
-        /* Gap between card and text content */
         .about-content p {
-            margin-bottom: 0.7rem; /* 1rem -> scaled */
+            margin-bottom: 1rem;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        @@media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+            .hero-cta {
+                font-size: 0.85rem;
+                padding: 0.5rem 1rem;
+            }
         }
     </style>
 }
 
+<!-- HTML -->
 <div class="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-        <h1 class="display-4 font-weight-bold">Donate</h1>
-        <p class="lead mt-2">Then Jesus said to them, "So wherever you go in the world,<br /> tell everyone the Good News."</p>
+        <h1>Donate</h1>
+        <p>Then Jesus said to them, “So wherever you go in the world,<br /> tell everyone the Good News.”</p>
         <a href="/UpcomingEvents/AddUpcomingEvents" class="hero-cta">Add Upcoming Event</a>
+    </div>
+</div>
+
+<div class="about-card">
+    <img src="~/images/DonateMission.jpg" alt="Donation Mission" class="about-image" />
+    <div class="about-content">
+        <p>At Alabaster Box Anointing Ministries, we believe giving is an act of worship. Your generosity helps us reach more souls, support community outreach, and spread the Gospel of Christ.</p>
+        <p>Your donations make it possible to provide meals, resources, and hope to those in need — reminding them of God’s everlasting love and faithfulness.</p>
+        <p><strong>“Give, and it will be given to you.” – Luke 6:38</strong></p>
     </div>
 </div>

@@ -6,27 +6,135 @@
 
 @section Styles {
     <style>
-        body { margin:0; padding:0; background:url('../images/Background4.jpg') center/cover no-repeat fixed; font-family:'Poppins',Arial,sans-serif; color:#fff; font-size:0.8rem; }
-        body::before { content:""; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.7); z-index:-1; }
-        .page-content { padding-bottom:4rem; }
-        .hero { width:100%; padding:1.25rem 0; display:flex; justify-content:center; margin-bottom:1.5rem; text-align:center; }
-        .hero-content { max-width:625px; padding:0.63rem; color:#fff; }
-        .hero-content h1 { font-size:2.25rem; font-weight:900; margin-bottom:0.63rem; text-transform:uppercase; text-shadow:1.25px 1.25px 7px rgba(0,0,0,0.5); }
-        .hero-content a.hero-cta { display:inline-block; margin-top:1rem; padding:0.5rem 1.25rem; background:#fff; color:#ff9800; border-radius:25px; font-weight:700; font-size:0.88rem; text-decoration:none; box-shadow:0 4px 9px rgba(0,0,0,0.25); transition:all 0.3s ease; }
-        .hero-content a.hero-cta:hover { background:#ffcc00; color:#333; transform:translateY(-3px); box-shadow:0 6px 15px rgba(0,0,0,0.35); }
-        .section-title { text-align:center; font-size:1.6rem; font-weight:900; margin-bottom:1.5rem; color:#ffcc00; text-shadow:1.25px 1.25px 6px rgba(0,0,0,0.7); }
-        .testimony-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(225px,1fr)); gap:1.5rem; padding:0 4%; }
-        .testimony-card { background:#fff; border-radius:0.63rem; box-shadow:0 5px 15px rgba(0,0,0,0.25); overflow:hidden; display:flex; flex-direction:column; align-items:center; text-align:center; padding:1rem; color:#333; transition: transform 0.3s ease, box-shadow 0.3s ease; opacity:0; animation:fadeInUp 0.6s ease forwards; }
-        .testimony-card:hover { transform:translateY(-5px) scale(1.03); box-shadow:0 12px 24px rgba(0,0,0,0.3); }
-        .testimony-card img { width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:0.5rem; margin-bottom:0.75rem; }
-        .testimony-card h4 { font-size:1.1rem; font-weight:800; color:#222; margin-bottom:0.5rem; }
-        .testimony-card p { font-size:0.75rem; color:#555; margin-bottom:0.63rem; line-height:1.25; }
-        .testimony-card small { display:block; color:#888; font-size:0.7rem; margin-top:0.13rem; }
-        .no-testimonies { grid-column:1/-1; text-align:center; font-size:1rem; color:#ffcc00; margin:2rem 0; }
+        body { 
+            margin:0; 
+            padding:0; 
+            background:url('../images/Background4.jpg') center/cover no-repeat fixed; 
+            font-family:'Poppins',Arial,sans-serif; 
+            color:#fff; 
+            font-size:1rem; 
+        }
+        body::before { 
+            content:""; 
+            position:fixed; 
+            top:0; left:0; right:0; bottom:0; 
+            background:rgba(0,0,0,0.7); 
+            z-index:-1; 
+        }
+        .page-content { 
+            padding-bottom:4rem; 
+        }
+        .hero { 
+            width:100%; 
+            padding:2rem 0; 
+            display:flex; 
+            justify-content:center; 
+            margin-bottom:2rem; 
+            text-align:center; 
+        }
+        .hero-content { 
+            max-width:700px; 
+            padding:1rem; 
+            color:#fff; 
+        }
+        .hero-content h1 { 
+            font-size:3rem; 
+            font-weight:900; 
+            margin-bottom:1rem; 
+            text-transform:uppercase; 
+            text-shadow:2px 2px 8px rgba(0,0,0,0.5); 
+        }
+        .hero-content a.hero-cta { 
+            display:inline-block; 
+            margin-top:1.25rem; 
+            padding:0.75rem 1.5rem; 
+            background:#fff; 
+            color:#ff9800; 
+            border-radius:25px; 
+            font-weight:700; 
+            font-size:1rem; 
+            text-decoration:none; 
+            box-shadow:0 6px 12px rgba(0,0,0,0.25); 
+            transition:all 0.3s ease; 
+        }
+        .hero-content a.hero-cta:hover { 
+            background:#ffcc00; 
+            color:#333; 
+            transform:translateY(-3px); 
+            box-shadow:0 8px 20px rgba(0,0,0,0.35); 
+        }
+        .section-title { 
+            text-align:center; 
+            font-size:2rem; 
+            font-weight:900; 
+            margin-bottom:2rem; 
+            color:#ffcc00; 
+            text-shadow:2px 2px 6px rgba(0,0,0,0.7); 
+        }
+        .testimony-grid { 
+            display:grid; 
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); 
+            gap:2rem; 
+            padding:0 4%; 
+        }
+        .testimony-card { 
+            background:#fff; 
+            border-radius:0.75rem; 
+            box-shadow:0 8px 24px rgba(0,0,0,0.25); 
+            overflow:hidden; 
+            display:flex; 
+            flex-direction:column; 
+            align-items:center; 
+            text-align:center; 
+            padding:1.25rem; 
+            color:#333; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            opacity:0; 
+            animation:fadeInUp 0.6s ease forwards; 
+        }
+        .testimony-card:hover { 
+            transform:translateY(-5px) scale(1.03); 
+            box-shadow:0 12px 24px rgba(0,0,0,0.3); 
+        }
+        .testimony-card img { 
+            width:100%; 
+            aspect-ratio:4/3; 
+            object-fit:cover; 
+            border-radius:0.5rem; 
+            margin-bottom:1rem; 
+        }
+        .testimony-card h4 { 
+            font-size:1.25rem; 
+            font-weight:800; 
+            color:#222; 
+            margin-bottom:0.75rem; 
+        }
+        .testimony-card p { 
+            font-size:1rem; 
+            color:#555; 
+            margin-bottom:1rem; 
+            line-height:1.5; 
+        }
+        .testimony-card small { 
+            display:block; 
+            color:#888; 
+            font-size:0.9rem; 
+            margin-top:0.25rem; 
+        }
+        .no-testimonies { 
+            grid-column:1/-1; 
+            text-align:center; 
+            font-size:1.2rem; 
+            color:#ffcc00; 
+            margin:2rem 0; 
+        }
         .testimony-card:nth-child(1) { animation-delay:0.1s; }
         .testimony-card:nth-child(2) { animation-delay:0.25s; }
         .testimony-card:nth-child(3) { animation-delay:0.4s; }
-        @@keyframes fadeInUp { from { opacity:0; transform:translateY(15px); } to { opacity:1; transform:translateY(0); } }
+        @@keyframes fadeInUp { 
+            from { opacity:0; transform:translateY(15px); } 
+            to { opacity:1; transform:translateY(0); } 
+        }
     </style>
 }
 
