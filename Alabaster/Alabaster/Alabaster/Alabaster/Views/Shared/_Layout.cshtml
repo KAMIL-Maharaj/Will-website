@@ -26,12 +26,12 @@
             min-height: 100vh;
             margin: 0;
         }
-        .page-wrapper {
-            flex: 1;
-            transform: scale(0.8);       /* shrink content to 80% */
-            transform-origin: top left;  /* anchor top-left */
-            width: 125%;                 /* compensate for scale */
-        }
+.page-wrapper {
+    flex: 1;
+    zoom: 0.8; /* ✅ visually scales but doesn't break layout */
+    width: 100%;
+}
+
 
         /* Navbar */
         .navbar {
