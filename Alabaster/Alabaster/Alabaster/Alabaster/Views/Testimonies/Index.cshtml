@@ -6,14 +6,15 @@
 
 @section Styles {
     <style>
-        body { 
-            margin:0; 
-            padding:0; 
-            background:url('../images/Background4.jpg') center/cover no-repeat fixed; 
-            font-family:'Poppins',Arial,sans-serif; 
-            color:#fff; 
-            font-size:1rem; 
-        }
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url('../images/jesus10.png') center center no-repeat fixed;
+    background-size: contain; /* ensures the whole image is visible */
+    background-color: #000; /* fallback for empty spaces */
+    color: #fff;
+    min-height: 100vh;
+    overflow-y: auto;
+}
         body::before { 
             content:""; 
             position:fixed; 
