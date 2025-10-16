@@ -31,21 +31,38 @@ body {
     z-index: -1;
 }
 
-/* HEADING */
+/* HEADING — SHIMMERING GOLD BOX STYLE (MATCHING TESTIMONIES PAGE) */
 .page-overlay h2 {
-    font-size: 3.8rem; 
+    font-size: 3.8rem; /* same size as testimonies */
     font-weight: 900;
-    text-align: center;
-    margin-bottom: 40px;
+    text-transform: uppercase;
     letter-spacing: 2px;
-    background: linear-gradient(90deg, #FFD700, #ffffff, #FFD700);
+    padding: 1rem 2rem;
+    border-radius: 20px;
+    background: rgba(0,0,0,0.6);
+    border: 2px solid #FFD700;
+    box-shadow: 0 0 20px #FFD700, 0 0 50px rgba(255,215,0,0.5);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+    margin-bottom: 40px;
+    text-align: center;
+
+    /* SHIMMER EFFECT */
+    background-image: linear-gradient(90deg, #FFD700, #ffffff, #FFD700);
     -webkit-background-clip: text;
-    color: transparent;
     background-clip: text;
+    color: transparent;
     background-size: 200% auto;
     animation: shimmer 5s linear infinite;
     text-shadow: 0 0 35px rgba(255, 255, 255, 0.4);
-    text-transform: uppercase;
+    display: inline-block;
+}
+
+.page-overlay h2:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px #FFD700, 0 0 80px rgba(255,215,0,0.6);
 }
 
 @@keyframes shimmer {
@@ -138,7 +155,6 @@ body {
     text-align: center; /* center the event name */
 }
 
-
 .card-body p {
     font-size: 1.15rem;
     color: #f1f1f1;
@@ -207,13 +223,13 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll('.event-card').forEach(card => observer.observe(card));
 
-/* Sparkles effect (exactly same as Upcoming Events) */
+/* Sparkles effect */
 function createSparkle() {
     const sparkle = document.createElement('div');
     sparkle.classList.add('sparkle');
     sparkle.style.left = Math.random() * window.innerWidth + 'px';
     sparkle.style.top = Math.random() * window.innerHeight + 'px';
-    sparkle.style.animationDuration = (2 + Math.random() * 3) + 's'; // same speed
+    sparkle.style.animationDuration = (2 + Math.random() * 3) + 's';
     document.body.appendChild(sparkle);
     setTimeout(() => sparkle.remove(), 5000);
 }
@@ -223,8 +239,9 @@ setInterval(createSparkle, 150);
 }
 
 <div class="page-overlay">
-    <div class="container">
+    <div class="container text-center">
         <h2>🕊 Past Events & Memories 🕊</h2>
+        <br />
         <a href="@Url.Action("Index", "Events")" class="top-button">⬅ Back to Upcoming Events</a>
 
         @if (Model != null && Model.Any())

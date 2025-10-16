@@ -31,21 +31,37 @@ body {
     z-index: -1;
 }
 
-/* HEADING */
+/* HEADING — GOLD BOX + SHIMMER */
 .page-overlay h2 {
     font-size: 3.8rem;
     font-weight: 900;
     text-align: center;
     margin-bottom: 50px;
     letter-spacing: 2px;
-    background: linear-gradient(90deg, #FFD700, #ffffff, #FFD700);
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    border-radius: 20px;
+    border: 2px solid #FFD700;
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 20px #FFD700, 0 0 50px rgba(255, 215, 0, 0.5);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    
+    /* Shimmer effect */
+    background-image: linear-gradient(90deg, #FFD700, #ffffff, #FFD700);
     -webkit-background-clip: text;
     color: transparent;
     background-clip: text;
     background-size: 200% auto;
     animation: shimmer 5s linear infinite;
     text-shadow: 0 0 35px rgba(255, 255, 255, 0.4);
-    text-transform: uppercase;
+}
+
+.page-overlay h2:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px #FFD700, 0 0 80px rgba(255,215,0,0.6);
 }
 
 @@keyframes shimmer {
@@ -56,7 +72,7 @@ body {
 /* TOP BUTTONS */
 .top-buttons {
     display: flex;
-    justify-content: space-between; /* left/right alignment */
+    justify-content: space-between;
     margin-bottom: 40px;
 }
 
@@ -88,14 +104,14 @@ body {
 .btn-primary:hover {
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 10px 30px rgba(0, 198, 255, 0.6);
-    color: #fff; /* ensure text stays white on hover */
+    color: #fff;
 }
 
 /* VIEW PAST EVENTS BUTTON */
 .btn-warning {
-    background: linear-gradient(135deg, #FFD700, #FFCC33); /* yellow gradient */
+    background: linear-gradient(135deg, #FFD700, #FFCC33);
     border: none;
-    color: #000 !important; /* black text always */
+    color: #000 !important;
     font-weight: 700;
     box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
     padding: 14px 28px;
@@ -107,12 +123,8 @@ body {
 .btn-warning:hover {
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 10px 30px rgba(255, 220, 50, 0.6);
-    color: #000 !important; /* ensure text stays black on hover */
+    color: #000 !important;
 }
-
-
-
-
 
 /* EVENT CARDS */
 .event-card {
@@ -224,7 +236,7 @@ body {
     .card-body p { font-size: 1.1rem; }
 }
 
-/* =============== SPARKLES =============== */
+/* SPARKLES */
 .sparkle {
     position: absolute;
     width: 3px;
@@ -261,7 +273,7 @@ function createSparkle() {
     sparkle.classList.add('sparkle');
     sparkle.style.left = Math.random() * window.innerWidth + 'px';
     sparkle.style.top = Math.random() * window.innerHeight + 'px';
-    sparkle.style.animationDuration = (5 + Math.random() * 5) + 's'; // slower sparkle
+    sparkle.style.animationDuration = (5 + Math.random() * 5) + 's';
     document.body.appendChild(sparkle);
     setTimeout(() => sparkle.remove(), 10000);
 }
@@ -270,19 +282,17 @@ setInterval(createSparkle, 200);
 </script>
 }
 
-<div class="page-overlay">
+<div class="page-overlay text-center">
     <div class="container">
         <h2>✨ Upcoming Events ✨</h2>
 
-<div class="top-buttons d-flex justify-content-between">
-    @if (Context.Session.GetString("IsAdmin") == "true")
-    {
-        <a href="@Url.Action("AddEvent", "Events")" class="btn btn-primary">➕ Add Event</a>
-    }
-    <a href="@Url.Action("Past", "Events")" class="btn btn-warning">View Past Events ➡</a>
-</div>
-
-
+        <div class="top-buttons d-flex justify-content-between">
+            @if (Context.Session.GetString("IsAdmin") == "true")
+            {
+                <a href="@Url.Action("AddEvent", "Events")" class="btn btn-primary">➕ Add Event</a>
+            }
+            <a href="@Url.Action("Past", "Events")" class="btn btn-warning">View Past Events ➡</a>
+        </div>
 
         @if (Model != null && Model.Any())
         {
@@ -303,11 +313,10 @@ setInterval(createSparkle, 200);
                                 <p><strong>Date:</strong> @(DateTime.TryParse(evt.Date, out var dt) ? dt.ToString("MMMM dd, yyyy") : evt.Date)</p>
                                 <p><strong>Time:</strong> @evt.Time</p>
 
-                                <a 
-                                    href="@(Context.Session.GetString("UserId") != null 
+                                <a href="@(Context.Session.GetString("UserId") != null 
                                             ? Url.Action("Volunteer", "Events", new { eventId = evt.Id }) 
                                             : Url.Action("Login", "Auth"))" 
-                                    class="btn btn-custom">
+                                   class="btn btn-custom">
                                     🤝 Volunteer
                                 </a>
 

@@ -46,17 +46,21 @@
             transition: all 0.3s ease;
         }
         .nav-link:hover {
-            color: #ffb400 !important;
+            color: #e1a10d !important;
         }
-        .hamburger-icon {
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: white;
-            transition: transform 0.3s ease;
-        }
-        .hamburger-icon:hover {
-            transform: scale(1.1);
-        }
+/* Hamburger Icon */
+.hamburger-icon {
+    font-size: 2rem; /* bigger */
+    cursor: pointer;
+    color: #ffffff; /* golden yellow */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.hamburger-icon:hover {
+    transform: scale(1.15);
+    color: #fff; /* optional hover highlight */
+}
+
 
         /* Scrolling Saying */
         .navbar-saying-container {
@@ -69,11 +73,11 @@
             align-items: center;
         }
         .navbar-saying {
-            color: #ffb400;
+            color: hsl(42, 100%, 50%);
             font-style: italic;
             white-space: nowrap;
             font-size: 1rem;
-            animation: floatRight 35s linear infinite;
+            animation: floatRight 39s linear infinite;
         }
         @@keyframes floatRight {
             0% { transform: translateX(-100%); }

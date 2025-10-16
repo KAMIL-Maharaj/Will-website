@@ -2,188 +2,205 @@
     ViewData["Title"] = "Prayer Request";
 }
 
+@section Styles {
 <style>
-/* 🌌 Global Background */
-body {
-    font-family: 'Poppins', 'Segoe UI', sans-serif;
-    background: url('../images/jesus10.png') center center no-repeat fixed;
-    background-size: cover;
-    background-color: #000;
-    color: #fff;
+/* ===== BASE STYLING ===== */
+html, body {
+    height: 100%;
     margin: 0;
-    padding: 0;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    color: #fff;
+}
+
+body {
+    background: url('../images/book2.png') center center / cover no-repeat fixed;
     overflow-x: hidden;
-}
-
-/* ✨ Overlay to darken bright areas */
-.page-overlay {
     position: relative;
-    padding: 100px 20px;
-    z-index: 1;
 }
 
-.page-overlay::before {
+/* CINEMATIC DARK OVERLAY */
+body::before {
     content: "";
-    position: absolute;
+    position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: -1;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.95)),
+                radial-gradient(circle at bottom, rgba(255,215,0,0.15), rgba(0,0,0,0.9));
+    z-index: 0;
 }
 
-/* 🌟 Prayer Card */
-.page-container {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 40px 35px;
-    border-radius: 20px;
-    background: rgba(15, 15, 15, 0.75);
-    backdrop-filter: blur(18px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75);
+/* ===== PAGE CONTAINER ===== */
+.prayer-form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+    padding: 2rem;
     position: relative;
+    z-index: 2;
     opacity: 0;
-    transform: translateY(50px) scale(0.98);
-    animation: fadeUpCard 0.8s forwards;
+    transform: translateY(40px);
+    animation: fadeInUp 1.2s ease-out forwards;
 }
 
-/* Floating glow behind card */
-.page-container::after {
+/* ===== FORM CARD ===== */
+/* ===== FORM CARD ===== */
+.prayer-form {
+    width: 100%;
+    max-width: 660px;
+    padding: 2.5rem 2rem;
+    background: rgba(15,15,15,0.75);
+    border-radius: 1.5rem;
+    backdrop-filter: blur(20px) saturate(180%);
+    box-shadow: 0 0 40px rgba(255,215,0,0.3);
+    border: 1px solid rgba(255,215,0,0.2);
+    position: relative;
+    overflow: hidden;
+
+    /* SCALE ENTIRE CARD BY 10% */
+    transform: scale(1.1);
+    transform-origin: top center;
+}
+
+
+/* GOLDEN LIGHT SWEEP */
+.prayer-form::before {
     content: "";
     position: absolute;
-    inset: 0;
-    border-radius: 20px;
-    background: linear-gradient(45deg, rgba(255, 215, 0, 0.15), rgba(255, 140, 0, 0.1));
-    z-index: -1;
-    filter: blur(25px);
-    animation: glowPulse 3s ease-in-out infinite alternate;
+    top: 0; left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,215,0,0.3), transparent);
+    animation: lightSweep 6s infinite linear;
 }
 
-/* 💫 Heading shimmer */
-h2 {
+/* ===== HEADER ===== */
+.prayer-form h2 {
     text-align: center;
-    margin-bottom: 2rem;
-    font-size: 3rem;
+    font-size: 2.4rem;
     font-weight: 900;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    background: linear-gradient(90deg, #ffb347, #ffcc33, #fff2a8);
+    background: linear-gradient(90deg, #FFD700, #fff, #FFD700);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     background-size: 200% auto;
-    animation: shimmer 5s linear infinite, fadeUp 1.2s ease forwards;
-    text-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+    animation: shimmer 4s linear infinite;
+    text-shadow: 0 0 25px rgba(255,255,255,0.4);
 }
 
-/* 💬 Labels & Inputs */
-.form-label {
+/* ===== FORM ELEMENTS ===== */
+.form-group {
+    margin-bottom: 1.5rem;
+    animation: fadeIn 1s ease both;
+}
+
+.form-group:nth-child(odd) { animation-delay: 0.3s; }
+.form-group:nth-child(even) { animation-delay: 0.6s; }
+
+label {
+    display: block;
     font-weight: 600;
-    color: #fff;
     margin-bottom: 0.5rem;
+    color: #FFD700;
     font-size: 1rem;
-    letter-spacing: 0.5px;
 }
 
-.form-control {
-    font-size: 1rem;
-    padding: 0.9rem 1rem;
-    border-radius: 10px;
-    border: none;
-    background: rgba(255, 255, 255, 0.95);
-    color: #222;
-    box-shadow: inset 0 2px 6px rgba(0,0,0,0.2);
-    transition: all 0.3s ease, transform 0.3s ease;
-}
-
-.form-control:focus {
-    border: 2px solid #FFD700;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
-    transform: scale(1.02);
-}
-
-/* ✨ Success Alert */
-.alert-success {
-    background: rgba(40, 167, 69, 0.2);
-    border: 1px solid #28a745;
-    color: #c9ffc9;
-    font-weight: 600;
-    padding: 12px;
-    border-radius: 10px;
-    margin-bottom: 1rem;
-    text-align: center;
-    animation: fadeUp 1s ease forwards;
-}
-
-/* 🙏 Button */
-.btn-primary {
-    background: linear-gradient(135deg, #FFD700, #FFA500, #FFB347);
-    border: none;
-    font-weight: 800;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    color: #000;
-    letter-spacing: 1px;
-    padding: 0.9rem;
-    border-radius: 35px;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(255, 200, 0, 0.4);
-    transition: all 0.3s ease;
+.form-control, textarea {
     width: 100%;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.3);
+    color: #fff;
+    transition: all 0.3s ease;
 }
 
-.btn-primary:hover {
-    transform: translateY(-3px) scale(1.05) rotate(-1deg);
-    box-shadow: 0 12px 30px rgba(255, 220, 50, 0.7);
+.form-control::placeholder,
+textarea::placeholder {
+    color: #FFD700;
+    opacity: 0.7;
 }
 
-/* Animations */
+.form-control:focus, textarea:focus {
+    border-color: #FFD700;
+    box-shadow: 0 0 10px rgba(255,215,0,0.4);
+}
+
+/* ===== SUBMIT BUTTON ===== */
+.btn-submit {
+    width: 100%;
+    padding: 0.9rem;
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 0.6rem;
+    color: #000;
+    background: linear-gradient(90deg, #FFD700, #FFB700, #FFD700);
+    background-size: 200% auto;
+    animation: shimmer 5s linear infinite;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1.5rem;
+}
+
+.btn-submit:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255,215,0,0.6);
+}
+
+/* ===== ANIMATIONS ===== */
+@@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 @@keyframes shimmer {
     0% { background-position: 0% 50%; }
     100% { background-position: 200% 50%; }
 }
 
-@@keyframes fadeUp {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
+@@keyframes lightSweep {
+    0% { left: -75%; }
+    100% { left: 125%; }
 }
 
-@@keyframes fadeUpCard {
-    0% { opacity: 0; transform: translateY(50px) scale(0.98); }
-    100% { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-@@keyframes glowPulse {
-    0% { filter: blur(20px) opacity(0.7); }
-    50% { filter: blur(30px) opacity(1); }
-    100% { filter: blur(20px) opacity(0.7); }
-}
-
-/* 🌌 Floating particles */
-.particle {
-    position: absolute;
-    background: rgba(255, 215, 0, 0.3);
+/* ===== FLOATING PARTICLES ===== */
+.sparkle {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    background: rgba(255,215,0,0.9);
     border-radius: 50%;
-    width: 6px;
-    height: 6px;
+    box-shadow: 0 0 8px rgba(255,215,0,0.8);
     pointer-events: none;
-    animation: floatParticle linear infinite;
+    animation: sparkleAnim linear infinite;
+    z-index: 1;
 }
 
-@@keyframes floatParticle {
-    0% { transform: translateY(0) translateX(0) scale(1); opacity: 1; }
-    50% { transform: translateY(-80px) translateX(15px) scale(0.8); opacity: 0.6; }
-    100% { transform: translateY(0) translateX(0) scale(1); opacity: 1; }
+@@keyframes sparkleAnim {
+    0% { transform: translateY(0) scale(0.5); opacity: 0; }
+    50% { transform: translateY(-25px) scale(1); opacity: 1; }
+    100% { transform: translateY(-50px) scale(0.5); opacity: 0; }
 }
 
-/* 📱 Responsive */
 @@media (max-width: 768px) {
-    .page-container { padding: 25px 20px; margin: 0 10px; }
-    h2 { font-size: 2.3rem; }
+    .prayer-form h2 { font-size: 1.8rem; }
 }
 </style>
+}
 
-<div class="page-overlay">
-    <div class="page-container">
+<div class="prayer-form-container">
+    <div class="prayer-form">
         <h2>🙏 Submit a Prayer Request 🙏</h2>
 
         @if (TempData["Success"] != null)
@@ -192,34 +209,33 @@ h2 {
         }
 
         <form asp-action="Submit" method="post" class="mt-3">
-            <div class="mb-3">
-                <label for="name" class="form-label">Your Name</label>
+            <div class="form-group">
+                <label>Your Name</label>
                 <input type="text" name="name" class="form-control" placeholder="Enter your name" required />
             </div>
 
-            <div class="mb-3">
-                <label for="request" class="form-label">Your Prayer Request</label>
+            <div class="form-group">
+                <label>Your Prayer Request</label>
                 <textarea name="request" class="form-control" rows="4" placeholder="Write your prayer here..." required></textarea>
             </div>
 
-            <div class="d-grid">
-                <button type="submit" class="btn-primary">Send Request</button>
-            </div>
+            <button type="submit" class="btn-submit">Send Request</button>
         </form>
     </div>
-
-    <!-- Floating Particles -->
-    <script>
-        const particleCount = 30;
-        for(let i=0; i<particleCount; i++){
-            const p = document.createElement('div');
-            p.classList.add('particle');
-            p.style.left = Math.random() * 100 + '%';
-            p.style.top = Math.random() * 100 + '%';
-            p.style.width = (Math.random()*4+3) + 'px';
-            p.style.height = p.style.width;
-            p.style.animationDuration = (Math.random()*4+4) + 's';
-            document.querySelector('.page-overlay').appendChild(p);
-        }
-    </script>
 </div>
+
+@section Scripts {
+<script>
+    // Floating sparkles
+    function createSparkle() {
+        const sparkle = document.createElement('div');
+        sparkle.classList.add('sparkle');
+        sparkle.style.left = Math.random() * window.innerWidth + 'px';
+        sparkle.style.top = Math.random() * window.innerHeight + 'px';
+        sparkle.style.animationDuration = (2 + Math.random() * 3) + 's';
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 4000);
+    }
+    setInterval(createSparkle, 150);
+</script>
+}

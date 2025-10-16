@@ -4,6 +4,7 @@
 
 @section Styles {
 <style>
+/* ===== BASE ===== */
 body {
     font-family: 'Poppins', 'Segoe UI', sans-serif;
     background: url('../images/jesus10.png') center center / cover no-repeat fixed;
@@ -12,14 +13,15 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    position: relative;
 }
 
-/* ===== OVERLAY ===== */
+/* ===== DARK OVERLAY ===== */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.75);
     z-index: -1;
 }
 
@@ -37,10 +39,10 @@ body::before {
 
 .particle {
     position: absolute;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 215, 0, 0.8);
     border-radius: 50%;
     filter: blur(2px);
-    animation: float 10s linear infinite;
+    animation: float 12s linear infinite;
 }
 
 @@keyframes float {
@@ -51,37 +53,97 @@ body::before {
 
 /* ===== HERO SECTION ===== */
 .hero {
-    padding: 120px 20px 60px 20px;
+    padding: 160px 20px 100px 20px;
     text-align: center;
     position: relative;
     overflow: hidden;
+    z-index: 1;
 }
 
 .hero h1 {
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: 900;
-    background: linear-gradient(90deg, #FFD700, #ffcc33, #ffffff);
+    background: linear-gradient(90deg, #FFD700, #FFAA00, #ffffff);
     -webkit-background-clip: text;
     color: transparent;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 1rem;
     animation: shimmer 5s linear infinite;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
 }
 
 .hero p {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     line-height: 1.6;
-    margin-bottom: 2rem;
-    max-width: 700px;
+    margin-bottom: 2.5rem;
+    max-width: 750px;
     margin-left: auto;
     margin-right: auto;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
 }
 
-@@keyframes shimmer {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 200% 50%; }
+.hero-cta {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, #FFD700, #FFAA00);
+    color: #000;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.3rem;
+    font-weight: 800;
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.hero-cta:hover {
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: 0 14px 35px rgba(255, 215, 0, 0.7);
+}
+
+/* ===== SECTIONS ===== */
+.section {
+    padding: 100px 20px;
+    text-align: center;
+    position: relative;
+}
+
+.section h2 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin-bottom: 40px;
+    color: #FFD700;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+    text-transform: uppercase;
+}
+
+.section p {
+    font-size: 1.3rem;
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.7;
+    color: #eee;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.2);
+}
+
+/* ===== BUTTONS ===== */
+.section a.btn {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-decoration: none;
+    background: linear-gradient(135deg, #FFD700, #FFAA00);
+    color: #000;
+    box-shadow: 0 8px 20px rgba(255, 170, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.section a.btn:hover {
+    transform: translateY(-3px) scale(1.08);
+    box-shadow: 0 14px 35px rgba(255, 170, 0, 0.7);
 }
 
 /* ===== YOUTUBE PLAYER ===== */
@@ -94,15 +156,15 @@ body::before {
     height: 0;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-    border: 4px solid rgba(0,191,255,0.7);
+    box-shadow: 0 15px 50px rgba(255, 215, 0, 0.5);
+    border: 4px solid rgba(255, 215, 0, 0.4);
     background-color: #000;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .youtube-player:hover {
-    transform: scale(1.02);
-    box-shadow: 0 20px 60px rgba(0,191,255,0.8);
+    transform: scale(1.03);
+    box-shadow: 0 20px 60px rgba(255, 215, 0, 0.7);
 }
 
 .youtube-player iframe {
@@ -114,82 +176,63 @@ body::before {
     border: 0;
 }
 
-/* ===== BUTTON ===== */
-.hero-cta {
-    display: inline-block;
+/* ===== MISSION & VISION CARDS ===== */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
     margin-top: 2rem;
-    padding: 0.8rem 2rem;
-    background: linear-gradient(135deg, #00c6ff, #0072ff);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    box-shadow: 0 6px 18px rgba(0,198,255,0.5);
-    transition: all 0.3s ease;
 }
 
-.hero-cta:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 12px 35px rgba(0,198,255,0.7);
-}
-
-/* ===== SECTIONS ===== */
-.section {
-    padding: 80px 20px;
+.card {
+    background: rgba(255, 215, 0, 0.1);
+    border: 2px solid #FFD700;
+    border-radius: 20px;
+    padding: 2rem;
+    width: 300px;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.section h2 {
-    font-size: 2.5rem;
-    font-weight: 900;
-    margin-bottom: 40px;
-    color: #FFD700;
-    text-shadow: 0 0 10px rgba(255,215,0,0.6);
-}
-
-.section p {
-    font-size: 1.2rem;
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.6;
-    color: #eee;
-}
-
-/* ===== BUTTONS IN SECTIONS ===== */
-.section a.btn {
-    display: inline-block;
-    margin-top: 2rem;
-    padding: 12px 28px;
-    border-radius: 50px;
+.card h3 {
+    font-size: 1.8rem;
     font-weight: 700;
-    font-size: 1.1rem;
-    text-decoration: none;
-    background: linear-gradient(135deg, #FFD700, #FFAA00);
-    color: #000;
-    box-shadow: 0 6px 18px rgba(255, 170, 0, 0.5);
-    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+    color: #FFD700;
 }
 
-.section a.btn:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 12px 35px rgba(255, 170, 0, 0.7);
+.card p {
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 15px 50px rgba(255, 215, 0, 0.6);
 }
 
 /* ===== RESPONSIVE ===== */
+@@media (max-width: 992px) {
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 @@media (max-width: 768px) {
     .hero h1 {
-        font-size: 2.2rem;
+        font-size: 2.8rem;
     }
     .hero p, .section p {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
     .section h2 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
     .hero-cta, .section a.btn {
         font-size: 1rem;
-        padding: 10px 20px;
+        padding: 10px 22px;
     }
 }
 </style>
@@ -201,11 +244,43 @@ body::before {
 <!-- ===== HERO ===== -->
 <div class="hero">
     <h1>Welcome to Alabaster Box</h1>
-    <p>“Then Jesus said to them, ‘So wherever you go in the world, tell everyone the Good News.’”</p>
-    <a href="https://www.youtube.com/%40Naartjie00" target="_blank" class="hero-cta">Visit Our YouTube Channel</a>
+    <p>Your place of worship, inspiration, and spreading the Good News through acts of love and service.</p>
+    <a href="/Donate" class="hero-cta">Support Our Ministry</a>
 </div>
 
-<!-- ===== YOUTUBE PLAYER ===== -->
+<!-- ===== ABOUT SECTION ===== -->
+<div class="section" id="about">
+    <h2>About Alabaster Box</h2>
+    <p>
+        Alabaster Box Anointing Ministries is committed to inspiring, teaching, and guiding people to live in faith, love, and purpose. 
+        We create opportunities to worship, learn, volunteer, and share blessings with our community.
+    </p>
+    <a class="btn" asp-controller="AboutUs" asp-action="Index">Learn More</a>
+</div>
+
+<!-- ===== MISSION & VISION ===== -->
+<div class="section" id="mission">
+    <h2>Our Mission & Vision</h2>
+    <div class="cards-container">
+        <div class="card">
+            <h3>Our Mission</h3>
+            <p>To bring the light of Christ into every life through teaching, community outreach, and acts of love.</p>
+        </div>
+        <div class="card">
+            <h3>Our Vision</h3>
+            <p>To create a community of faith, hope, and service where everyone can experience God's love daily.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===== EVENTS / TEACHINGS ===== -->
+<div class="section" id="events">
+    <h2>Join Our Events & Teachings</h2>
+    <p>We host worship services, volunteer events, and teaching sessions to help you grow spiritually and connect with others.</p>
+    <a href="/Events" class="btn">See Upcoming Events</a>
+</div>
+
+<!-- ===== YOUTUBE VIDEO ===== -->
 @if (!string.IsNullOrEmpty((string?)ViewBag.YouTubeVideoId))
 {
     <div class="youtube-player">
@@ -215,40 +290,15 @@ body::before {
         </iframe>
     </div>
 }
-else
-{
-    <p class="text-muted">We couldn’t find any videos to display right now.</p>
-}
-
-<!-- ===== ABOUT SECTION ===== -->
-<div class="section" id="about">
-    <h2>About Alabaster Box</h2>
-    <p>
-        Alabaster Box is a place for inspiration, worship, and spreading the Good News. 
-        Join our community, watch our teachings, and volunteer to make a difference.
-    </p>
-    <a href="/About" class="btn">Learn More</a>
-</div>
 
 <!-- ===== JOIN US SECTION ===== -->
 <div class="section" id="join">
     <h2>Join Our Community</h2>
-    <p>
-        Be part of something bigger. Stay updated on events, volunteer opportunities, and uplifting messages.
-    </p>
-    <a href="/Volunteer" class="btn">Volunteer Now</a>
+    <p>Be part of something bigger. Volunteer, participate in events, or simply stay inspired through our teachings.</p>
+    <a class="btn" asp-controller="Events" asp-action="Volunteer">Volunteer Now</a>
 </div>
 
-<!-- ===== CONTACT / SOCIAL SECTION ===== -->
-<div class="section" id="contact">
-    <h2>Connect With Us</h2>
-    <p>
-        Follow us on social media, reach out, and become part of our family. 
-        Together we can share hope and positivity.
-    </p>
-    <a href="https://www.facebook.com/" target="_blank" class="btn">Facebook</a>
-    <a href="https://www.instagram.com/" target="_blank" class="btn">Instagram</a>
-</div>
+
 
 @section Scripts {
 <script>
@@ -263,7 +313,7 @@ function createParticle() {
     particle.style.height = size + 'px';
     particle.style.left = Math.random() * window.innerWidth + 'px';
     particle.style.animationDuration = (5 + Math.random() * 10) + 's';
-    particle.style.background = `rgba(255,255,255,${Math.random() * 0.8 + 0.2})`;
+    particle.style.background = `rgba(255,215,0,${Math.random() * 0.6 + 0.3})`;
     particleContainer.appendChild(particle);
 
     setTimeout(() => {
@@ -271,7 +321,6 @@ function createParticle() {
     }, 15000); // remove after animation
 }
 
-// Create multiple particles at intervals
 setInterval(createParticle, 150);
 </script>
 }

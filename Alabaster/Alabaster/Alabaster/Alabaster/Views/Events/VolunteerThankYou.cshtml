@@ -5,98 +5,152 @@
 
 @section Styles {
 <style>
+/* ===== BASE STYLING ===== */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: url('../images/jesus10.png') center center no-repeat fixed;
-    background-size: contain; /* ensures the whole image is visible */
-    background-color: #000; /* fallback for empty spaces */
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    background: url('../images/jesus10.png') center center / cover no-repeat fixed;
+    background-color: #000;
     color: #fff;
-    min-height: 100vh;
-    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow-x: hidden;
 }
 
+/* CINEMATIC OVERLAY */
 body::before {
     content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.55);
-    backdrop-filter: blur(2px);
-    z-index: -1;
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.95)),
+                radial-gradient(circle at bottom, rgba(255,215,0,0.15), rgba(0,0,0,0.9));
+    z-index: 0;
 }
 
-/* Container section */
-.thank-you-container {
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(14px);
-    padding: 40px 50px;
-    border-radius: 16px;
-    box-shadow: 0 12px 28px rgba(0,0,0,0.6);
+/* ===== THANK YOU CARD ===== */
+.thank-you-card {
     max-width: 600px;
-    margin: 80px auto;
+    margin: 100px auto;
+    padding: 40px 30px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(18px) saturate(180%);
+    border-radius: 20px;
+    border: 1px solid rgba(255,215,0,0.25);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.6);
     text-align: center;
-    color: #fff;
-    animation: fadeIn 0.6s ease forwards;
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 1s ease forwards;
 }
 
-/* Heading */
-h2 {
+/* GOLDEN SHIMMER HEADING */
+.thank-you-card h2 {
+    font-size: 2.4rem;
     font-weight: 900;
-    font-size: 2rem;
     margin-bottom: 20px;
-    letter-spacing: 0.5px;
-    text-shadow: 1.5px 1.5px 6px rgba(0,0,0,0.8);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, #FFD700, #fff, #FFD700);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    animation: shimmer 4s linear infinite;
+    text-shadow: 0 0 15px rgba(255,255,255,0.2);
 }
 
-/* Paragraph */
-p {
-    font-size: 1rem;
+/* MESSAGE */
+.thank-you-card p {
+    font-size: 1.1rem;
+    color: #fff;
     margin-bottom: 30px;
-    color: #f0f0f0;
+    line-height: 1.5;
 }
 
-/* Button */
-.btn-primary {
-    background: linear-gradient(135deg, #28a745, #20c997, #00c6ff);
-    border: none;
-    padding: 12px 30px;
+/* BUTTON */
+.btn-back {
+    padding: 12px 28px;
     font-size: 1rem;
     font-weight: 700;
-    border-radius: 25px;
-    color: #fff;
+    text-transform: uppercase;
+    border-radius: 35px;
+    border: none;
+    color: #000;
+    background: linear-gradient(90deg, #FFD700, #FFB700, #FFD700);
+    background-size: 200% auto;
     cursor: pointer;
-    box-shadow: 0 6px 18px rgba(0,198,255,0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 20px rgba(255,215,0,0.5);
+    transition: all 0.3s ease;
     text-decoration: none;
     display: inline-block;
+    animation: shimmer 5s linear infinite;
 }
 
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 28px rgba(0,198,255,0.7);
-    text-decoration: none;
+.btn-back:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 10px 28px rgba(255,215,0,0.7);
 }
 
-/* Animation */
-@@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+/* ===== FLOATING PARTICLES ===== */
+.sparkle {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    background: rgba(255,215,0,0.9);
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(255,215,0,0.8);
+    pointer-events: none;
+    animation: sparkleAnim linear infinite;
+    z-index: 1;
 }
 
-/* Responsive tweaks */
-@@media (max-width: 600px) {
-    .thank-you-container {
-        margin: 40px 20px;
-        padding: 25px 20px;
+/* ===== ANIMATIONS ===== */
+@@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@@keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+@@keyframes sparkleAnim {
+    0% { transform: translateY(0) scale(0.5); opacity: 0; }
+    50% { transform: translateY(-25px) scale(1); opacity: 1; }
+    100% { transform: translateY(-50px) scale(0.5); opacity: 0; }
+}
+
+/* RESPONSIVE */
+@@media (max-width: 768px) {
+    .thank-you-card {
+        margin: 60px 20px;
+        padding: 30px 20px;
     }
-    h2 { font-size: 1.5rem; }
-    p { font-size: 0.9rem; }
+    .thank-you-card h2 { font-size: 1.8rem; }
+    .thank-you-card p { font-size: 1rem; }
 }
 </style>
 }
 
-<div class="thank-you-container">
+<div class="thank-you-card">
     <h2>Thank You for Volunteering!</h2>
     <p>Your volunteer information has been successfully submitted.</p>
-    <a href="/Events" class="btn btn-primary">Back to Events</a>
+    <a href="/Events" class="btn-back">Back to Events</a>
 </div>
+
+@section Scripts {
+<script>
+    // Floating sparkles
+    function createSparkle() {
+        const sparkle = document.createElement('div');
+        sparkle.classList.add('sparkle');
+        sparkle.style.left = Math.random() * window.innerWidth + 'px';
+        sparkle.style.top = Math.random() * window.innerHeight + 'px';
+        sparkle.style.animationDuration = (2 + Math.random() * 3) + 's';
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 4000);
+    }
+    setInterval(createSparkle, 150);
+</script>
+}
