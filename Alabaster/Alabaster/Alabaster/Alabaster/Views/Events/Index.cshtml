@@ -8,15 +8,15 @@
 /* =============== GLOBAL =============== */
 body {
     font-family: 'Poppins', 'Segoe UI', sans-serif;
-    background: url('../images/jesus10.png') center center no-repeat fixed;
-    background-size: cover;
+    background: url('../images/jesus10.png') center center / cover no-repeat fixed;
     background-color: #000;
     color: #fff;
     min-height: 100vh;
     overflow-x: hidden;
+    position: relative;
 }
 
-/* =============== PAGE WRAPPER =============== */
+/* PAGE WRAPPER */
 .page-overlay {
     padding: 80px 15px;
     position: relative;
@@ -31,12 +31,12 @@ body {
     z-index: -1;
 }
 
-/* =============== HEADING =============== */
+/* HEADING */
 .page-overlay h2 {
-    font-size: 3.2rem;
+    font-size: 3.8rem;
     font-weight: 900;
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     letter-spacing: 2px;
     background: linear-gradient(90deg, #FFD700, #ffffff, #FFD700);
     -webkit-background-clip: text;
@@ -53,41 +53,68 @@ body {
     100% { background-position: 200% 50%; }
 }
 
-/* =============== BUTTONS =============== */
+/* TOP BUTTONS */
 .top-buttons {
-    text-align: center;
+    display: flex;
+    justify-content: space-between; /* left/right alignment */
     margin-bottom: 40px;
 }
 
 .top-buttons a {
-    margin: 0 10px;
     border-radius: 30px;
     font-weight: 700;
-    padding: 12px 26px;
-    font-size: 1rem;
+    padding: 14px 28px;
+    font-size: 1.1rem;
     text-transform: uppercase;
     transition: all 0.3s ease;
+    text-decoration: none;
     color: #fff;
     box-shadow: 0 0 15px rgba(0, 198, 255, 0.4);
 }
 
+/* ADD EVENT BUTTON */
 .btn-primary {
     background: linear-gradient(135deg, #0072ff, #00c6ff);
     border: none;
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 0 8px 25px rgba(0, 198, 255, 0.4);
+    padding: 14px 28px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
 }
 
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 198, 255, 0.6);
+    color: #fff; /* ensure text stays white on hover */
+}
+
+/* VIEW PAST EVENTS BUTTON */
 .btn-warning {
-    background: linear-gradient(135deg, #FFD700, #FFA500);
+    background: linear-gradient(135deg, #FFD700, #FFCC33); /* yellow gradient */
     border: none;
-    color: #000;
+    color: #000 !important; /* black text always */
+    font-weight: 700;
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+    padding: 14px 28px;
+    border-radius: 30px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
 }
 
-.top-buttons a:hover {
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+.btn-warning:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(255, 220, 50, 0.6);
+    color: #000 !important; /* ensure text stays black on hover */
 }
 
-/* =============== EVENT CARDS =============== */
+
+
+
+
+/* EVENT CARDS */
 .event-card {
     border: none;
     border-radius: 20px;
@@ -112,7 +139,7 @@ body {
     box-shadow: 0 25px 50px rgba(255, 255, 255, 0.2);
 }
 
-/* =============== IMAGE SECTION =============== */
+/* IMAGE */
 .image-wrapper {
     position: relative;
     width: 100%;
@@ -135,81 +162,111 @@ body {
     filter: brightness(1.05);
 }
 
-/* =============== CARD BODY =============== */
+/* CARD BODY */
 .card-body {
     padding: 25px;
-    text-align: center;
+    text-align: left;
 }
 
 .card-body h5 {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 15px;
-    color: #fff;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+    font-size: 1.9rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    color: #FFD700;
+    text-shadow: 0 0 12px rgba(255,215,0,0.6);
+    text-align: center;
 }
 
 .card-body p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: #f1f1f1;
-    line-height: 1.7;
-    margin-bottom: 10px;
+    line-height: 1.8;
+    margin-bottom: 12px;
 }
 
 .card-body strong {
     color: #FFD700;
 }
 
-/* =============== BUTTONS (Inside Card) =============== */
+/* VOLUNTEER BUTTON */
 .btn-custom {
-    background: linear-gradient(135deg, #ff6a00, #ee0979);
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    background: linear-gradient(135deg, #ffb347, #ffcc33);
     border: none;
-    border-radius: 25px;
-    padding: 12px 22px;
-    font-weight: 700;
-    font-size: 1rem;
-    color: #fff;
+    border-radius: 35px;
+    padding: 14px 0;
+    font-weight: 800;
+    font-size: 1.15rem;
+    color: #111;
     transition: all 0.3s ease;
     margin-top: 12px;
     text-transform: uppercase;
-    box-shadow: 0 0 12px rgba(255, 105, 180, 0.4);
+    box-shadow: 0 8px 25px rgba(255, 200, 0, 0.4);
 }
 
 .btn-custom:hover {
     transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+    box-shadow: 0 10px 30px rgba(255, 220, 50, 0.6);
 }
 
-/* =============== RESPONSIVE =============== */
+/* RESPONSIVE */
 @@media (max-width: 992px) {
-    .page-overlay h2 {
-        font-size: 2.5rem;
-    }
+    .page-overlay h2 { font-size: 3rem; }
+    .card-body h5 { font-size: 1.7rem; }
+    .card-body p { font-size: 1.15rem; }
 }
 
 @@media (max-width: 768px) {
-    .page-overlay h2 {
-        font-size: 2rem;
-    }
-    .card-body h5 {
-        font-size: 1.3rem;
-    }
-    .card-body p {
-        font-size: 1rem;
-    }
+    .page-overlay h2 { font-size: 2.5rem; }
+    .card-body h5 { font-size: 1.5rem; }
+    .card-body p { font-size: 1.1rem; }
+}
+
+/* =============== SPARKLES =============== */
+.sparkle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: rgba(255, 215, 0, 0.9);
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+    pointer-events: none;
+    animation: sparkleAnim linear infinite;
+    z-index: 0;
+}
+
+@@keyframes sparkleAnim {
+    0% { transform: translateY(0) scale(0.5); opacity: 0; }
+    50% { transform: translateY(-25px) scale(1); opacity: 1; }
+    100% { transform: translateY(-50px) scale(0.5); opacity: 0; }
 }
 </style>
 
 @section Scripts {
 <script>
-    // Fade-in animation for cards on scroll
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-    }, { threshold: 0.2 });
+/* Fade-in observer for event cards */
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add('visible');
+    });
+}, { threshold: 0.2 });
 
-    document.querySelectorAll('.event-card').forEach(card => observer.observe(card));
+document.querySelectorAll('.event-card').forEach(card => observer.observe(card));
+
+/* Sparkles effect */
+function createSparkle() {
+    const sparkle = document.createElement('div');
+    sparkle.classList.add('sparkle');
+    sparkle.style.left = Math.random() * window.innerWidth + 'px';
+    sparkle.style.top = Math.random() * window.innerHeight + 'px';
+    sparkle.style.animationDuration = (5 + Math.random() * 5) + 's'; // slower sparkle
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 10000);
+}
+
+setInterval(createSparkle, 200);
 </script>
 }
 
@@ -217,13 +274,15 @@ body {
     <div class="container">
         <h2>✨ Upcoming Events ✨</h2>
 
-        <div class="top-buttons mb-4">
-            @if (Context.Session.GetString("IsAdmin") == "true")
-            {
-                <a href="@Url.Action("AddEvent", "Events")" class="btn btn-primary">➕ Add Event</a>
-            }
-            <a href="@Url.Action("Past", "Events")" class="btn btn-warning">📜 View Past Events</a>
-        </div>
+<div class="top-buttons d-flex justify-content-between">
+    @if (Context.Session.GetString("IsAdmin") == "true")
+    {
+        <a href="@Url.Action("AddEvent", "Events")" class="btn btn-primary">➕ Add Event</a>
+    }
+    <a href="@Url.Action("Past", "Events")" class="btn btn-warning">View Past Events ➡</a>
+</div>
+
+
 
         @if (Model != null && Model.Any())
         {

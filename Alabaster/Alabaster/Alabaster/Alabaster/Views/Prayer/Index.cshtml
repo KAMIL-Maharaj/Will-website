@@ -12,6 +12,7 @@ body {
     color: #fff;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 /* ✨ Overlay to darken bright areas */
@@ -29,7 +30,35 @@ body {
     z-index: -1;
 }
 
-/* 🕊 Heading with gold shimmer */
+/* 🌟 Prayer Card */
+.page-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 35px;
+    border-radius: 20px;
+    background: rgba(15, 15, 15, 0.75);
+    backdrop-filter: blur(18px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75);
+    position: relative;
+    opacity: 0;
+    transform: translateY(50px) scale(0.98);
+    animation: fadeUpCard 0.8s forwards;
+}
+
+/* Floating glow behind card */
+.page-container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    background: linear-gradient(45deg, rgba(255, 215, 0, 0.15), rgba(255, 140, 0, 0.1));
+    z-index: -1;
+    filter: blur(25px);
+    animation: glowPulse 3s ease-in-out infinite alternate;
+}
+
+/* 💫 Heading shimmer */
 h2 {
     text-align: center;
     margin-bottom: 2rem;
@@ -42,32 +71,8 @@ h2 {
     background-clip: text;
     color: transparent;
     background-size: 200% auto;
-    animation: shimmer 5s linear infinite;
-    text-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
-}
-
-@@keyframes shimmer {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 200% 50%; }
-}
-
-/* 🌟 Prayer Card */
-.page-container {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 40px 35px;
-    border-radius: 20px;
-    background: rgba(15, 15, 15, 0.75);
-    backdrop-filter: blur(18px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75);
-    animation: fadeUp 0.8s ease;
-    transform: translateY(0);
-}
-
-@@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+    animation: shimmer 5s linear infinite, fadeUp 1.2s ease forwards;
+    text-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
 }
 
 /* 💬 Labels & Inputs */
@@ -87,12 +92,13 @@ h2 {
     background: rgba(255, 255, 255, 0.95);
     color: #222;
     box-shadow: inset 0 2px 6px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
+    transition: all 0.3s ease, transform 0.3s ease;
 }
 
 .form-control:focus {
     border: 2px solid #FFD700;
     box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+    transform: scale(1.02);
 }
 
 /* ✨ Success Alert */
@@ -105,6 +111,7 @@ h2 {
     border-radius: 10px;
     margin-bottom: 1rem;
     text-align: center;
+    animation: fadeUp 1s ease forwards;
 }
 
 /* 🙏 Button */
@@ -125,31 +132,53 @@ h2 {
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 10px 30px rgba(255, 220, 50, 0.6);
+    transform: translateY(-3px) scale(1.05) rotate(-1deg);
+    box-shadow: 0 12px 30px rgba(255, 220, 50, 0.7);
 }
 
-/* 💫 Glow around the form */
-.page-container::after {
-    content: "";
+/* Animations */
+@@keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+@@keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@@keyframes fadeUpCard {
+    0% { opacity: 0; transform: translateY(50px) scale(0.98); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@@keyframes glowPulse {
+    0% { filter: blur(20px) opacity(0.7); }
+    50% { filter: blur(30px) opacity(1); }
+    100% { filter: blur(20px) opacity(0.7); }
+}
+
+/* 🌌 Floating particles */
+.particle {
     position: absolute;
-    inset: 0;
-    border-radius: 20px;
-    background: linear-gradient(45deg, rgba(255, 215, 0, 0.15), rgba(255, 140, 0, 0.1));
-    z-index: -1;
-    filter: blur(25px);
+    background: rgba(255, 215, 0, 0.3);
+    border-radius: 50%;
+    width: 6px;
+    height: 6px;
+    pointer-events: none;
+    animation: floatParticle linear infinite;
+}
+
+@@keyframes floatParticle {
+    0% { transform: translateY(0) translateX(0) scale(1); opacity: 1; }
+    50% { transform: translateY(-80px) translateX(15px) scale(0.8); opacity: 0.6; }
+    100% { transform: translateY(0) translateX(0) scale(1); opacity: 1; }
 }
 
 /* 📱 Responsive */
 @@media (max-width: 768px) {
-    .page-container {
-        padding: 25px 20px;
-        margin: 0 10px;
-    }
-
-    h2 {
-        font-size: 2.3rem;
-    }
+    .page-container { padding: 25px 20px; margin: 0 10px; }
+    h2 { font-size: 2.3rem; }
 }
 </style>
 
@@ -178,4 +207,19 @@ h2 {
             </div>
         </form>
     </div>
+
+    <!-- Floating Particles -->
+    <script>
+        const particleCount = 30;
+        for(let i=0; i<particleCount; i++){
+            const p = document.createElement('div');
+            p.classList.add('particle');
+            p.style.left = Math.random() * 100 + '%';
+            p.style.top = Math.random() * 100 + '%';
+            p.style.width = (Math.random()*4+3) + 'px';
+            p.style.height = p.style.width;
+            p.style.animationDuration = (Math.random()*4+4) + 's';
+            document.querySelector('.page-overlay').appendChild(p);
+        }
+    </script>
 </div>
