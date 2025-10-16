@@ -46,9 +46,9 @@ button.accept-policy[b-bwpo1mta79] {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(90deg, #111, #222);
+    background: linear-gradient(90deg, #000000, #000000);
     font-size: 1rem;
-    color: #fff;
+    color: #000000;
     margin-top: auto;  /* push footer to bottom */
     position: relative; /* remove absolute */
 }

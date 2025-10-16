@@ -3,39 +3,74 @@
 }
 
 <style>
+/* === BODY & BACKGROUND === */
 body {
-    background: url('@Url.Content("~/Images/Background2.png")') no-repeat center center fixed;
-    background-size: cover;
+    background: #000 url('@Url.Content("~/Images/login1.png")') no-repeat left center fixed;
+    background-size: contain;
+    background-position: left center;
     min-height: 100vh;
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 11px;
+    color: #fff;
 }
 
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.3);
+    z-index: 0;
+}
+
+/* === MAIN WRAPPER === */
 .main-wrapper {
+    position: relative;
+    z-index: 1;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    min-height: calc(100vh - 80px);
+    min-height: 100vh;
     padding-top: 70px;
-    padding-bottom: 42px;
+    padding-bottom: 40px;
+    padding-right: 6%;
+    animation: fadeIn 1s ease forwards;
 }
 
+@@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* === AUTH CARD === */
 .auth-container {
     display: flex;
     background-color: #fff;
-    border-radius: 21px;
-    box-shadow: 0 17px 35px rgba(0, 0, 0, 0.15);
+    border-radius: 23px;
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    max-width: 700px;
+    max-width: 770px;
     width: 100%;
-    margin: auto;
-    min-height: 490px;
+    min-height: 540px;
+    transform: scale(1.05);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    margin-top: 50px;
 }
 
+.auth-container:hover {
+    transform: scale(1.07) translateY(-5px);
+    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* === FORM SIDE === */
 .auth-form {
-    padding: 42px 42px;
+    padding: 48px 48px;
     flex: 1;
+    animation: fadeInForm 1s ease forwards;
+}
+
+@@keyframes fadeInForm {
+    from { opacity: 0; transform: translateX(-20px);}
+    to { opacity: 1; transform: translateX(0);}
 }
 
 .auth-image {
@@ -43,118 +78,115 @@ body {
     background: url('@Url.Content("~/Images/logo.jpg")') center center no-repeat;
     background-size: contain;
     background-color: #ffffff;
-    min-height: 490px;
-    padding: 21px;
+    min-height: 540px;
+    padding: 24px;
     border-left: 1px solid #e5e7eb;
 }
 
+/* === TITLES === */
 .auth-title {
-    font-size: 22px;
+    font-size: 28px;
     font-weight: 900;
-    color: #047857;
-    margin-bottom: 21px;
+    color: #1e3a8a;
+    margin-bottom: 24px;
     text-align: center;
+    opacity: 0;
+    animation: fadeInText 1s ease 0.3s forwards;
 }
 
+@@keyframes fadeInText {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* === LABELS & INPUTS === */
 label.form-label {
     font-weight: 700;
-    font-size: 0.8rem;
+    font-size: 1rem;
+    color: #000;
 }
 
 input.form-control {
-    font-size: 0.7rem;
-    padding: 7px 8px;
-    border-radius: 6px;
+    font-size: 0.9rem;
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
-.form-control:focus {
-    border-color: #22c55e;
-    box-shadow: 0 0 0 0.21rem rgba(34, 197, 94, 0.3);
+input.form-control:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 12px rgba(99,102,241,0.6);
+    transform: scale(1.01);
 }
 
-button.btn-success {
-    background-color: #16a34a;
-    border-color: #16a34a;
-    font-size: 0.8rem;
-    padding: 8px 0;
-    border-radius: 7px;
+/* === BUTTONS === */
+button.btn-primary, button.btn-success {
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    border: none;
+    font-size: 0.9rem;
+    padding: 10px 0;
+    border-radius: 10px;
     font-weight: 700;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    color: #fff;
+    box-shadow: 0 5px 12px rgba(79,70,229,0.4);
 }
 
+button.btn-primary:hover,
 button.btn-success:hover {
-    background-color: #15803d;
-    border-color: #15803d;
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(79,70,229,0.5);
 }
 
+/* === LINKS & TEXT === */
 .link-custom {
-    color: #16a34a;
+    color: #4f46e5;
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
 }
 
 .link-custom:hover {
+    color: #1e3a8a;
     text-decoration: underline;
 }
 
 .text-center {
     text-align: center;
-    font-size: 0.75rem;
-    margin-top: 14px;
+    font-size: 0.85rem;
+    margin-top: 16px;
 }
 
 .alert {
-    font-size: 0.65rem;
-    margin-top: 14px;
+    font-size: 0.75rem;
+    margin-bottom: 14px;
     padding: 10px 14px;
     border-radius: 7px;
+    animation: fadeInAlert 0.6s ease forwards;
 }
 
-/* Responsive */
+@@keyframes fadeInAlert {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+hr {
+    margin: 30px 0 24px;
+    border-color: #ddd;
+    border-width: 1px;
+}
+
+/* === RESPONSIVE === */
 @@media (max-width: 768px) {
-    .auth-container {
-        flex-direction: column;
-        max-width: 90vw;
-        min-height: auto;
-    }
-
-    .auth-image {
-        height: 245px;
-        border-left: none;
-        border-top: 1px solid #e5e7eb;
-        padding: 14px;
-        min-height: auto;
-    }
-
-    .main-wrapper {
-        padding-top: 70px;
-    }
-
-    .auth-form {
-        padding: 28px 21px;
-    }
-
-    .auth-title {
-        font-size: 20px;
-        margin-bottom: 18px;
-    }
-
-    label.form-label,
-    .link-custom,
-    .text-center {
-        font-size: 0.7rem;
-    }
-
-    input.form-control {
-        font-size: 0.65rem;
-        padding: 7px 8px;
-    }
-
-    button.btn-success {
-        font-size: 0.7rem;
-        padding: 6px 0;
-    }
+    .main-wrapper { justify-content: center; padding-right: 0; }
+    .auth-container { flex-direction: column; max-width: 90vw; min-height: auto; transform: none; }
+    .auth-image { height: 245px; border-left: none; border-top: 1px solid #e5e7eb; padding: 14px; min-height: auto; }
+    .auth-form { padding: 28px 21px; }
+    .auth-title { font-size: 22px; margin-bottom: 18px; }
+    label.form-label, .link-custom, .text-center { font-size: 0.85rem; }
+    input.form-control { font-size: 0.85rem; padding: 9px 10px; }
+    button.btn-primary, button.btn-success { font-size: 0.85rem; padding: 8px 0; }
 }
 </style>
 
@@ -175,10 +207,10 @@ button.btn-success:hover {
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Password (min 6 chars, uppercase, lowercase, number, special char)" required />
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" required />
                     <small class="text-muted">Password must have uppercase, lowercase, number, and special character.</small>
                 </div>
-                <button type="submit" class="btn btn-success w-100">Register</button>
+                <button type="submit" class="btn btn-primary w-100">Register</button>
             </form>
 
             <div class="text-center mt-3">
@@ -186,8 +218,51 @@ button.btn-success:hover {
                     <a class="link-custom" href="/Auth/Login">Login</a>
                 </span>
             </div>
+
+            <hr />
+            <button id="google-signin-btn" class="btn btn-danger w-100 mt-3">
+                <i class="bi bi-google"></i> Sign in with Google
+            </button>
         </div>
 
         <div class="auth-image d-none d-md-block"></div>
     </div>
 </div>
+
+@section Scripts {
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyBEjxaEf_S9x9NZhmJrWwHLDdZvoyDajDg",
+        authDomain: "alabaster-8cfcd.firebaseapp.com",
+        projectId: "alabaster-8cfcd",
+        storageBucket: "alabaster-8cfcd.appspot.com",
+        messagingSenderId: "1014314025942",
+        appId: "1:1014314025942:web:fedff22641b2b8bd219a77"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({ prompt: 'select_account' });
+
+    document.getElementById("google-signin-btn").addEventListener("click", async () => {
+        try {
+            const result = await signInWithPopup(auth, provider);
+            const idToken = await result.user.getIdToken();
+
+            const resp = await fetch("/Auth/GoogleLogin", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(idToken)
+            });
+
+            const data = await resp.json();
+            if (data.success) { window.location.href = "/Home/Index"; }
+            else { alert("Google Login failed: " + data.error); }
+        } catch (err) { alert("Google Sign-In Error: " + err.message); }
+    });
+</script>
+}
