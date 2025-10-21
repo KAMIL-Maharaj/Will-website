@@ -7,22 +7,44 @@
 @section Styles {
 <style>
 html, body {
+    height: 100%;
+    margin: 0;
     font-family: 'Poppins', 'Segoe UI', sans-serif;
-    background: url('../images/jesus10.png') center center / cover no-repeat fixed;
-    background-color: #000;
     color: #fff;
-    min-height: 100vh;
+}
+
+body {
+    /* Updated background image */
+    background: url('../images/cross12.png') center -10% / cover no-repeat fixed;
     overflow-x: hidden;
     position: relative;
 }
 
-/* DARK OVERLAY */
+/* Ensure page-content pushes footer down */
+html, body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-content {
+    flex: 1 0 auto; /* Take remaining space before footer */
+    padding-bottom: 4rem; /* Extra padding so footer is not too close */
+}
+
+/* Footer stays naturally at the bottom */
+footer {
+    flex-shrink: 0;
+}
+
+
+/* Updated cinematic page overlay */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.95);
-    z-index: -1;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 0;
 }
 
 /* PAGE CONTENT */
@@ -31,7 +53,7 @@ body::before {
     max-width: 1400px;
     margin: 0 auto;
     position: relative;
-    z-index: 1;
+    z-index: 2; /* Above overlay */
 }
 
 /* HERO SECTION */
@@ -46,7 +68,7 @@ body::before {
 
 /* HERO HEADING — SHIMMERING GOLD BOX */
 .hero h1 {
-    font-size: 3.8rem; /* same as events page */
+    font-size: 3.8rem;
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -101,7 +123,7 @@ body::before {
     background: linear-gradient(135deg, #FFCC33, #FF9900);
 }
 
-/* SECTION TITLE — SMALLER AND CLEANER */
+/* SECTION TITLE */
 .section-title {
     font-size: 2.5rem;
     font-weight: 800;
@@ -129,12 +151,11 @@ body::before {
     position: fixed;
     width: 3px;
     height: 3px;
-    background: #FFD700;
+    background: rgba(255,215,0,0.9);
     border-radius: 50%;
     pointer-events: none;
-    z-index: 0;
+    z-index: 1;
     animation: sparkleAnim linear infinite;
-    opacity: 0.8;
 }
 
 @@keyframes sparkleAnim {
