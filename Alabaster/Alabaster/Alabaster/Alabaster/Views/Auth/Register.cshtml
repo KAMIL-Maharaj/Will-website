@@ -121,21 +121,21 @@ input.form-control:focus {
 
 /* === BUTTONS === */
 button.btn-primary, button.btn-success {
-    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    background: linear-gradient(135deg, #FFD700, #FFB700, #FFD700); /* gold-orange gradient */
     border: none;
     font-size: 0.9rem;
     padding: 10px 0;
     border-radius: 10px;
     font-weight: 700;
     transition: all 0.3s ease;
-    color: #fff;
-    box-shadow: 0 5px 12px rgba(79,70,229,0.4);
+    color: #000; /* black text for contrast */
+    box-shadow: 0 5px 12px rgba(255,215,0,0.4);
 }
 
 button.btn-primary:hover,
 button.btn-success:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(79,70,229,0.5);
+    box-shadow: 0 8px 20px rgba(255,215,0,0.6);
 }
 
 /* === LINKS & TEXT === */
@@ -187,6 +187,10 @@ hr {
     label.form-label, .link-custom, .text-center { font-size: 0.85rem; }
     input.form-control { font-size: 0.85rem; padding: 9px 10px; }
     button.btn-primary, button.btn-success { font-size: 0.85rem; padding: 8px 0; }
+}
+.text-center a.link-custom {
+    font-size: 1rem;  /* slightly bigger */
+    font-weight: 700;  /* bold */
 }
 </style>
 
