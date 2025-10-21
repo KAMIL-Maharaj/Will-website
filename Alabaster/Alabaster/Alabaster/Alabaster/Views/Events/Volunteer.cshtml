@@ -7,44 +7,47 @@
 
 @section Styles {
 <style>
-/* ===== BASE STYLING ===== */
+/* ===== GLOBAL BODY ===== */
 html, body {
     margin: 0;
     font-family: 'Poppins', 'Segoe UI', sans-serif;
     color: #fff;
-}
-
-body {
-    background: url('../images/book2.png') center center / cover no-repeat fixed;
-    background-color: #000;
+    min-height: 100vh;
     overflow-x: hidden;
     position: relative;
 }
 
-/* CINEMATIC OVERLAY */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.95)),
-                radial-gradient(circle at bottom, rgba(255,215,0,0.15), rgba(0,0,0,0.9));
-    z-index: 0;
+/* ===== BACKGROUND IMAGE ===== */
+body {
+  background: url('../images/cross12.png') center -10% / cover no-repeat fixed;
+    background-color: #000;
 }
 
-/* ===== FORM CARD ===== */
+/* ===== CINEMATIC OVERLAY ===== */
+.page-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: -1;
+}
+
+/* ===== VOLUNTEER CARD ===== */
 .volunteer-card {
     width: 100%;
     max-width: 660px;
-    margin: 80px auto; /* just margin on top & bottom, keeps footer intact */
+    margin: 80px auto;
     padding: 2.5rem 2rem;
-    background: rgba(255,255,255,0.1);
+    background: rgba(0, 0, 0, 0.55); /* darker background */
     border-radius: 1.5rem;
     backdrop-filter: blur(20px);
-    box-shadow: 0 0 40px rgba(255,215,0,0.3);
-    border: 1px solid rgba(255,215,0,0.2);
+    box-shadow: 0 0 40px rgba(255,215,0,0.25); /* slightly softer glow */
+    border: 1px solid rgba(255,215,0,0.15); /* softer border */
     position: relative;
     overflow: hidden;
+    z-index: 1;
 }
+
 
 /* GOLDEN LIGHT SWEEP */
 .volunteer-card::before {
@@ -57,7 +60,7 @@ body::before {
     animation: lightSweep 6s infinite linear;
 }
 
-/* ===== HEADER ===== */
+/* CARD HEADER */
 .volunteer-card h2 {
     text-align: center;
     font-size: 2.4rem;
@@ -74,10 +77,8 @@ body::before {
     text-shadow: 0 0 25px rgba(255,255,255,0.4);
 }
 
-/* ===== FORM ELEMENTS ===== */
-.form-group {
-    margin-bottom: 1.5rem;
-}
+/* FORM ELEMENTS */
+.form-group { margin-bottom: 1.5rem; }
 
 label {
     display: block;
@@ -104,7 +105,7 @@ label {
     box-shadow: 0 0 10px rgba(255,215,0,0.4);
 }
 
-/* ===== SUBMIT BUTTON ===== */
+/* SUBMIT BUTTON */
 .btn-submit {
     width: 100%;
     padding: 0.9rem;
@@ -127,7 +128,7 @@ label {
     box-shadow: 0 0 25px rgba(255,215,0,0.6);
 }
 
-/* ===== ANIMATIONS ===== */
+/* ANIMATIONS */
 @@keyframes shimmer {
     0% { background-position: 0% 50%; }
     100% { background-position: 200% 50%; }
@@ -138,7 +139,7 @@ label {
     100% { left: 125%; }
 }
 
-/* ===== FLOATING PARTICLES ===== */
+/* SPARKLES */
 .sparkle {
     position: fixed;
     width: 3px;
@@ -157,89 +158,92 @@ label {
     100% { transform: translateY(-50px) scale(0.5); opacity: 0; }
 }
 
+/* RESPONSIVE */
 @@media (max-width: 768px) {
     .volunteer-card h2 { font-size: 1.8rem; }
 }
 </style>
 }
 
-<div class="volunteer-card">
-    <h2>🙌 Volunteer for an Event 🙌</h2>
+<div class="page-overlay">
+    <div class="volunteer-card">
+        <h2>🙌 Volunteer for an Event 🙌</h2>
 
-    @if (TempData["Message"] != null)
-    {
-        <div class="alert-success">@TempData["Message"]</div>
-    }
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert-success">@TempData["Message"]</div>
+        }
 
-    <form asp-action="Volunteer" method="post" novalidate>
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form asp-action="Volunteer" method="post" novalidate>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-        <div class="form-group">
-            <label>Select Event</label>
-            <select asp-for="EventId" class="form-control">
-                <option value="">-- Select Event --</option>
-                @foreach (var evt in (List<Alabaster.Models.UpcomingEvent>)ViewBag.Events)
-                {
-                    <option value="@evt.Id" selected="@(Model.EventId == evt.Id)">
-                        @evt.Name (@evt.Date)
-                    </option>
-                }
-            </select>
-            <span asp-validation-for="EventId" class="text-danger"></span>
-        </div>
+            <div class="form-group">
+                <label>Select Event</label>
+                <select asp-for="EventId" class="form-control">
+                    <option value="">-- Select Event --</option>
+                    @foreach (var evt in (List<Alabaster.Models.UpcomingEvent>)ViewBag.Events)
+                    {
+                        <option value="@evt.Id" selected="@(Model.EventId == evt.Id)">
+                            @evt.Name (@evt.Date)
+                        </option>
+                    }
+                </select>
+                <span asp-validation-for="EventId" class="text-danger"></span>
+            </div>
 
-        <div class="form-group">
-            <label>Name</label>
-            <input asp-for="Name" class="form-control" />
-            <span asp-validation-for="Name" class="text-danger"></span>
-        </div>
+            <div class="form-group">
+                <label>Name</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
 
-        <div class="form-group">
-            <label>ID Number</label>
-            <input asp-for="IdNumber" class="form-control" maxlength="13" pattern="\d{13}" />
-            <span asp-validation-for="IdNumber" class="text-danger"></span>
-        </div>
+            <div class="form-group">
+                <label>ID Number</label>
+                <input asp-for="IdNumber" class="form-control" maxlength="13" pattern="\d{13}" />
+                <span asp-validation-for="IdNumber" class="text-danger"></span>
+            </div>
 
-        <div class="form-group">
-            <label>Email</label>
-            <input asp-for="Email" type="email" class="form-control" />
-            <span asp-validation-for="Email" class="text-danger"></span>
-        </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input asp-for="Email" type="email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
 
-        <div class="form-group">
-            <label>Phone</label>
-            <input asp-for="Phone" class="form-control" maxlength="10" pattern="\d{10}" />
-            <span asp-validation-for="Phone" class="text-danger"></span>
-        </div>
+            <div class="form-group">
+                <label>Phone</label>
+                <input asp-for="Phone" class="form-control" maxlength="10" pattern="\d{10}" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
 
-        <div class="form-group">
-            <label>Notes / Allergies (optional)</label>
-            <textarea asp-for="Notes" class="form-control" rows="3"></textarea>
-            <span asp-validation-for="Notes" class="text-danger"></span>
-        </div>
+            <div class="form-group">
+                <label>Notes / Allergies (optional)</label>
+                <textarea asp-for="Notes" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
 
-        <div class="form-group">
-            <label>Number of Volunteers</label>
-            <input asp-for="NumberOfVolunteers" type="number" class="form-control" min="1" value="1" />
-            <span asp-validation-for="NumberOfVolunteers" class="text-danger"></span>
-        </div>
+            <div class="form-group">
+                <label>Number of Volunteers</label>
+                <input asp-for="NumberOfVolunteers" type="number" class="form-control" min="1" value="1" />
+                <span asp-validation-for="NumberOfVolunteers" class="text-danger"></span>
+            </div>
 
-        <button type="submit" class="btn-submit">Submit</button>
-    </form>
+            <button type="submit" class="btn-submit">Submit</button>
+        </form>
+    </div>
 </div>
 
 @section Scripts {
 <script>
-    // Floating sparkles
-    function createSparkle() {
-        const sparkle = document.createElement('div');
-        sparkle.classList.add('sparkle');
-        sparkle.style.left = Math.random() * window.innerWidth + 'px';
-        sparkle.style.top = Math.random() * window.innerHeight + 'px';
-        sparkle.style.animationDuration = (2 + Math.random() * 3) + 's';
-        document.body.appendChild(sparkle);
-        setTimeout(() => sparkle.remove(), 4000);
-    }
-    setInterval(createSparkle, 150);
+/* Floating sparkles */
+function createSparkle() {
+    const sparkle = document.createElement('div');
+    sparkle.classList.add('sparkle');
+    sparkle.style.left = Math.random() * window.innerWidth + 'px';
+    sparkle.style.top = Math.random() * window.innerHeight + 'px';
+    sparkle.style.animationDuration = (2 + Math.random() * 3) + 's';
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 4000);
+}
+setInterval(createSparkle, 150);
 </script>
 }

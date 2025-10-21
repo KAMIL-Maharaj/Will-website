@@ -11,51 +11,50 @@ html, body {
     height: 100%;
     margin: 0;
     font-family: 'Poppins', 'Segoe UI', sans-serif;
-    background: url('../images/jesus10.png') center center / cover no-repeat fixed;
+  background: url('../images/cross12.png') center -10% / cover no-repeat fixed;
     background-color: #000;
     color: #fff;
     overflow-x: hidden;
     position: relative;
 }
 
-/* CINEMATIC DARK OVERLAY */
+/* UPDATED OVERLAY (same as Volunteer/Add Event pages) */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.85);
+    background: rgba(0, 0, 0, 0.35);
     z-index: 0;
 }
 
-/* ===== PAGE CONTAINER ===== */
 /* ===== PAGE CONTAINER ===== */
 .page-container {
     position: relative;
     z-index: 2;
     max-width: 1200px;
-    margin: 5rem auto 0 auto; /* added top margin */
+    margin: 5rem auto 0 auto;
     padding: 3rem 1rem;
 
     /* SCALE EVERYTHING BY 10% */
     transform: scale(1.1);
     transform-origin: top center;
 
-    background: rgba(15,15,15,0.75);
+    /* DARKER BACKGROUND */
+    background: rgba(0, 0, 0, 0.8);
     border-radius: 1.5rem;
     backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid rgba(255,215,0,0.2);
-    box-shadow: 0 20px 40px rgba(255,215,0,0.2);
+    border: 1px solid rgba(255,215,0,0.15);
+    box-shadow: 0 20px 40px rgba(255,215,0,0.25);
 
     opacity: 0;
     transform: translateY(30px) scale(1.1);
     animation: fadeInUp 1.2s forwards;
 }
 
-
 /* ===== PAGE HEADING ===== */
 h2 {
     text-align: center;
-    font-size: 2.75rem; /* increased by ~10% */
+    font-size: 2.75rem;
     font-weight: 900;
     margin-bottom: 2rem;
     text-transform: uppercase;
@@ -74,7 +73,7 @@ h2 {
 }
 
 .event-select select {
-    padding: 0.77rem 1.1rem; /* increased */
+    padding: 0.77rem 1.1rem;
     font-size: 1.1rem;
     border-radius: 0.55rem;
     border: 1px solid rgba(255, 215, 0, 0.6);
@@ -97,8 +96,8 @@ h2 {
 table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 1.05rem; /* increased */
-    background: rgba(0,0,0,0.45);
+    font-size: 1.05rem;
+    background: rgba(0,0,0,0.5);
     border-radius: 1rem;
     backdrop-filter: blur(15px);
     box-shadow: 0 15px 40px rgba(0,0,0,0.6);
@@ -116,7 +115,7 @@ table thead {
 }
 
 table th, table td {
-    padding: 13px 16px; /* increased by ~10% */
+    padding: 13px 16px;
     text-align: left;
     vertical-align: middle;
     border-bottom: 1px solid rgba(255, 215, 0, 0.15);
@@ -135,7 +134,7 @@ table tbody tr:hover {
 /* ===== NO VOLUNTEERS MESSAGE ===== */
 .no-volunteers {
     text-align: center;
-    font-size: 1.32rem; /* increased */
+    font-size: 1.32rem;
     font-weight: 700;
     margin-top: 2rem;
     color: #FFD700;

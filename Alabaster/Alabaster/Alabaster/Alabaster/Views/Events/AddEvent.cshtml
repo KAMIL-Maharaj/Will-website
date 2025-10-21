@@ -11,7 +11,7 @@ html, body {
 }
 
 body {
-    background: url('../images/book2.png') center center / cover no-repeat fixed;
+  background: url('../images/cross12.png') center -10% / cover no-repeat fixed;
     background-color: #000;
     overflow-x: hidden;
     position: relative;
@@ -22,8 +22,7 @@ body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.95)),
-                radial-gradient(circle at bottom, rgba(255,215,0,0.15), rgba(0,0,0,0.9));
+    background: rgba(0, 0, 0, 0.35);
     z-index: 0;
 }
 
@@ -46,11 +45,12 @@ body::before {
     width: 100%;
     max-width: 660px;
     padding: 2.5rem 2rem;
-    background: rgba(255,255,255,0.1);
+    /* DARKER BACKGROUND */
+    background: rgba(0, 0, 0, 0.8);
     border-radius: 1.5rem;
     backdrop-filter: blur(20px);
     box-shadow: 0 0 40px rgba(255,215,0,0.3);
-    border: 1px solid rgba(255,215,0,0.2);
+    border: 1px solid rgba(255,215,0,0.15);
     position: relative;
     overflow: hidden;
 }

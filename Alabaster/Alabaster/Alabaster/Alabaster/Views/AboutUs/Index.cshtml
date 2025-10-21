@@ -9,15 +9,23 @@
 
         html, body {
             font-family: 'Poppins', 'Segoe UI', sans-serif;
-            background: url('../images/jesus10.png') center center no-repeat fixed;
-            background-size: cover;
-            background-attachment: fixed;
+  background: url('../images/cross12.png') center -10% / cover no-repeat fixed;
+            background-color: #000;
             color: #fff;
             min-height: 100vh;
             overflow-x: hidden;
         }
 
         a { text-decoration: none; color: inherit; }
+
+        /* CINEMATIC OVERLAY */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35); /* same overlay as Events pages */
+            z-index: 0;
+        }
 
         /* MAIN SECTION */
         .about-section {
@@ -29,24 +37,15 @@
             z-index: 1;
         }
 
-        /* OVERLAY FOR READABILITY */
-        .about-section::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.55);
-            z-index: 0;
-        }
-
         /* GLASS CARD */
         .about-card {
             position: relative;
             z-index: 2;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.55); /* darker, cinematic card */
             border-radius: 2.25rem;
             padding: 2.7rem;
             backdrop-filter: blur(18px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 215, 0, 0.25);
             box-shadow: 0 22px 54px rgba(0,0,0,0.55);
             display: grid;
             grid-template-columns: 1fr 1fr;

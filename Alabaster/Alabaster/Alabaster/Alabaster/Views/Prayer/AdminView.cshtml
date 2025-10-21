@@ -5,60 +5,62 @@
 
 @section Styles {
 <style>
-/* ===== BASE STYLING ===== */
+/* ===== BASE STYLING (Matches Volunteer Page) ===== */
 html, body {
     height: 100%;
     margin: 0;
     font-family: 'Poppins', 'Segoe UI', sans-serif;
+  background: url('../images/cross12.png') center -10% / cover no-repeat fixed;
+    background-color: #000;
     color: #fff;
-    background: url('../images/jesus10.png') center center / cover no-repeat fixed;
-    position: relative;
     overflow-x: hidden;
+    position: relative;
 }
 
-/* CINEMATIC DARK OVERLAY */
+/* ===== DARK OVERLAY (same as Volunteer Page) ===== */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.95)),
-                radial-gradient(circle at bottom, rgba(255,215,0,0.15), rgba(0,0,0,0.9));
+    background: rgba(0, 0, 0, 0.35);
     z-index: 0;
 }
 
-/* ===== PAGE CONTAINER ===== */
+/* ===== PAGE CONTAINER (Matches Volunteer Page) ===== */
 .page-container {
-    max-width: 1000px;
-    margin: 4rem auto;
-    background: rgba(15,15,15,0.75);
-    border-radius: 1.5rem;
-    backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid rgba(255,215,0,0.2);
-    box-shadow: 0 20px 40px rgba(255,215,0,0.2);
-    padding: 2rem;
     position: relative;
     z-index: 2;
+    max-width: 1200px;
+    margin: 5rem auto 0 auto;
+    padding: 3rem 1rem;
 
-    /* Scale everything inside by 10% */
     transform: scale(1.1);
     transform-origin: top center;
-}
 
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 1.5rem;
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255,215,0,0.15);
+    box-shadow: 0 20px 40px rgba(255,215,0,0.25);
+
+    opacity: 0;
+    transform: translateY(30px) scale(1.1);
+    animation: fadeInUp 1.2s forwards;
+}
 
 /* ===== PAGE HEADER ===== */
 .page-container h2 {
     text-align: center;
-    margin-bottom: 2rem;
-    font-size: 2rem;
+    font-size: 2.75rem;
     font-weight: 900;
+    margin-bottom: 2rem;
     text-transform: uppercase;
     background: linear-gradient(90deg, #FFD700, #fff, #FFD700);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    background-size: 200% auto;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
     animation: shimmer 4s linear infinite;
-    text-shadow: 0 0 25px rgba(255,255,255,0.4);
 }
 
 /* ===== TABLE STYLING ===== */
@@ -68,52 +70,70 @@ body::before {
 
 table {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    font-size: 0.95rem;
+    border-collapse: collapse;
+    font-size: 1.05rem;
+    background: rgba(0,0,0,0.5);
+    border-radius: 1rem;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards;
 }
 
-table thead th {
-    background: linear-gradient(90deg, #FFD700, #FFB700, #FFD700);
+table thead {
+    background: rgba(255,215,0,0.8);
     color: #111;
-    font-weight: 700;
-    padding: 0.8rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+table th, table td {
+    padding: 13px 16px;
     text-align: left;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    vertical-align: middle;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.15);
 }
 
 table tbody tr {
-    background: rgba(255,255,255,0.05);
-    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-    cursor: default;
+    transition: all 0.3s ease;
 }
 
 table tbody tr:hover {
-    background: rgba(255,215,0,0.15);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(255,215,0,0.3);
-}
-
-table td, table th {
-    padding: 0.75rem 1rem;
+    background: rgba(255, 215, 0, 0.15);
+    transform: scale(1.02);
+    box-shadow: 0 0 18px rgba(255, 215, 0, 0.3);
 }
 
 /* ===== EMPTY STATE ===== */
 .text-center {
     text-align: center;
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 1.32rem;
+    font-weight: 700;
+    margin-top: 2rem;
     color: #FFD700;
+    text-shadow: 0 0 12px rgba(255,215,0,0.5);
+    animation: fadeIn 1s forwards;
 }
 
 /* ===== ANIMATIONS ===== */
+@@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 @@keyframes shimmer {
     0% { background-position: 0% 50%; }
     100% { background-position: 200% 50%; }
 }
 
-/* ===== FLOATING PARTICLES ===== */
+/* ===== FLOATING SPARKLES ===== */
 .sparkle {
     position: fixed;
     width: 3px;
@@ -132,10 +152,11 @@ table td, table th {
     100% { transform: translateY(-50px) scale(0.5); opacity: 0; }
 }
 
+/* ===== RESPONSIVE ===== */
 @@media (max-width: 768px) {
     .page-container { margin: 2rem 1rem; padding: 1.5rem; }
     table thead th, table td { font-size: 0.85rem; padding: 0.5rem; }
-    .page-container h2 { font-size: 1.5rem; }
+    .page-container h2 { font-size: 1.8rem; }
 }
 </style>
 }

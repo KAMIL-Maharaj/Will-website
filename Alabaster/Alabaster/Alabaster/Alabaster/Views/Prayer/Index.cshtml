@@ -13,18 +13,18 @@ html, body {
 }
 
 body {
-    background: url('../images/book2.png') center center / cover no-repeat fixed;
+    /* Updated background image */
+  background: url('../images/cross12.png') center -10% / cover no-repeat fixed;
     overflow-x: hidden;
     position: relative;
 }
 
-/* CINEMATIC DARK OVERLAY */
+/* Updated cinematic page overlay */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.95)),
-                radial-gradient(circle at bottom, rgba(255,215,0,0.15), rgba(0,0,0,0.9));
+    background: rgba(0, 0, 0, 0.35);
     z-index: 0;
 }
 
@@ -43,16 +43,16 @@ body::before {
 }
 
 /* ===== FORM CARD ===== */
-/* ===== FORM CARD ===== */
 .prayer-form {
     width: 100%;
     max-width: 660px;
     padding: 2.5rem 2rem;
-    background: rgba(15,15,15,0.75);
+    /* Darker background */
+    background: rgba(0, 0, 0, 0.8); 
     border-radius: 1.5rem;
     backdrop-filter: blur(20px) saturate(180%);
     box-shadow: 0 0 40px rgba(255,215,0,0.3);
-    border: 1px solid rgba(255,215,0,0.2);
+    border: 1px solid rgba(255,215,0,0.15);
     position: relative;
     overflow: hidden;
 
@@ -226,16 +226,16 @@ textarea::placeholder {
 
 @section Scripts {
 <script>
-    // Floating sparkles
-    function createSparkle() {
-        const sparkle = document.createElement('div');
-        sparkle.classList.add('sparkle');
-        sparkle.style.left = Math.random() * window.innerWidth + 'px';
-        sparkle.style.top = Math.random() * window.innerHeight + 'px';
-        sparkle.style.animationDuration = (2 + Math.random() * 3) + 's';
-        document.body.appendChild(sparkle);
-        setTimeout(() => sparkle.remove(), 4000);
-    }
-    setInterval(createSparkle, 150);
+/* Floating sparkles */
+function createSparkle() {
+    const sparkle = document.createElement('div');
+    sparkle.classList.add('sparkle');
+    sparkle.style.left = Math.random() * window.innerWidth + 'px';
+    sparkle.style.top = Math.random() * window.innerHeight + 'px';
+    sparkle.style.animationDuration = (2 + Math.random() * 3) + 's';
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 4000);
+}
+setInterval(createSparkle, 150);
 </script>
 }
