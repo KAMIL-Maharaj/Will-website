@@ -8,5 +8,6 @@ namespace Alabaster.Models
         public string ImageBase64 { get; set; }
         public string CreatedBy { get; set; }
         public string CreatedAt { get; set; }
+        public bool IsApproved { get; set; } // ✅ Admin approval flag
     }
 }

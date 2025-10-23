@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Alabaster")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cdaec3046e2a134d29310072646dd9f8f3fe5756")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ae75c33323cf398a2c23d099a21855c77827b630")]
 [assembly: System.Reflection.AssemblyProductAttribute("Alabaster")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Alabaster")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

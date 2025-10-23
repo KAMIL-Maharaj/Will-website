@@ -1,0 +1,239 @@
+@model IEnumerable<Alabaster.Models.Testimony>
+@{
+    ViewBag.Title = "Pending Testimonies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+<style>
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    color: #fff;
+}
+
+/* BACKGROUND + OVERLAY */
+body {
+    background: url('../images/cross7.png') center -10% / cover no-repeat fixed;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Dark overlay on top of background */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+}
+
+/* PAGE CONTENT */
+.page-content {
+    position: relative;
+    z-index: 2;
+    padding: 6rem 2rem;
+    max-width: 1300px;
+    margin: 0 auto;
+    backdrop-filter: blur(4px);
+}
+
+/* PAGE TITLE */
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: #FFD700;
+    font-weight: 900;
+    margin-bottom: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 1rem 2rem;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.55);
+    border: 2px solid #FFD700;
+    box-shadow: 0 0 20px #FFD700, 0 0 50px rgba(255,215,0,0.4);
+    display: inline-block;
+}
+
+/* TABLE CONTAINER */
+.table-container {
+    overflow-x: auto;
+    background: rgba(0,0,0,0.6);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 0 25px rgba(255,215,0,0.3);
+}
+
+/* TABLE STYLING */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #fff;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+th {
+    color: #FFD700;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+td {
+    font-size: 1rem;
+}
+
+/* IMAGE STYLE */
+img {
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255,215,0,0.2);
+}
+
+/* BUTTONS */
+button {
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.approve-btn {
+    background: linear-gradient(135deg, #00FF7F, #00C853);
+    color: #111;
+    box-shadow: 0 0 15px rgba(0,255,127,0.4);
+}
+
+.approve-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0,255,127,0.6);
+}
+
+.reject-btn {
+    background: linear-gradient(135deg, #FF4444, #CC0000);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255,68,68,0.4);
+}
+
+.reject-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255,68,68,0.6);
+}
+
+/* NO DATA MESSAGE */
+.no-pending {
+    text-align: center;
+    font-size: 1.4rem;
+    color: #FFCC33;
+    margin-top: 3rem;
+    text-shadow: 0 0 15px rgba(0,0,0,0.7), 0 0 10px rgba(255,204,51,0.6);
+}
+
+/* SPARKLES EFFECT (like testimonies page) */
+.sparkle {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    background: rgba(255,215,0,0.9);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    animation: sparkleAnim linear infinite;
+}
+
+@@keyframes sparkleAnim {
+    0% { transform: translateY(0) scale(0.5); opacity: 0; }
+    50% { transform: translateY(-25px) scale(1); opacity: 1; }
+    100% { transform: translateY(-50px) scale(0.5); opacity: 0; }
+}
+
+/* RESPONSIVE */
+@@media (max-width: 992px) {
+    h1 { font-size: 2.4rem; }
+    th, td { font-size: 0.95rem; padding: 0.8rem; }
+}
+
+@@media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    button { padding: 0.5rem 1rem; font-size: 0.9rem; }
+}
+</style>
+}
+
+@section Scripts {
+<script>
+// Sparkles
+function createSparkle() {
+    const sparkle = document.createElement('div');
+    sparkle.classList.add('sparkle');
+    sparkle.style.left = Math.random() * window.innerWidth + 'px';
+    sparkle.style.top = Math.random() * window.innerHeight + 'px';
+    sparkle.style.width = sparkle.style.height = Math.random() * 3 + 2 + 'px';
+    sparkle.style.animationDuration = (5 + Math.random() * 5) + 's';
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 10000);
+}
+setInterval(createSparkle, 200);
+</script>
+}
+
+<div class="page-content">
+    <div style="text-align:center;">
+        <h1>Pending Testimonies</h1>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="no-pending">✨ No pending testimonies at the moment. ✨</div>
+    }
+    else
+    {
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Created By</th>
+                        <th>Submitted At</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Title</td>
+                            <td>@item.Description</td>
+                            <td>@(string.IsNullOrEmpty(item.CreatedBy) ? "Anonymous" : item.CreatedBy)</td>
+                            <td>@item.CreatedAt</td>
+                            <td>
+                                <img src="@(string.IsNullOrEmpty(item.ImageBase64)
+                                    ? Url.Content("~/Images/Default%20image.png")
+                                    : $"data:image/jpeg;base64,{item.ImageBase64}")"
+                                    width="80" height="60" />
+                            </td>
+                            <td>
+                                <form asp-action="Approve" asp-route-id="@item.Id" method="post" style="display:inline;">
+                                    <button type="submit" class="approve-btn">Approve</button>
+                                </form>
+                                <form asp-action="Reject" asp-route-id="@item.Id" method="post" style="display:inline;">
+                                    <button type="submit" class="reject-btn">Reject</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
