@@ -18,9 +18,9 @@ namespace Alabaster.Services
             _channelId = channelId;
         }
 
-        /// <summary>
+     
         /// Returns the videoId of the currently live stream if active; otherwise the most recent uploaded stream/video.
-        /// </summary>
+       
         public async Task<string?> GetLatestOrLiveAsync()
         {
             var youtube = new YouTubeService(new BaseClientService.Initializer
