@@ -1,0 +1,52 @@
+name: .NET CI (ASP.NET MVC)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    # windows-latest tends to match "Visual Studio" builds. Change to ubuntu-latest if you prefer.
+    runs-on: windows-latest
+
+    # Set the working directory to where your .sln / project folder lives (relative to repo root).
+    defaults:
+      run:
+        working-directory: ./Alabaster/Alabaster/Alabaster
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup .NET 9 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ hashFiles('**/*.csproj') }}-${{ runner.os }}
+          restore-keys: |
+            nuget-${{ runner.os }}
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build (release)
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Run unit tests
+        # Writes a TRX test result file so we can upload it as an artifact.
+        run: |
+          dotnet test --configuration Release --no-build --logger "trx;LogFileName=test-results.trx"
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: '**/TestResults/*.trx'
