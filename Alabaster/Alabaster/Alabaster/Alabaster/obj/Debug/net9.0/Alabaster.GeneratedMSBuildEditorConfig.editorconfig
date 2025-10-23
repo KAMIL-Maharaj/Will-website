@@ -9,101 +9,101 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Alabaster
 build_property.RootNamespace = Alabaster
-build_property.ProjectDir = C:\Users\vroop\Documents\GitHub\Will-website\Alabaster\Alabaster\Alabaster\Alabaster\
+build_property.ProjectDir = C:\Users\kamil\OneDrive\Desktop\Will-website\Alabaster\Alabaster\Alabaster\Alabaster\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\vroop\Documents\GitHub\Will-website\Alabaster\Alabaster\Alabaster\Alabaster
+build_property.MSBuildProjectDirectory = C:\Users\kamil\OneDrive\Desktop\Will-website\Alabaster\Alabaster\Alabaster\Alabaster
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/vroop/Documents/GitHub/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/AboutUs/Index.cshtml]
+[C:/Users/kamil/OneDrive/Desktop/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/AboutUs/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRVc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vroop/Documents/GitHub/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Auth/ForgotPassword.cshtml]
+[C:/Users/kamil/OneDrive/Desktop/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Auth/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vroop/Documents/GitHub/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Auth/Login.cshtml]
+[C:/Users/kamil/OneDrive/Desktop/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Auth/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vroop/Documents/GitHub/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Auth/Register.cshtml]
+[C:/Users/kamil/OneDrive/Desktop/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Auth/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vroop/Documents/GitHub/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Donate/Index.cshtml]
+[C:/Users/kamil/OneDrive/Desktop/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Donate/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9uYXRlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vroop/Documents/GitHub/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Events/AddEvent.cshtml]
+[C:/Users/kamil/OneDrive/Desktop/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Events/AddEvent.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRzXEFkZEV2ZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vroop/Documents/GitHub/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Events/Index.cshtml]
+[C:/Users/kamil/OneDrive/Desktop/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Events/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vroop/Documents/GitHub/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Events/ManageVolunteers.cshtml]
+[C:/Users/kamil/OneDrive/Desktop/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Events/ManageVolunteers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRzXE1hbmFnZVZvbHVudGVlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vroop/Documents/GitHub/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Events/Past.cshtml]
+[C:/Users/kamil/OneDrive/Desktop/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Events/Past.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRzXFBhc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vroop/Documents/GitHub/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Events/Volunteer.cshtml]
+[C:/Users/kamil/OneDrive/Desktop/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Events/Volunteer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRzXFZvbHVudGVlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vroop/Documents/GitHub/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Events/VolunteerThankYou.cshtml]
+[C:/Users/kamil/OneDrive/Desktop/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Events/VolunteerThankYou.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRzXFZvbHVudGVlclRoYW5rWW91LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vroop/Documents/GitHub/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Home/Index.cshtml]
+[C:/Users/kamil/OneDrive/Desktop/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vroop/Documents/GitHub/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Home/Privacy.cshtml]
+[C:/Users/kamil/OneDrive/Desktop/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vroop/Documents/GitHub/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Prayer/AdminView.cshtml]
+[C:/Users/kamil/OneDrive/Desktop/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Prayer/AdminView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJheWVyXEFkbWluVmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vroop/Documents/GitHub/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Prayer/Index.cshtml]
+[C:/Users/kamil/OneDrive/Desktop/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Prayer/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJheWVyXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vroop/Documents/GitHub/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Shared/Error.cshtml]
+[C:/Users/kamil/OneDrive/Desktop/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vroop/Documents/GitHub/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/kamil/OneDrive/Desktop/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vroop/Documents/GitHub/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Testimonies/Create.cshtml]
+[C:/Users/kamil/OneDrive/Desktop/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Testimonies/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdGltb25pZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vroop/Documents/GitHub/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Testimonies/Index.cshtml]
+[C:/Users/kamil/OneDrive/Desktop/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Testimonies/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdGltb25pZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vroop/Documents/GitHub/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/_ViewImports.cshtml]
+[C:/Users/kamil/OneDrive/Desktop/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vroop/Documents/GitHub/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/_ViewStart.cshtml]
+[C:/Users/kamil/OneDrive/Desktop/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/vroop/Documents/GitHub/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Shared/_Layout.cshtml]
+[C:/Users/kamil/OneDrive/Desktop/Will-website/Alabaster/Alabaster/Alabaster/Alabaster/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-bwpo1mta79

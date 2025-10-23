@@ -5066,23 +5066,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\vroop\\.nuget\\packages\\": {},
+    "C:\\Users\\kamil\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vroop\\Documents\\GitHub\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster\\Alabaster.csproj",
+      "projectUniqueName": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster\\Alabaster.csproj",
       "projectName": "Alabaster",
-      "projectPath": "C:\\Users\\vroop\\Documents\\GitHub\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster\\Alabaster.csproj",
-      "packagesPath": "C:\\Users\\vroop\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vroop\\Documents\\GitHub\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster\\obj\\",
+      "projectPath": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster\\Alabaster.csproj",
+      "packagesPath": "C:\\Users\\kamil\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kamil\\OneDrive\\Desktop\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\vroop\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kamil\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5160,7 +5160,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
