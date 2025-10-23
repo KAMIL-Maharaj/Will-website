@@ -1,0 +1,171 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\vroop\\Documents\\GitHub\\Will-website\\Alabaster\\Alabaster\\Alabaster\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4D09ACAA-C4FD-0402-B913-25B0EA3E4AD4}|Alabaster\\Alabaster.csproj|c:\\users\\vroop\\documents\\github\\will-website\\alabaster\\alabaster\\alabaster\\alabaster\\views\\donate\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4D09ACAA-C4FD-0402-B913-25B0EA3E4AD4}|Alabaster\\Alabaster.csproj|solutionrelative:alabaster\\views\\donate\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D09ACAA-C4FD-0402-B913-25B0EA3E4AD4}|Alabaster\\Alabaster.csproj|c:\\users\\vroop\\documents\\github\\will-website\\alabaster\\alabaster\\alabaster\\alabaster\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4D09ACAA-C4FD-0402-B913-25B0EA3E4AD4}|Alabaster\\Alabaster.csproj|solutionrelative:alabaster\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D09ACAA-C4FD-0402-B913-25B0EA3E4AD4}|Alabaster\\Alabaster.csproj|c:\\users\\vroop\\documents\\github\\will-website\\alabaster\\alabaster\\alabaster\\alabaster\\views\\aboutus\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4D09ACAA-C4FD-0402-B913-25B0EA3E4AD4}|Alabaster\\Alabaster.csproj|solutionrelative:alabaster\\views\\aboutus\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D09ACAA-C4FD-0402-B913-25B0EA3E4AD4}|Alabaster\\Alabaster.csproj|c:\\users\\vroop\\documents\\github\\will-website\\alabaster\\alabaster\\alabaster\\alabaster\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D09ACAA-C4FD-0402-B913-25B0EA3E4AD4}|Alabaster\\Alabaster.csproj|solutionrelative:alabaster\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D09ACAA-C4FD-0402-B913-25B0EA3E4AD4}|Alabaster\\Alabaster.csproj|c:\\users\\vroop\\documents\\github\\will-website\\alabaster\\alabaster\\alabaster\\alabaster\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{4D09ACAA-C4FD-0402-B913-25B0EA3E4AD4}|Alabaster\\Alabaster.csproj|solutionrelative:alabaster\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D09ACAA-C4FD-0402-B913-25B0EA3E4AD4}|Alabaster\\Alabaster.csproj|c:\\users\\vroop\\documents\\github\\will-website\\alabaster\\alabaster\\alabaster\\alabaster\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D09ACAA-C4FD-0402-B913-25B0EA3E4AD4}|Alabaster\\Alabaster.csproj|solutionrelative:alabaster\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D09ACAA-C4FD-0402-B913-25B0EA3E4AD4}|Alabaster\\Alabaster.csproj|c:\\users\\vroop\\documents\\github\\will-website\\alabaster\\alabaster\\alabaster\\alabaster\\services\\youtubehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4D09ACAA-C4FD-0402-B913-25B0EA3E4AD4}|Alabaster\\Alabaster.csproj|solutionrelative:alabaster\\services\\youtubehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4D09ACAA-C4FD-0402-B913-25B0EA3E4AD4}|Alabaster\\Alabaster.csproj|c:\\users\\vroop\\documents\\github\\will-website\\alabaster\\alabaster\\alabaster\\alabaster\\serviceaccountkey.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{4D09ACAA-C4FD-0402-B913-25B0EA3E4AD4}|Alabaster\\Alabaster.csproj|solutionrelative:alabaster\\serviceaccountkey.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{9b96d899-3214-4b6f-a8b9-182d4bc2f76f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{c9c0ae26-aa77-11d2-b3f0-0000f87570ee}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\vroop\\Documents\\GitHub\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster\\Views\\AboutUs\\Index.cshtml",
+              "RelativeDocumentMoniker": "Alabaster\\Views\\AboutUs\\Index.cshtml",
+              "ToolTip": "C:\\Users\\vroop\\Documents\\GitHub\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster\\Views\\AboutUs\\Index.cshtml",
+              "RelativeToolTip": "Alabaster\\Views\\AboutUs\\Index.cshtml",
+              "ViewState": "AgIAALAAAAAAAAAAAADwv9EAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-22T19:27:10.04Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\vroop\\Documents\\GitHub\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster\\Views\\Donate\\Index.cshtml",
+              "RelativeDocumentMoniker": "Alabaster\\Views\\Donate\\Index.cshtml",
+              "ToolTip": "C:\\Users\\vroop\\Documents\\GitHub\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster\\Views\\Donate\\Index.cshtml",
+              "RelativeToolTip": "Alabaster\\Views\\Donate\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-22T19:26:48.522Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "YouTubeHelper.cs",
+              "DocumentMoniker": "C:\\Users\\vroop\\Documents\\GitHub\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster\\Services\\YouTubeHelper.cs",
+              "RelativeDocumentMoniker": "Alabaster\\Services\\YouTubeHelper.cs",
+              "ToolTip": "C:\\Users\\vroop\\Documents\\GitHub\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster\\Services\\YouTubeHelper.cs",
+              "RelativeToolTip": "Alabaster\\Services\\YouTubeHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T18:50:00.33Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "serviceAccountKey.json",
+              "DocumentMoniker": "C:\\Users\\vroop\\Documents\\GitHub\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster\\serviceAccountKey.json",
+              "RelativeDocumentMoniker": "Alabaster\\serviceAccountKey.json",
+              "ToolTip": "C:\\Users\\vroop\\Documents\\GitHub\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster\\serviceAccountKey.json",
+              "RelativeToolTip": "Alabaster\\serviceAccountKey.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-22T18:47:02.469Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\vroop\\Documents\\GitHub\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster\\appsettings.json",
+              "RelativeDocumentMoniker": "Alabaster\\appsettings.json",
+              "ToolTip": "C:\\Users\\vroop\\Documents\\GitHub\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster\\appsettings.json",
+              "RelativeToolTip": "Alabaster\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-22T18:46:02.179Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\vroop\\Documents\\GitHub\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster\\Program.cs",
+              "RelativeDocumentMoniker": "Alabaster\\Program.cs",
+              "ToolTip": "C:\\Users\\vroop\\Documents\\GitHub\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster\\Program.cs",
+              "RelativeToolTip": "Alabaster\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T18:45:22.004Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\vroop\\Documents\\GitHub\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Alabaster\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\vroop\\Documents\\GitHub\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Alabaster\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAEYBAAAAAAAAAADwv2cBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-22T17:35:44.266Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\vroop\\Documents\\GitHub\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Alabaster\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\vroop\\Documents\\GitHub\\Will-website\\Alabaster\\Alabaster\\Alabaster\\Alabaster\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Alabaster\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAYwA8AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T17:27:42.139Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

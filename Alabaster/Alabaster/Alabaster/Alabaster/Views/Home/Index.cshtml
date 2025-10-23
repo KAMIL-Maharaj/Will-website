@@ -131,6 +131,7 @@ body {
     text-shadow: 0 0 8px rgba(255, 215, 0, 0.2);
 }
 
+
 /* ===== MISSION & VISION CARDS ===== */
 .cards-container {
     display: flex;
@@ -274,6 +275,49 @@ body {
         <p>We host worship services, volunteer events, and teaching sessions to help you grow spiritually and connect with others.</p>
         <a href="/Events" class="btn">See Upcoming Events</a>
     </div>
+</div>
+<!-- ===== youtube account text ===== -->
+<div class="section" id="events">
+    <h2>Join Our online Sermons </h2>
+    <p>
+        We host worship services, volunteer events and live teachings on our YouTube channel.
+        Subscribe to our channel to get notified when we go live and to watch past sermons, worship sessions,
+        and community outreach videos anytime.
+    </p>
+
+    <!-- Link to YouTube channel (opens in new tab) -->
+    <a class="btn" href="https://www.youtube.com/channel/UCFqkqWkSvJ_hm0m2whwGZWQ" target="_blank" rel="noopener noreferrer">
+        Watch on YouTube
+    </a>
+</div>
+
+
+<!-- ====== YOUTUBE PLAYER +===== -->
+<div class="player-section" style="padding: 40px 20px; text-align:center;">
+
+
+    <!-- Player area -->
+    @if (!string.IsNullOrEmpty((string?)ViewBag.YouTubeVideoId))
+    {
+        <div class="player-container" role="region" aria-label="Live / Latest video">
+            <div class="youtube-player" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:900px;margin:0 auto;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,0.6);">
+                <iframe id="ytIframe"
+                        src="https://www.youtube.com/embed/@(ViewBag.YouTubeVideoId)?rel=0"
+                        style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                </iframe>
+            </div>
+                </div>
+    }
+    else
+    {
+        <div class="player-container" style="max-width:900px;margin:0 auto;">
+            <div style="padding:60px 20px; background:rgba(255,255,255,0.03); border:2px solid rgba(255,215,0,0.12); border-radius:12px;">
+                <p style="font-size:1.1rem; color:#fff; margin:0;">We couldn't find a video to display right now. Please check back during a live stream or visit our <a href="/Donate" style="color:#FFD700; font-weight:700;">Donate</a> page.</p>
+            </div>
+        </div>
+    }
 </div>
 
 @section Scripts {
