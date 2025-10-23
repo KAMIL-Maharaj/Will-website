@@ -13,8 +13,8 @@ namespace Alabaster.Controllers
 
         // Store keys securely in appsettings.json for production
         private const string YouTubeApiKey = "AIzaSyBHLkEHH9kmnS-B-BFiZaBUjZNugn4dHiM"; // Replace if needed
-        private const string YouTubeChannelId = "UCBdi3O3UDeD5gleDqi5gx3g";             // Your channel ID
-
+       private const string YouTubeChannelId = "UCFqkqWkSvJ_hm0m2whwGZWQ";             // Your channel ID
+     //  private const string YouTubeChannelId = "UCBdi3O3UDeD5gleDqi5gx3g";             // Your channel ID
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
